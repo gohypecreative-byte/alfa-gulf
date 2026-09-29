@@ -62,17 +62,21 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
 
   return (
     <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
-      {/* ── 1. EDITORIAL HERO SECTION (Clean & Architectural) ── */}
-      <section className="relative px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-20 border-b border-zinc-200/80">
-        <div className="max-w-[1440px] mx-auto w-full">
-          {/* Eyebrow Breadcrumb / Division Badge */}
-          <div className="flex items-center gap-3 mb-6">
-            <span className="w-8 h-[1px] bg-[#0081c6]" />
-            <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
-              Division {data.divisionNum} • {data.category} • Riyadh, KSA
-            </span>
-          </div>
+      {/* ── 1. FULL-SCREEN LIGHT HERO BANNER (No Text, No Dark Color) ── */}
+      <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
+        <Image
+          src={data.heroImage}
+          alt={data.divisionTitle}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </section>
 
+      {/* ── 2. HEADLINE & OVERVIEW SECTION (Below Full-Screen Banner) ── */}
+      <section className="relative px-6 sm:px-10 lg:px-16 pt-12 sm:pt-16 pb-16 sm:pb-20 border-b border-zinc-200/80 bg-white">
+        <div className="max-w-[1440px] mx-auto w-full">
           {/* Main Headline */}
           <div className="max-w-4xl space-y-6">
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-normal leading-[1.12] text-zinc-950 tracking-tight">
@@ -82,28 +86,6 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
             <p className="text-base sm:text-lg lg:text-[19px] text-zinc-600 font-normal leading-relaxed max-w-3xl">
               {data.summary}
             </p>
-          </div>
-
-          {/* Cinematic Wide Image Banner */}
-          <div className="mt-12 sm:mt-16 relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-xs">
-            <Image
-              src={data.heroImage}
-              alt={data.divisionTitle}
-              fill
-              priority
-              sizes="(max-width: 1440px) 100vw, 1440px"
-              className="object-cover"
-            />
-            {/* Subtle Gradient Shadow */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
-            <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 text-white max-w-lg">
-              <span className="text-[11px] font-mono tracking-widest uppercase text-sky-400 font-bold block mb-1">
-                Field Excellence • {data.divisionTitle}
-              </span>
-              <p className="text-sm sm:text-base font-medium leading-snug">
-                {data.heroImageCaption}
-              </p>
-            </div>
           </div>
         </div>
       </section>

@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { ITWorkplaceView } from "@/components/services/it/it-workplace-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function HardwareSupplyPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Hardware Supply</h1>
-        <p className="text-slate-400">Placeholder for the hardware-supply service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "IT Hardware Supply | Alfa Gulf IT Solutions",
+  description: "Enterprise servers, workstations, storage SAN, and commercial peripherals in Saudi Arabia.",
+}
+
+export default function HardwareSupplySubPage() {
+  const data = SUB_SERVICES_DATA["hardware-supply"]
+  return <ITWorkplaceView data={data} />
 }

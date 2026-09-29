@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
+
+export const metadata: Metadata = {
+  title: "General Construction | Alfa Gulf",
+  description: "Turnkey civil engineering and general contracting for commercial and municipal developments in Saudi Arabia.",
+}
 
 export default function GeneralConstructionPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">General Construction</h1>
-        <p className="text-slate-400">Placeholder for the general-construction service.</p>
-      </div>
-    </div>
-  );
+  const data = SUB_SERVICES_DATA["general-construction"]
+  return <SubServiceDetailView data={data} />
 }

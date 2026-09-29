@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function FireLifeSafetyPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Fire Life Safety</h1>
-        <p className="text-slate-400">Placeholder for the fire-life-safety service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Fire Life & Safety | Alfa Gulf Construction",
+  description: "Automatic fire sprinklers, clean agent gas suppression, and fire pump sets in Saudi Arabia.",
+}
+
+export default function FireLifeSafetySubPage() {
+  const data = SUB_SERVICES_DATA["fire-life-safety"]
+  return <SubServiceDetailView data={data} />
 }

@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function DemolitionPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Demolition</h1>
-        <p className="text-slate-400">Placeholder for the demolition service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Demolition & Dismantling | Alfa Gulf Construction",
+  description: "Controlled structural demolition, concrete wire-sawing, and site remediation in Saudi Arabia.",
+}
+
+export default function DemolitionSubPage() {
+  const data = SUB_SERVICES_DATA["demolition"]
+  return <SubServiceDetailView data={data} />
 }

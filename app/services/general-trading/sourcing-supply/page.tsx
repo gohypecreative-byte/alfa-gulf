@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function SourcingSupplyPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Sourcing Supply</h1>
-        <p className="text-slate-400">Placeholder for the sourcing-supply service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Global Sourcing & Supply Chain | Alfa Gulf General Trading",
+  description: "International procurement, customs clearance, and Kingdom-wide logistics in Saudi Arabia.",
+}
+
+export default function SourcingSupplySubPage() {
+  const data = SUB_SERVICES_DATA["sourcing-supply"]
+  return <SubServiceDetailView data={data} />
 }

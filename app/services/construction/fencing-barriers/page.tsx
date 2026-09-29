@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function FencingBarriersPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Fencing Barriers</h1>
-        <p className="text-slate-400">Placeholder for the fencing-barriers service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Perimeter Fencing & Barriers | Alfa Gulf Construction",
+  description: "High-security perimeter fencing, crash-rated anti-ram bollards, and boundary walls in Saudi Arabia.",
+}
+
+export default function FencingBarriersSubPage() {
+  const data = SUB_SERVICES_DATA["fencing-barriers"]
+  return <SubServiceDetailView data={data} />
 }

@@ -106,17 +106,21 @@ const SERVICES_OVERVIEW = [
 export default function ServicesIndexPage() {
   return (
     <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
-      {/* ── 1. EDITORIAL HERO SECTION ── */}
-      <section className="relative px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-20 border-b border-zinc-200/80">
-        <div className="max-w-[1440px] mx-auto w-full">
-          {/* Eyebrow Label */}
-          <div className="flex items-center gap-3 mb-6">
-            <span className="w-8 h-[1px] bg-[#0081c6]" />
-            <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
-              10 Specialized Divisions • Riyadh, KSA
-            </span>
-          </div>
+      {/* ── 1. FULL-SCREEN LIGHT HERO BANNER (No Text, No Dark Color) ── */}
+      <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
+        <Image
+          src="/services/commercial_projects.jpg"
+          alt="Alfa Gulf Specialized Services"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </section>
 
+      {/* ── 2. EDITORIAL HEADLINE & OVERVIEW SECTION (Below Banner) ── */}
+      <section className="relative px-6 sm:px-10 lg:px-16 pt-12 sm:pt-16 pb-16 sm:pb-20 border-b border-zinc-200/80 bg-white">
+        <div className="max-w-[1440px] mx-auto w-full">
           {/* Main Headline */}
           <div className="max-w-4xl space-y-6">
             <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-normal leading-[1.12] text-zinc-950 tracking-tight">

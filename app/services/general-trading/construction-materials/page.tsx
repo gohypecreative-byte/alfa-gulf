@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function ConstructionMaterialsPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Construction Materials</h1>
-        <p className="text-slate-400">Placeholder for the construction-materials service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Construction Materials | Alfa Gulf General Trading",
+  description: "Direct mill supply of SASO deformed steel rebar, ready-mix concrete, and cement in Saudi Arabia.",
+}
+
+export default function ConstructionMaterialsSubPage() {
+  const data = SUB_SERVICES_DATA["construction-materials"]
+  return <SubServiceDetailView data={data} />
 }

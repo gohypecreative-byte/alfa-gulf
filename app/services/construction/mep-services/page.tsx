@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function MepServicesPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Mep Services</h1>
-        <p className="text-slate-400">Placeholder for the mep-services service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "MEP Services | Alfa Gulf Construction",
+  description: "Integrated mechanical, electrical, and plumbing infrastructure for commercial assets in Saudi Arabia.",
+}
+
+export default function ConstructionMepPage() {
+  const data = SUB_SERVICES_DATA["mep-services"]
+  return <SubServiceDetailView data={data} />
 }

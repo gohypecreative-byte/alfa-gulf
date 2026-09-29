@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function FireproofingWorksPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Fireproofing Works</h1>
-        <p className="text-slate-400">Placeholder for the fireproofing-works service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Passive Fireproofing | Alfa Gulf Construction",
+  description: "UL-certified intumescent and cementitious fireproofing coatings for steel structures in Saudi Arabia.",
+}
+
+export default function FireproofingWorksSubPage() {
+  const data = SUB_SERVICES_DATA["fireproofing-works"]
+  return <SubServiceDetailView data={data} />
 }

@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { ITDataCenterView } from "@/components/services/it/it-datacenter-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function StructuredCablingPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Structured Cabling</h1>
-        <p className="text-slate-400">Placeholder for the structured-cabling service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Structured Cabling | Alfa Gulf IT Solutions",
+  description: "Category 6A copper cabling and OM4/OS2 optical fiber backbones in Saudi Arabia.",
+}
+
+export default function StructuredCablingSubPage() {
+  const data = SUB_SERVICES_DATA["structured-cabling"]
+  return <ITDataCenterView data={data} />
 }

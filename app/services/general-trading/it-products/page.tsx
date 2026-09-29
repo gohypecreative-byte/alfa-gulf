@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function ItProductsPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">It Products</h1>
-        <p className="text-slate-400">Placeholder for the it-products service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "IT Products & Supplies | Alfa Gulf General Trading",
+  description: "Bulk procurement of enterprise networking gear, laptops, and peripheral hardware in Saudi Arabia.",
+}
+
+export default function ItProductsSubPage() {
+  const data = SUB_SERVICES_DATA["it-products"]
+  return <SubServiceDetailView data={data} />
 }

@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { ITNetworkView } from "@/components/services/it/it-network-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function IpTelephonyPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Ip Telephony</h1>
-        <p className="text-slate-400">Placeholder for the ip-telephony service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "IP Telephony Solutions | Alfa Gulf IT Solutions",
+  description: "IP PBX communication systems, VoIP phones, and SIP trunking in Saudi Arabia.",
+}
+
+export default function IpTelephonySubPage() {
+  const data = SUB_SERVICES_DATA["ip-telephony"]
+  return <ITNetworkView data={data} />
 }

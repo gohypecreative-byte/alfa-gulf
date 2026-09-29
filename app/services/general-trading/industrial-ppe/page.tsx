@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function IndustrialPpePage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Industrial Ppe</h1>
-        <p className="text-slate-400">Placeholder for the industrial-ppe service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Industrial Safety Gear & PPE | Alfa Gulf General Trading",
+  description: "Certified safety helmets, high-vis vests, steel-toe boots, and fall protection in Saudi Arabia.",
+}
+
+export default function IndustrialPpeSubPage() {
+  const data = SUB_SERVICES_DATA["industrial-ppe"]
+  return <SubServiceDetailView data={data} />
 }

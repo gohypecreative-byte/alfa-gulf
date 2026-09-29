@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { ITWorkplaceView } from "@/components/services/it/it-workplace-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function ManagedServicesPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Managed Services</h1>
-        <p className="text-slate-400">Placeholder for the managed-services service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Managed IT Services | Alfa Gulf IT Solutions",
+  description: "24/7 IT helpdesk, network monitoring, and preventative maintenance SLAs in Saudi Arabia.",
+}
+
+export default function ManagedServicesSubPage() {
+  const data = SUB_SERVICES_DATA["managed-services"]
+  return <ITWorkplaceView data={data} />
 }

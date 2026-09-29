@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { ITSecurityView } from "@/components/services/it/it-security-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function CctvPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Cctv</h1>
-        <p className="text-slate-400">Placeholder for the cctv service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "CCTV Surveillance Systems | Alfa Gulf IT Solutions",
+  description: "High-definition 4K IP security cameras and Civil Defense video retention systems in Saudi Arabia.",
+}
+
+export default function CctvSubPage() {
+  const data = SUB_SERVICES_DATA["cctv"]
+  return <ITSecurityView data={data} />
 }

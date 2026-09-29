@@ -1,12 +1,13 @@
-import React from 'react';
+import { Metadata } from "next"
+import { SubServiceDetailView } from "@/components/services/sub-service-view"
+import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
 
-export default function HvacSolutionsPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Hvac Solutions</h1>
-        <p className="text-slate-400">Placeholder for the hvac-solutions service.</p>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "HVAC Solutions | Alfa Gulf Construction",
+  description: "Central chilled water plants, VRF multisplit systems, and SMACNA ductwork in Saudi Arabia.",
+}
+
+export default function HvacSolutionsSubPage() {
+  const data = SUB_SERVICES_DATA["hvac-solutions"]
+  return <SubServiceDetailView data={data} />
 }
