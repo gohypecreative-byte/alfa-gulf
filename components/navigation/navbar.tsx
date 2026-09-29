@@ -26,7 +26,110 @@ import {
   Send,
   ArrowRight,
   Check,
+  Server,
+  Network,
+  Cpu,
+  Shield,
+  ShieldAlert,
+  Bell,
+  HardHat,
+  Monitor,
+  Laptop,
+  PhoneCall,
+  Headphones,
+  Truck,
+  Armchair,
+  KeyRound,
+  Database,
+  Tv,
+  Fence,
+  Settings,
+  Share2,
 } from "lucide-react"
+
+export interface SubServiceItem {
+  num: string
+  title: string
+  concept: string
+  href: string
+  icon: React.ElementType
+  image: string
+}
+
+export interface ServiceCategory {
+  id: string
+  num: string
+  title: string
+  badge: string
+  badgeColor: string
+  badgeBg: string
+  activeTitle: string
+  items: SubServiceItem[]
+}
+
+const DIVISIONS_28_DATA: ServiceCategory[] = [
+  {
+    id: "construction",
+    num: "01",
+    title: "CONSTRUCTION SERVICES",
+    badge: "DIVISION 01 • 11 SERVICES",
+    badgeColor: "text-sky-600 dark:text-sky-400",
+    badgeBg: "bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-300",
+    activeTitle: "General Construction & Civil Works",
+    items: [
+      { num: "01", title: "General Construction & Civil Works", concept: "From Ground to Completion", href: "/services/commercial-projects", icon: Building2, image: "/services/commercial_projects.jpg" },
+      { num: "02", title: "MEP Services", concept: "Hidden Systems Behind Every Building", href: "/services/mep-services", icon: Wrench, image: "/services/mep_services.jpg" },
+      { num: "03", title: "HVAC Solutions", concept: "Invisible Comfort", href: "/services/hvac-division", icon: Wind, image: "/services/chilled_water_plant.jpg" },
+      { num: "04", title: "Fire Alarm Systems", concept: "Every Second Counts", href: "/services/mep-services", icon: Bell, image: "/services/mep_services.jpg" },
+      { num: "05", title: "Fire & Life Safety Systems", concept: "Designed Around Safety", href: "/services/mep-services", icon: Shield, image: "/services/mep_services.jpg" },
+      { num: "06", title: "Fireproofing Works", concept: "Protection Within Structure", href: "/services/steel-structures", icon: Flame, image: "/services/steel_structures.jpg" },
+      { num: "07", title: "Steel Structure & Erection", concept: "Precision in Every Connection", href: "/services/steel-structures", icon: Hammer, image: "/services/steel_structures.jpg" },
+      { num: "08", title: "Fit-Out & Renovation", concept: "From Empty Space to Finished", href: "/services/fitout-works", icon: HomeIcon, image: "/services/fitout_works.jpg" },
+      { num: "09", title: "Landscaping & External Works", concept: "Transforming Space Around You", href: "/services/landscaping-works", icon: Trees, image: "/services/landscaping_works.jpg" },
+      { num: "10", title: "Demolition & Renovation", concept: "Make Way for What's Next", href: "/services/demolition-renovation", icon: HardHat, image: "/services/structural_demolition.jpg" },
+      { num: "11", title: "Fencing, Gates & Barriers", concept: "Secure the Perimeter", href: "/services/commercial-projects", icon: Fence, image: "/services/landscaping/hardscaping_pergola.jpg" },
+    ],
+  },
+  {
+    id: "it-solutions",
+    num: "02",
+    title: "IT SOLUTIONS",
+    badge: "DIVISION 02 • 12 SERVICES",
+    badgeColor: "text-blue-600 dark:text-blue-400",
+    badgeBg: "bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300",
+    activeTitle: "Data Centre Solutions",
+    items: [
+      { num: "12", title: "Data Centre Solutions", concept: "Build the Digital Core", href: "/services/cctv-it-sales", icon: Server, image: "/services/cctv/structured_cabling_datacenter.jpg" },
+      { num: "13", title: "Structured Cabling", concept: "Network Beneath Everything", href: "/services/cctv-it-sales", icon: Network, image: "/services/cctv/structured_cabling_datacenter.jpg" },
+      { num: "14", title: "Enterprise Networking", concept: "Everything Connected", href: "/services/cctv-it-sales", icon: Cpu, image: "/services/cctv/cybersecurity_network_defense.jpg" },
+      { num: "15", title: "CCTV / IP Surveillance", concept: "See. Detect. Protect.", href: "/services/cctv-it-sales", icon: Camera, image: "/services/cctv/cctv_ai_surveillance.jpg" },
+      { num: "16", title: "Access Control & Time Attendance", concept: "Access, Controlled.", href: "/services/cctv-it-sales", icon: KeyRound, image: "/services/cctv/biometric_access_control.jpg" },
+      { num: "17", title: "Servers & Storage", concept: "Where Your Data Lives", href: "/services/cctv-it-sales", icon: Database, image: "/services/cctv/cloud_server_infrastructure.jpg" },
+      { num: "18", title: "Meeting Room / AV Solutions", concept: "Connects Everyone", href: "/services/cctv-it-sales", icon: Tv, image: "/services/cctv_it_services.jpg" },
+      { num: "19", title: "UPS & Power Backup Solutions", concept: "Power Without Interruption", href: "/services/cctv-it-sales", icon: Zap, image: "/services/chilled_water_plant.jpg" },
+      { num: "21", title: "IT Hardware & Tech Supply", concept: "Powers Your Business", href: "/services/cctv-it-sales", icon: Laptop, image: "/services/cctv/cloud_server_infrastructure.jpg" },
+      { num: "22", title: "Network Security & Cyber", concept: "Secure Every Connection", href: "/services/cctv-it-sales", icon: ShieldAlert, image: "/services/cctv/cybersecurity_network_defense.jpg" },
+      { num: "23", title: "IP Telephony & Unified Comm.", concept: "Connected Organization", href: "/services/cctv-it-sales", icon: PhoneCall, image: "/services/cctv/biometric_access_control.jpg" },
+      { num: "24", title: "Managed IT Services / AMC", concept: "Always Supported", href: "/services/cctv-it-sales", icon: Headphones, image: "/services/cctv/cctv_ai_surveillance.jpg" },
+    ],
+  },
+  {
+    id: "general-trading",
+    num: "03",
+    title: "GENERAL TRADING",
+    badge: "DIVISION 03 • 5 SERVICES",
+    badgeColor: "text-amber-600 dark:text-amber-400",
+    badgeBg: "bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-300",
+    activeTitle: "General Trading / Sourcing",
+    items: [
+      { num: "20", title: "General Trading / Sourcing", concept: "Requirement to Reality", href: "/services/building-materials", icon: Package, image: "/services/building_materials.jpg" },
+      { num: "25", title: "Construction, MEP & Electrical Supply", concept: "Keep Projects Moving", href: "/services/building-materials", icon: Truck, image: "/services/steel_rebar_supply.jpg" },
+      { num: "26", title: "IT & Tech Products Supply", concept: "Ready to Deploy", href: "/services/building-materials", icon: Monitor, image: "/services/cctv/cybersecurity_network_defense.jpg" },
+      { num: "27", title: "Office, Furniture & Facility Supply", concept: "Workplace Supply", href: "/services/building-materials", icon: Armchair, image: "/services/fitout_works.jpg" },
+      { num: "28", title: "Industrial Materials & PPE Supply", concept: "Ready for Project", href: "/services/building-materials", icon: HardHat, image: "/services/building_materials.jpg" },
+    ],
+  },
+]
 
 // Real Alfa Gulf Services
 const SERVICES = [
@@ -196,6 +299,12 @@ export function Navbar() {
   const [isOverHero, setIsOverHero] = React.useState(true)
   const [isServicesOpen, setIsServicesOpen] = React.useState(false)
   const [activeServiceIdx, setActiveServiceIdx] = React.useState(0)
+  const [activeHoverCategory, setActiveHoverCategory] = React.useState<number>(0)
+  const [hoveredServiceTitle, setHoveredServiceTitle] = React.useState<Record<number, string>>({})
+  const [activeShowcase, setActiveShowcase] = React.useState<{ title: string; image: string }>({
+    title: "General Construction & Civil Works",
+    image: "/services/commercial_projects.jpg",
+  })
   const [isSearchOpen, setIsSearchOpen] = React.useState(false)
   const [isContactOpen, setIsContactOpen] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
@@ -302,9 +411,9 @@ export function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
           isTransparent
             ? isServicesOpen
-              ? "bg-black/20 backdrop-blur-sm border-b border-white/10"
+              ? "bg-[#0b0f19]/98 backdrop-blur-2xl border-b border-white/10"
               : "bg-gradient-to-b from-black/60 via-black/25 to-transparent border-b border-transparent shadow-none"
-            : "bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm"
+            : "bg-white border-b border-slate-200/80 shadow-sm"
         }`}
       >
         {/* Top accent bar line - brand azure blue line matching website palette */}
@@ -549,95 +658,189 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* FULL-WIDTH DESKTOP MEGA DROPDOWN DRAWER */}
+        {/* FULL-WIDTH DESKTOP MEGA DROPDOWN DRAWER (MATCHING NAVBAR BACKGROUND DYNAMICALLY) */}
         <div
-          className={`hidden lg:grid w-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top overflow-hidden ${
+          className={`hidden lg:block w-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden shadow-2xl ${
             isTransparent
-              ? "bg-transparent border-b-0 shadow-none"
-              : "bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xl"
+              ? "bg-[#0b0f19]/98 text-white border-b border-white/10 backdrop-blur-2xl"
+              : "bg-white text-slate-900 border-b border-slate-200/80 shadow-2xl"
           } ${
             isServicesOpen
-              ? "grid-rows-[1fr] opacity-100 py-6 border-t"
-              : "grid-rows-[0fr] opacity-0 py-0 border-t-0 border-b-0 pointer-events-none"
-          } ${
-            isTransparent ? "border-t-white/10" : "border-t-slate-200/80"
+              ? "max-h-[720px] opacity-100 py-7 border-t border-slate-200/80 dark:border-white/10"
+              : "max-h-0 opacity-0 py-0 border-t-0 border-b-0 pointer-events-none"
           }`}
           onMouseEnter={handleMouseEnterServices}
           onMouseLeave={handleMouseLeaveServices}
         >
-          <div className="overflow-hidden min-h-0">
-            <div className="max-w-[1120px] mx-auto px-6">
-              {/* 2-Column Grid of Clean Service List Items (No Boxes) */}
-              <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-                {SERVICES.map((service) => {
-                  const IconComp = service.icon
-                  return (
-                    <Link
-                      key={service.title}
-                      href={service.href}
-                      onClick={() => setIsServicesOpen(false)}
-                      className={`flex items-center gap-3.5 p-3 rounded-xl transition-all duration-200 group ${
-                        isTransparent
-                          ? "hover:bg-white/10"
-                          : "hover:bg-slate-50"
-                      }`}
-                    >
-                      {/* Icon */}
+          <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-12 gap-6 xl:gap-8 items-start">
+              
+              {/* ── SECTION 1: CATEGORY MENU (3 COLS) ── */}
+              <div className={`col-span-3 pr-4 border-r space-y-2 ${isTransparent ? "border-white/10" : "border-slate-200/80"}`}>
+                <div className={`pb-2.5 mb-2 border-b ${isTransparent ? "border-white/10" : "border-slate-200"}`}>
+                  <span className="text-[10px] font-mono font-bold tracking-widest text-[#0081c6] dark:text-sky-400 uppercase block">
+                    SERVICES DEPARTMENTS
+                  </span>
+                  <h4 className={`text-xs font-black uppercase tracking-wider mt-0.5 ${isTransparent ? "text-white" : "text-slate-900"}`}>
+                    SELECT A CATEGORY
+                  </h4>
+                </div>
+
+                <div className="space-y-1.5">
+                  {DIVISIONS_28_DATA.map((cat, idx) => {
+                    const isActive = activeHoverCategory === idx
+                    return (
                       <div
-                        className={`w-9 h-9 rounded-lg transition-colors duration-200 flex items-center justify-center shrink-0 ${
-                          isTransparent
-                            ? "bg-[#0081c6]/25 text-sky-400 group-hover:bg-[#0081c6] group-hover:text-white"
-                            : "bg-sky-50 text-[#0081c6] group-hover:bg-[#0081c6] group-hover:text-white"
+                        key={cat.id}
+                        onMouseEnter={() => {
+                          setActiveHoverCategory(idx)
+                          const firstItem = DIVISIONS_28_DATA[idx]?.items[0]
+                          if (firstItem) {
+                            setActiveShowcase({ title: firstItem.title, image: firstItem.image })
+                          }
+                        }}
+                        className={`group flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all duration-200 border ${
+                          isActive
+                            ? isTransparent
+                              ? "bg-sky-500/20 border-sky-400 text-sky-300 font-bold translate-x-1"
+                              : "bg-sky-50/90 border-[#0081c6]/50 text-[#0081c6] font-bold shadow-2xs translate-x-1"
+                            : isTransparent
+                            ? "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white font-semibold"
+                            : "bg-slate-50/70 border-slate-200/70 text-slate-800 hover:bg-slate-100 hover:text-slate-900 font-semibold"
                         }`}
                       >
-                        <IconComp className="w-4 h-4" />
-                      </div>
-
-                      {/* Title & Short snippet */}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-3 min-w-0">
                           <span
-                            className={`text-[11px] font-mono font-bold tracking-wider shrink-0 ${
-                              isTransparent
-                                ? "text-sky-400 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
-                                : "text-[#0081c6]"
+                            className={`w-2 h-2 rounded-full transition-all ${
+                              isActive ? "bg-[#0081c6] dark:bg-sky-400 scale-125" : "bg-slate-300 dark:bg-slate-600 group-hover:bg-[#0081c6]"
                             }`}
-                          >
-                            {service.num}
+                          />
+                          <span className="text-[12.5px] font-bold tracking-wider uppercase truncate">
+                            {cat.title}
                           </span>
-                          <h4
-                            className={`text-[14px] font-semibold tracking-tight transition-colors leading-snug ${
-                              isTransparent
-                                ? "text-white group-hover:text-sky-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
-                                : "text-slate-900 group-hover:text-[#0081c6]"
-                            }`}
-                          >
-                            {service.title}
-                          </h4>
                         </div>
-                        <p
-                          className={`text-[12px] line-clamp-1 mt-0.5 font-normal transition-colors ${
-                            isTransparent
-                              ? "text-slate-200/90 group-hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
-                              : "text-slate-500 group-hover:text-slate-700"
+                        <ChevronRight
+                          className={`w-4 h-4 transition-transform ${
+                            isActive
+                              ? "text-[#0081c6] dark:text-sky-400 translate-x-0.5 opacity-100"
+                              : "text-slate-400 opacity-60 group-hover:opacity-100"
                           }`}
-                        >
-                          {service.description}
-                        </p>
+                        />
                       </div>
+                    )
+                  })}
+                </div>
 
-                      {/* Chevron Right */}
-                      <ChevronRight
-                        className={`w-4 h-4 transition-all group-hover:translate-x-1 shrink-0 ${
-                          isTransparent
-                            ? "text-white/40 group-hover:text-sky-300"
-                            : "text-slate-400 group-hover:text-[#0081c6]"
-                        }`}
-                      />
-                    </Link>
-                  )
-                })}
+                <div className={`pt-3 border-t mt-3 ${isTransparent ? "border-white/10" : "border-slate-100"}`}>
+                  <Link
+                    href="/services"
+                    onClick={() => setIsServicesOpen(false)}
+                    className="inline-flex items-center gap-2 text-[11px] font-extrabold text-[#0081c6] dark:text-sky-400 hover:text-[#005a8c] uppercase tracking-wider transition-colors"
+                  >
+                    <span>VIEW ALL 28 SERVICES</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
               </div>
+
+              {/* ── SECTION 2: SUB-CATEGORIES PANEL (5 COLS) ── */}
+              <div className={`col-span-5 pr-4 border-r ${isTransparent ? "border-white/10" : "border-slate-200/80"}`}>
+                {/* Active Category Header */}
+                <div className="pb-2.5 mb-3 border-b-2 border-[#0081c6]">
+                  <h4 className={`text-sm font-black uppercase tracking-wider ${isTransparent ? "text-white" : "text-slate-900"}`}>
+                    {DIVISIONS_28_DATA[activeHoverCategory]?.title}
+                  </h4>
+                </div>
+
+                {/* Sub-categories List Grid */}
+                <div className="grid grid-cols-2 gap-2 max-h-[420px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800">
+                  {DIVISIONS_28_DATA[activeHoverCategory]?.items.map((s) => {
+                    const IconComp = s.icon
+                    return (
+                      <Link
+                        key={s.title}
+                        href={s.href}
+                        onClick={() => setIsServicesOpen(false)}
+                        onMouseEnter={() => {
+                          setActiveShowcase({ title: s.title, image: s.image })
+                        }}
+                        className={`group flex items-center justify-between p-2.5 rounded-xl border transition-all duration-150 ${
+                          isTransparent
+                            ? "border-white/10 bg-white/5 hover:bg-sky-500/20 hover:border-sky-400 text-slate-200 hover:text-sky-300"
+                            : "border-slate-100 hover:border-sky-200 bg-white hover:bg-sky-50/70 text-slate-800 hover:text-[#0081c6] shadow-2xs"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0 pr-1">
+                          <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                            isTransparent
+                              ? "text-sky-400 bg-white/10 border border-white/10 group-hover:bg-[#0081c6] group-hover:text-white"
+                              : "text-[#0081c6] bg-sky-50 border border-sky-100 group-hover:bg-[#0081c6] group-hover:text-white"
+                          }`}>
+                            <IconComp className="w-3.5 h-3.5" />
+                          </div>
+                          <span className="text-[11.5px] font-bold tracking-wide uppercase leading-tight line-clamp-2">
+                            {s.title}
+                          </span>
+                        </div>
+                        <ChevronRight className="w-3.5 h-3.5 text-slate-300 dark:text-slate-600 group-hover:text-[#0081c6] dark:group-hover:text-sky-400 transition-colors shrink-0" />
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* ── SECTION 3: DYNAMIC SHOWCASE FRAME (4 COLS - IMAGE & TITLE UPDATE ON HOVER) ── */}
+              <div className="col-span-4">
+                <div className={`rounded-2xl border p-4 space-y-3.5 ${
+                  isTransparent
+                    ? "border-white/10 bg-white/5 text-white"
+                    : "border-slate-200/90 bg-slate-50/80 text-slate-900 shadow-2xs"
+                }`}>
+                  
+                  {/* CLEAN DYNAMIC IMAGE BOX */}
+                  <div className={`relative aspect-[16/9] w-full rounded-xl overflow-hidden border ${
+                    isTransparent ? "border-white/10 bg-slate-900" : "border-slate-200/80 bg-white"
+                  }`}>
+                    <Image
+                      key={activeShowcase.image}
+                      src={activeShowcase.image}
+                      alt={activeShowcase.title}
+                      fill
+                      sizes="33vw"
+                      className="object-cover hover:scale-105 transition-all duration-500 ease-out animate-in fade-in"
+                    />
+                  </div>
+
+                  {/* DYNAMIC TITLE SECTION BELOW THE IMAGE */}
+                  <div className="space-y-2.5">
+                    <h3 className={`text-sm font-extrabold leading-snug uppercase tracking-wider min-h-[40px] ${isTransparent ? "text-white" : "text-slate-900"}`}>
+                      {activeShowcase.title}
+                    </h3>
+
+                    {/* 3 FEATURE PILLS */}
+                    <div className={`rounded-xl p-2.5 border grid grid-cols-3 gap-1 text-center ${
+                      isTransparent
+                        ? "bg-white/10 border-white/10 text-white"
+                        : "bg-white border-slate-200 text-slate-900 shadow-2xs"
+                    }`}>
+                      <div className="flex flex-col items-center justify-center p-1 rounded-md hover:bg-slate-50 dark:hover:bg-white/10 transition-colors">
+                        <Building2 className="w-3.5 h-3.5 text-[#0081c6] dark:text-sky-400 mb-0.5" />
+                        <span className="text-[9.5px] font-bold uppercase">Civil & Struct.</span>
+                      </div>
+                      <div className="flex flex-col items-center justify-center p-1 rounded-md hover:bg-slate-50 dark:hover:bg-white/10 transition-colors">
+                        <Settings className="w-3.5 h-3.5 text-[#0081c6] dark:text-sky-400 mb-0.5" />
+                        <span className="text-[9.5px] font-bold uppercase">MEP & Infra</span>
+                      </div>
+                      <div className="flex flex-col items-center justify-center p-1 rounded-md hover:bg-slate-50 dark:hover:bg-white/10 transition-colors">
+                        <Share2 className="w-3.5 h-3.5 text-[#0081c6] dark:text-sky-400 mb-0.5" />
+                        <span className="text-[9.5px] font-bold uppercase">IT & Tech</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -662,7 +865,7 @@ export function Navbar() {
                 ABOUT US
               </Link>
 
-              {/* Mobile Services Accordion */}
+              {/* Mobile Services Categorized Accordion */}
               <div>
                 <button
                   type="button"
@@ -677,26 +880,34 @@ export function Navbar() {
                   />
                 </button>
                 {isMobileServicesOpen && (
-                  <div className="pl-2 pr-2 py-2 space-y-1 bg-slate-50/80 rounded-xl mt-1.5 border border-slate-100">
-                    {SERVICES.map((s) => {
-                      const MobileIcon = s.icon
-                      return (
-                        <Link
-                          key={s.title}
-                          href={s.href}
-                          onClick={() => {
-                            setIsMobileMenuOpen(false)
-                            setIsMobileServicesOpen(false)
-                          }}
-                          className="flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#0081c6] hover:bg-[#0081c6]/10 rounded-lg transition-colors group"
-                        >
-                          <div className="w-6 h-6 rounded-md bg-[#0081c6]/10 text-[#0081c6] flex items-center justify-center shrink-0 group-hover:bg-[#0081c6] group-hover:text-white transition-colors">
-                            <MobileIcon className="w-3.5 h-3.5" />
-                          </div>
-                          <span>{s.title}</span>
-                        </Link>
-                      )
-                    })}
+                  <div className="pl-2 pr-2 py-3 space-y-4 bg-slate-50/90 rounded-xl mt-1.5 border border-slate-200/70">
+                    {DIVISIONS_28_DATA.map((cat) => (
+                      <div key={cat.title} className="space-y-1.5">
+                        <div className="flex items-center gap-2 px-2 pb-1 border-b border-slate-200/60">
+                          <span className="text-[11px] font-bold tracking-wider uppercase text-[#0081c6]">
+                            {cat.title} ({cat.items.length})
+                          </span>
+                        </div>
+                        <div className="space-y-0.5">
+                          {cat.items.map((s) => (
+                            <Link
+                              key={s.num + s.title}
+                              href={s.href}
+                              onClick={() => {
+                                setIsMobileMenuOpen(false)
+                                setIsMobileServicesOpen(false)
+                              }}
+                              className="flex items-center justify-between px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 hover:text-[#0081c6] hover:bg-[#0081c6]/10 rounded-lg transition-colors"
+                            >
+                              <div className="flex items-center gap-2 min-w-0">
+                                <span className="font-mono text-[10px] font-bold text-[#0081c6]">{s.num}</span>
+                                <span className="truncate">{s.title}</span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
