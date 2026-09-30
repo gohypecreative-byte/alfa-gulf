@@ -106,7 +106,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
             </div>
 
             {/* Right Image Card (No Text, No Dark Overlay) */}
-            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
+            <div className="lg:col-span-5 relative aspect-[4/3] rounded-none overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
               <Image
                 src={data.overviewImage}
                 alt={data.title}
@@ -122,7 +122,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
       {/* ── 3. WIDE NETWORK SHOWCASE BANNER (No Text, No Dark Overlay) ── */}
       <section className="px-6 sm:px-10 lg:px-16 py-12 border-b border-zinc-200/80 bg-zinc-50/50">
         <div className="max-w-[1440px] mx-auto w-full">
-          <div className="relative aspect-[21/9] sm:aspect-[24/9] w-full rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
+          <div className="relative aspect-[21/9] sm:aspect-[24/9] w-full rounded-none overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
             <Image
               src={data.showcaseBanner}
               alt="Network Topology Field Image"
@@ -151,9 +151,9 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
               {data.features.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl bg-zinc-50/70 border border-zinc-200/80 space-y-3 shadow-xs hover:border-[#0081c6] hover:bg-white transition-all duration-200"
+                  className="p-6 rounded-none bg-zinc-50/70 border border-zinc-200/80 space-y-3 shadow-xs hover:border-[#0081c6] hover:bg-white transition-all duration-200"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-sky-50 text-[#0081c6] flex items-center justify-center font-mono font-bold text-xs">
+                  <div className="w-8 h-8 rounded-none bg-sky-50 text-[#0081c6] flex items-center justify-center font-mono font-bold text-xs">
                     0{idx + 1}
                   </div>
                   <h3 className="text-lg font-medium text-zinc-950">{feat.title}</h3>
@@ -170,7 +170,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Compliance Image Card (No Text, No Dark Overlay) */}
-            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs order-2 lg:order-1">
+            <div className="lg:col-span-5 relative aspect-[4/3] rounded-none overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs order-2 lg:order-1">
               <Image
                 src={data.complianceImage}
                 alt="Cybersecurity & Audit"

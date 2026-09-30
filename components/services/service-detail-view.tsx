@@ -179,7 +179,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
             </div>
 
             {/* Right: Editorial Contextual Image */}
-            <div className="lg:col-span-6 relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
+            <div className="lg:col-span-6 relative aspect-[4/3] rounded-none overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
               <Image
                 src={data.overviewImage}
                 alt={data.overviewHeading}
@@ -244,7 +244,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Image */}
-            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs order-2 lg:order-1">
+            <div className="lg:col-span-5 relative aspect-[4/3] rounded-none overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs order-2 lg:order-1">
               <Image
                 src={data.complianceImage}
                 alt="Quality and Compliance"

@@ -653,7 +653,7 @@ export const SERVICES_DATA: Record<string, ServiceDetailData> = {
       "24/7 Remote Diagnostics and Service Level Agreements",
       "Certified Integration with Enterprise BMS Platforms",
     ],
-    complianceImage: "/safety/safety_team_site.jpg",
+    complianceImage: "/services/it/it_cctv_compliance.jpg",
     relatedDivisions: [
       { num: "03", title: "MEP Services", href: "/services/mep-services" },
       { num: "05", title: "Fit-Out Works", href: "/services/fitout-works" },

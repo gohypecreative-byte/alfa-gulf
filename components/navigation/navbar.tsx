@@ -677,11 +677,11 @@ export function Navbar() {
               
               {/* ── SECTION 1: CATEGORY MENU (3 COLS) ── */}
               <div className={`col-span-3 pr-4 border-r space-y-2 ${isTransparent ? "border-white/10" : "border-slate-200/80"}`}>
-                <div className={`pb-2.5 mb-2 border-b ${isTransparent ? "border-white/10" : "border-slate-200"}`}>
+                <div className={`pb-2 mb-2 border-b ${isTransparent ? "border-white/10" : "border-slate-200"}`}>
                   <span className="text-[10px] font-mono font-bold tracking-widest text-[#0081c6] dark:text-sky-400 uppercase block">
                     SERVICES DEPARTMENTS
                   </span>
-                  <h4 className={`text-xs font-black uppercase tracking-wider mt-0.5 ${isTransparent ? "text-white" : "text-slate-900"}`}>
+                  <h4 className={`text-[11px] font-semibold uppercase tracking-wider mt-0.5 ${isTransparent ? "text-slate-300" : "text-slate-600"}`}>
                     SELECT A CATEGORY
                   </h4>
                 </div>
@@ -699,28 +699,21 @@ export function Navbar() {
                             setActiveShowcase({ title: firstItem.title, image: firstItem.image })
                           }
                         }}
-                        className={`group flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all duration-200 border ${
+                        className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all duration-200 border ${
                           isActive
                             ? isTransparent
-                              ? "bg-sky-500/20 border-sky-400 text-sky-300 font-bold translate-x-1"
-                              : "bg-sky-50/90 border-[#0081c6]/50 text-[#0081c6] font-bold shadow-2xs translate-x-1"
+                              ? "bg-sky-500/20 border-sky-400/80 text-sky-300 font-semibold translate-x-0.5"
+                              : "bg-sky-50 border-[#0081c6]/40 text-[#0081c6] font-semibold shadow-2xs translate-x-0.5"
                             : isTransparent
-                            ? "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white font-semibold"
-                            : "bg-slate-50/70 border-slate-200/70 text-slate-800 hover:bg-slate-100 hover:text-slate-900 font-semibold"
+                            ? "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white font-medium"
+                            : "bg-slate-50/70 border-slate-200/70 text-slate-700 hover:bg-slate-100 hover:text-slate-900 font-medium"
                         }`}
                       >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <span
-                            className={`w-2 h-2 rounded-full transition-all ${
-                              isActive ? "bg-[#0081c6] dark:bg-sky-400 scale-125" : "bg-slate-300 dark:bg-slate-600 group-hover:bg-[#0081c6]"
-                            }`}
-                          />
-                          <span className="text-[12.5px] font-bold tracking-wider uppercase truncate">
-                            {cat.title}
-                          </span>
-                        </div>
+                        <span className="text-[12px] font-semibold tracking-wider uppercase truncate">
+                          {cat.title}
+                        </span>
                         <ChevronRight
-                          className={`w-4 h-4 transition-transform ${
+                          className={`w-3.5 h-3.5 transition-transform ${
                             isActive
                               ? "text-[#0081c6] dark:text-sky-400 translate-x-0.5 opacity-100"
                               : "text-slate-400 opacity-60 group-hover:opacity-100"
@@ -735,7 +728,7 @@ export function Navbar() {
                   <Link
                     href="/services"
                     onClick={() => setIsServicesOpen(false)}
-                    className="inline-flex items-center gap-2 text-[11px] font-extrabold text-[#0081c6] dark:text-sky-400 hover:text-[#005a8c] uppercase tracking-wider transition-colors"
+                    className="inline-flex items-center gap-2 text-[11px] font-bold text-[#0081c6] dark:text-sky-400 hover:text-[#005a8c] uppercase tracking-wider transition-colors"
                   >
                     <span>VIEW ALL 28 SERVICES</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -745,9 +738,9 @@ export function Navbar() {
 
               {/* ── SECTION 2: SUB-CATEGORIES PANEL (5 COLS) ── */}
               <div className={`col-span-5 pr-4 border-r ${isTransparent ? "border-white/10" : "border-slate-200/80"}`}>
-                {/* Active Category Header */}
-                <div className="pb-2.5 mb-3 border-b-2 border-[#0081c6]">
-                  <h4 className={`text-sm font-black uppercase tracking-wider ${isTransparent ? "text-white" : "text-slate-900"}`}>
+                {/* Active Category Header with accent underline */}
+                <div className="pb-2 mb-3 border-b-2 border-[#0081c6]">
+                  <h4 className={`text-xs font-bold uppercase tracking-wider ${isTransparent ? "text-white" : "text-slate-800"}`}>
                     {DIVISIONS_28_DATA[activeHoverCategory]?.title}
                   </h4>
                 </div>
@@ -756,6 +749,7 @@ export function Navbar() {
                 <div className="grid grid-cols-2 gap-2 max-h-[420px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800">
                   {DIVISIONS_28_DATA[activeHoverCategory]?.items.map((s) => {
                     const IconComp = s.icon
+                    const isSubActive = activeShowcase.title === s.title
                     return (
                       <Link
                         key={s.title}
@@ -765,24 +759,34 @@ export function Navbar() {
                           setActiveShowcase({ title: s.title, image: s.image })
                         }}
                         className={`group flex items-center justify-between p-2.5 rounded-xl border transition-all duration-150 ${
-                          isTransparent
-                            ? "border-white/10 bg-white/5 hover:bg-sky-500/20 hover:border-sky-400 text-slate-200 hover:text-sky-300"
-                            : "border-slate-100 hover:border-sky-200 bg-white hover:bg-sky-50/70 text-slate-800 hover:text-[#0081c6] shadow-2xs"
+                          isSubActive
+                            ? isTransparent
+                              ? "bg-sky-500/20 border-sky-400 text-sky-300 font-semibold shadow-2xs"
+                              : "bg-sky-50 border-[#0081c6]/35 text-[#0081c6] font-semibold shadow-2xs"
+                            : isTransparent
+                            ? "border-white/10 bg-white/5 hover:bg-sky-500/15 hover:border-sky-400/60 text-slate-200 hover:text-sky-300"
+                            : "border-slate-100 hover:border-sky-200 bg-white hover:bg-sky-50/60 text-slate-700 hover:text-[#0081c6] shadow-2xs"
                         }`}
                       >
                         <div className="flex items-center gap-2.5 min-w-0 pr-1">
                           <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                            isTransparent
-                              ? "text-sky-400 bg-white/10 border border-white/10 group-hover:bg-[#0081c6] group-hover:text-white"
-                              : "text-[#0081c6] bg-sky-50 border border-sky-100 group-hover:bg-[#0081c6] group-hover:text-white"
+                            isSubActive
+                              ? "text-[#0081c6] bg-sky-100 border border-sky-200"
+                              : isTransparent
+                              ? "text-sky-400 bg-white/10 border border-white/10 group-hover:bg-sky-500/20 group-hover:text-sky-300"
+                              : "text-[#0081c6] bg-sky-50/80 border border-sky-100 group-hover:bg-sky-100 group-hover:border-sky-200"
                           }`}>
                             <IconComp className="w-3.5 h-3.5" />
                           </div>
-                          <span className="text-[11.5px] font-bold tracking-wide uppercase leading-tight line-clamp-2">
+                          <span className="text-[11.5px] font-semibold tracking-wide uppercase leading-tight line-clamp-2">
                             {s.title}
                           </span>
                         </div>
-                        <ChevronRight className="w-3.5 h-3.5 text-slate-300 dark:text-slate-600 group-hover:text-[#0081c6] dark:group-hover:text-sky-400 transition-colors shrink-0" />
+                        <ChevronRight className={`w-3.5 h-3.5 transition-colors shrink-0 ${
+                          isSubActive
+                            ? "text-[#0081c6] dark:text-sky-300"
+                            : "text-slate-300 dark:text-slate-600 group-hover:text-[#0081c6] dark:group-hover:text-sky-400"
+                        }`} />
                       </Link>
                     )
                   })}
