@@ -15,6 +15,7 @@ export interface ITNetworkData {
   overviewImage: string
   showcaseBanner: string
   complianceImage: string
+  gallery?: { src: string; alt: string; caption?: string }[]
   features: {
     title: string
     desc: string
@@ -119,20 +120,58 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
         </div>
       </section>
 
-      {/* ── 3. WIDE NETWORK SHOWCASE BANNER (No Text, No Dark Overlay) ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-12 border-b border-zinc-200/80 bg-zinc-50/50">
-        <div className="max-w-[1440px] mx-auto w-full">
-          <div className="relative aspect-[21/9] sm:aspect-[24/9] w-full rounded-none overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
-            <Image
-              src={data.showcaseBanner}
-              alt="Network Topology Field Image"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+      {/* ── 3. SITE PHOTOS (real installation work) or stock showcase banner ── */}
+      {data.gallery && data.gallery.length > 0 ? (
+        <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-zinc-50/50">
+          <div className="max-w-[1440px] mx-auto w-full">
+            <div className="mb-10 space-y-2">
+              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+                On site
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
+                Our engineers at work
+              </h2>
+              <p className="text-sm sm:text-base text-zinc-600 max-w-2xl leading-relaxed">
+                Real photos from recent rack build-outs: switch installation, patch panel
+                termination, cable dressing and NVR rack commissioning.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+              {data.gallery.map((photo) => (
+                <figure key={photo.src} className="flex flex-col">
+                  <div className="relative aspect-3/4 w-full overflow-hidden bg-zinc-100 border border-zinc-200/80">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  {photo.caption && (
+                    <figcaption className="mt-2.5 text-xs sm:text-sm text-zinc-600">{photo.caption}</figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className="px-6 sm:px-10 lg:px-16 py-12 border-b border-zinc-200/80 bg-zinc-50/50">
+          <div className="max-w-[1440px] mx-auto w-full">
+            <div className="relative aspect-[21/9] sm:aspect-[24/9] w-full rounded-none overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
+              <Image
+                src={data.showcaseBanner}
+                alt="Network Topology Field Image"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── 4. FEATURE CARDS GRID ── */}
       {data.features && data.features.length > 0 && (

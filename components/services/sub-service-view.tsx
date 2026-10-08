@@ -17,6 +17,8 @@ export interface SubServiceData {
   showcaseBanner: string
   complianceImage: string
   complianceItems?: string[]
+  /** Real site photos shown in place of the stock showcase banner. */
+  gallery?: { src: string; alt: string; caption?: string }[]
   features: {
     title: string
     desc: string

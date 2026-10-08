@@ -9,7 +9,6 @@ import {
   X,
   ChevronDown,
   ChevronLeft,
-  ChevronRight,
   Phone,
   Mail,
   MapPin,
@@ -43,8 +42,6 @@ import {
   Database,
   Tv,
   Fence,
-  Settings,
-  Share2,
 } from "lucide-react"
 
 export interface SubServiceItem {
@@ -130,6 +127,9 @@ const DIVISIONS_28_DATA: ServiceCategory[] = [
     ],
   },
 ]
+
+const toTitleCase = (s: string) =>
+  s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase()).replace(/\bIt\b/, "IT")
 
 // Real Alfa Gulf Services
 const SERVICES = [
@@ -298,13 +298,10 @@ const SERVICES = [
 export function Navbar() {
   const [isOverHero, setIsOverHero] = React.useState(true)
   const [isServicesOpen, setIsServicesOpen] = React.useState(false)
-  const [activeServiceIdx, setActiveServiceIdx] = React.useState(0)
   const [activeHoverCategory, setActiveHoverCategory] = React.useState<number>(0)
-  const [hoveredServiceTitle, setHoveredServiceTitle] = React.useState<Record<number, string>>({})
-  const [activeShowcase, setActiveShowcase] = React.useState<{ title: string; image: string }>({
-    title: "General Construction & Civil Works",
-    image: "/services/commercial_projects.jpg",
-  })
+  const [activeShowcase, setActiveShowcase] = React.useState<SubServiceItem>(
+    DIVISIONS_28_DATA[0].items[0]
+  )
   const [isSearchOpen, setIsSearchOpen] = React.useState(false)
   const [isContactOpen, setIsContactOpen] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
@@ -658,191 +655,147 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* FULL-WIDTH DESKTOP MEGA DROPDOWN DRAWER (MATCHING NAVBAR BACKGROUND DYNAMICALLY) */}
+        {/* Desktop services dropdown */}
         <div
-          className={`hidden lg:block w-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden shadow-2xl ${
+          className={`hidden lg:block w-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
             isTransparent
-              ? "bg-[#0b0f19]/98 text-white border-b border-white/10 backdrop-blur-2xl"
-              : "bg-white text-slate-900 border-b border-slate-200/80 shadow-2xl"
+              ? "bg-[#0b0f19]/98 text-white backdrop-blur-2xl"
+              : "bg-white text-slate-900"
           } ${
             isServicesOpen
-              ? "max-h-[720px] opacity-100 py-7 border-t border-slate-200/80 dark:border-white/10"
-              : "max-h-0 opacity-0 py-0 border-t-0 border-b-0 pointer-events-none"
+              ? `max-h-[640px] opacity-100 border-t border-b shadow-[0_24px_48px_-24px_rgba(0,0,0,0.35)] ${
+                  isTransparent ? "border-white/10" : "border-slate-200/80"
+                }`
+              : "max-h-0 opacity-0 border-0 pointer-events-none"
           }`}
           onMouseEnter={handleMouseEnterServices}
           onMouseLeave={handleMouseLeaveServices}
         >
-          <div className="max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-12 gap-6 xl:gap-8 items-start">
-              
-              {/* ── SECTION 1: CATEGORY MENU (3 COLS) ── */}
-              <div className={`col-span-3 pr-4 border-r space-y-2 ${isTransparent ? "border-white/10" : "border-slate-200/80"}`}>
-                <div className={`pb-2 mb-2 border-b ${isTransparent ? "border-white/10" : "border-slate-200"}`}>
-                  <span className="text-[10px] font-mono font-bold tracking-widest text-[#0081c6] dark:text-sky-400 uppercase block">
-                    SERVICES DEPARTMENTS
-                  </span>
-                  <h4 className={`text-[11px] font-semibold uppercase tracking-wider mt-0.5 ${isTransparent ? "text-slate-300" : "text-slate-600"}`}>
-                    SELECT A CATEGORY
-                  </h4>
-                </div>
+          <div className="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="grid grid-cols-12 gap-10">
 
-                <div className="space-y-1.5">
+              {/* Divisions */}
+              <div className="col-span-3">
+                <p className={`text-[11px] font-semibold uppercase tracking-[0.14em] mb-3 ${isTransparent ? "text-slate-400" : "text-slate-500"}`}>
+                  Divisions
+                </p>
+                <ul className="space-y-0.5">
                   {DIVISIONS_28_DATA.map((cat, idx) => {
                     const isActive = activeHoverCategory === idx
                     return (
-                      <div
-                        key={cat.id}
-                        onMouseEnter={() => {
-                          setActiveHoverCategory(idx)
-                          const firstItem = DIVISIONS_28_DATA[idx]?.items[0]
-                          if (firstItem) {
-                            setActiveShowcase({ title: firstItem.title, image: firstItem.image })
-                          }
-                        }}
-                        className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all duration-200 border ${
-                          isActive
-                            ? isTransparent
-                              ? "bg-sky-500/20 border-sky-400/80 text-sky-300 font-semibold translate-x-0.5"
-                              : "bg-sky-50 border-[#0081c6]/40 text-[#0081c6] font-semibold shadow-2xs translate-x-0.5"
-                            : isTransparent
-                            ? "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white font-medium"
-                            : "bg-slate-50/70 border-slate-200/70 text-slate-700 hover:bg-slate-100 hover:text-slate-900 font-medium"
-                        }`}
-                      >
-                        <span className="text-[12px] font-semibold tracking-wider uppercase truncate">
-                          {cat.title}
-                        </span>
-                        <ChevronRight
-                          className={`w-3.5 h-3.5 transition-transform ${
+                      <li key={cat.id}>
+                        <button
+                          type="button"
+                          onMouseEnter={() => {
+                            setActiveHoverCategory(idx)
+                            const firstItem = cat.items[0]
+                            if (firstItem) setActiveShowcase(firstItem)
+                          }}
+                          onFocus={() => setActiveHoverCategory(idx)}
+                          className={`w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg text-left text-[13px] font-semibold transition-colors ${
                             isActive
-                              ? "text-[#0081c6] dark:text-sky-400 translate-x-0.5 opacity-100"
-                              : "text-slate-400 opacity-60 group-hover:opacity-100"
+                              ? isTransparent
+                                ? "bg-white/10 text-white"
+                                : "bg-slate-100 text-slate-900"
+                              : isTransparent
+                              ? "text-slate-300 hover:bg-white/5 hover:text-white"
+                              : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                           }`}
-                        />
-                      </div>
+                        >
+                          <span className="flex items-center gap-3 min-w-0">
+                            <span
+                              className={`w-1 h-4 rounded-full shrink-0 transition-colors ${
+                                isActive ? "bg-[#0081c6]" : "bg-transparent"
+                              }`}
+                            />
+                            <span className="truncate">{toTitleCase(cat.title)}</span>
+                          </span>
+                          <span className={`text-[11px] font-medium tabular-nums ${isTransparent ? "text-slate-500" : "text-slate-400"}`}>
+                            {cat.items.length}
+                          </span>
+                        </button>
+                      </li>
                     )
                   })}
-                </div>
+                </ul>
 
-                <div className={`pt-3 border-t mt-3 ${isTransparent ? "border-white/10" : "border-slate-100"}`}>
-                  <Link
-                    href="/services"
-                    onClick={() => setIsServicesOpen(false)}
-                    className="inline-flex items-center gap-2 text-[11px] font-bold text-[#0081c6] dark:text-sky-400 hover:text-[#005a8c] uppercase tracking-wider transition-colors"
-                  >
-                    <span>VIEW ALL 28 SERVICES</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
+                <Link
+                  href="/services"
+                  onClick={() => setIsServicesOpen(false)}
+                  className="group mt-5 ml-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#0081c6] hover:text-[#006aa3] transition-colors"
+                >
+                  All 28 services
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                </Link>
               </div>
 
-              {/* ── SECTION 2: SUB-CATEGORIES PANEL (5 COLS) ── */}
-              <div className={`col-span-5 pr-4 border-r ${isTransparent ? "border-white/10" : "border-slate-200/80"}`}>
-                {/* Active Category Header with accent underline */}
-                <div className="pb-2 mb-3 border-b-2 border-[#0081c6]">
-                  <h4 className={`text-xs font-bold uppercase tracking-wider ${isTransparent ? "text-white" : "text-slate-800"}`}>
-                    {DIVISIONS_28_DATA[activeHoverCategory]?.title}
-                  </h4>
-                </div>
-
-                {/* Sub-categories List Grid */}
-                <div className="grid grid-cols-2 gap-2 max-h-[420px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800">
+              {/* Services in the active division */}
+              <div className={`col-span-6 border-l pl-10 ${isTransparent ? "border-white/10" : "border-slate-200/80"}`}>
+                <p className={`text-[11px] font-semibold uppercase tracking-[0.14em] mb-3 ${isTransparent ? "text-slate-400" : "text-slate-500"}`}>
+                  {toTitleCase(DIVISIONS_28_DATA[activeHoverCategory]?.title ?? "")}
+                </p>
+                <ul className="grid grid-cols-2 gap-x-6 gap-y-0.5">
                   {DIVISIONS_28_DATA[activeHoverCategory]?.items.map((s) => {
                     const IconComp = s.icon
-                    const isSubActive = activeShowcase.title === s.title
+                    const isSubActive = activeShowcase.href === s.href
                     return (
-                      <Link
-                        key={s.title}
-                        href={s.href}
-                        onClick={() => setIsServicesOpen(false)}
-                        onMouseEnter={() => {
-                          setActiveShowcase({ title: s.title, image: s.image })
-                        }}
-                        className={`group flex items-center justify-between p-2.5 rounded-xl border transition-all duration-150 ${
-                          isSubActive
-                            ? isTransparent
-                              ? "bg-sky-500/20 border-sky-400 text-sky-300 font-semibold shadow-2xs"
-                              : "bg-sky-50 border-[#0081c6]/35 text-[#0081c6] font-semibold shadow-2xs"
-                            : isTransparent
-                            ? "border-white/10 bg-white/5 hover:bg-sky-500/15 hover:border-sky-400/60 text-slate-200 hover:text-sky-300"
-                            : "border-slate-100 hover:border-sky-200 bg-white hover:bg-sky-50/60 text-slate-700 hover:text-[#0081c6] shadow-2xs"
-                        }`}
-                      >
-                        <div className="flex items-center gap-2.5 min-w-0 pr-1">
-                          <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                      <li key={s.href}>
+                        <Link
+                          href={s.href}
+                          onClick={() => setIsServicesOpen(false)}
+                          onMouseEnter={() => setActiveShowcase(s)}
+                          onFocus={() => setActiveShowcase(s)}
+                          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
                             isSubActive
-                              ? "text-[#0081c6] bg-sky-100 border border-sky-200"
+                              ? isTransparent
+                                ? "bg-white/10 text-white"
+                                : "bg-slate-100 text-slate-900"
                               : isTransparent
-                              ? "text-sky-400 bg-white/10 border border-white/10 group-hover:bg-sky-500/20 group-hover:text-sky-300"
-                              : "text-[#0081c6] bg-sky-50/80 border border-sky-100 group-hover:bg-sky-100 group-hover:border-sky-200"
-                          }`}>
-                            <IconComp className="w-3.5 h-3.5" />
-                          </div>
-                          <span className="text-[11.5px] font-semibold tracking-wide uppercase leading-tight line-clamp-2">
-                            {s.title}
-                          </span>
-                        </div>
-                        <ChevronRight className={`w-3.5 h-3.5 transition-colors shrink-0 ${
-                          isSubActive
-                            ? "text-[#0081c6] dark:text-sky-300"
-                            : "text-slate-300 dark:text-slate-600 group-hover:text-[#0081c6] dark:group-hover:text-sky-400"
-                        }`} />
-                      </Link>
+                              ? "text-slate-300 hover:bg-white/5 hover:text-white"
+                              : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                          }`}
+                        >
+                          <IconComp
+                            className={`w-4 h-4 shrink-0 transition-colors ${
+                              isSubActive ? "text-[#0081c6]" : isTransparent ? "text-slate-500" : "text-slate-400"
+                            }`}
+                          />
+                          <span className="text-[13px] font-medium leading-snug truncate">{s.title}</span>
+                        </Link>
+                      </li>
                     )
                   })}
-                </div>
+                </ul>
               </div>
 
-              {/* ── SECTION 3: DYNAMIC SHOWCASE FRAME (4 COLS - IMAGE & TITLE UPDATE ON HOVER) ── */}
-              <div className="col-span-4">
-                <div className={`rounded-2xl border p-4 space-y-3.5 ${
-                  isTransparent
-                    ? "border-white/10 bg-white/5 text-white"
-                    : "border-slate-200/90 bg-slate-50/80 text-slate-900 shadow-2xs"
-                }`}>
-                  
-                  {/* CLEAN DYNAMIC IMAGE BOX */}
-                  <div className={`relative aspect-[16/9] w-full rounded-xl overflow-hidden border ${
-                    isTransparent ? "border-white/10 bg-slate-900" : "border-slate-200/80 bg-white"
-                  }`}>
+              {/* Preview of the hovered service */}
+              <div className="col-span-3">
+                <Link
+                  href={activeShowcase.href}
+                  onClick={() => setIsServicesOpen(false)}
+                  className="group block"
+                >
+                  <div className={`relative aspect-[4/3] w-full rounded-xl overflow-hidden ${isTransparent ? "bg-slate-900" : "bg-slate-100"}`}>
                     <Image
                       key={activeShowcase.image}
                       src={activeShowcase.image}
                       alt={activeShowcase.title}
                       fill
-                      sizes="33vw"
-                      className="object-cover hover:scale-105 transition-all duration-500 ease-out animate-in fade-in"
+                      sizes="320px"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] animate-in fade-in duration-300"
                     />
                   </div>
-
-                  {/* DYNAMIC TITLE SECTION BELOW THE IMAGE */}
-                  <div className="space-y-2.5">
-                    <h3 className={`text-sm font-extrabold leading-snug uppercase tracking-wider min-h-[40px] ${isTransparent ? "text-white" : "text-slate-900"}`}>
-                      {activeShowcase.title}
-                    </h3>
-
-                    {/* 3 FEATURE PILLS */}
-                    <div className={`rounded-xl p-2.5 border grid grid-cols-3 gap-1 text-center ${
-                      isTransparent
-                        ? "bg-white/10 border-white/10 text-white"
-                        : "bg-white border-slate-200 text-slate-900 shadow-2xs"
-                    }`}>
-                      <div className="flex flex-col items-center justify-center p-1 rounded-md hover:bg-slate-50 dark:hover:bg-white/10 transition-colors">
-                        <Building2 className="w-3.5 h-3.5 text-[#0081c6] dark:text-sky-400 mb-0.5" />
-                        <span className="text-[9.5px] font-bold uppercase">Civil & Struct.</span>
-                      </div>
-                      <div className="flex flex-col items-center justify-center p-1 rounded-md hover:bg-slate-50 dark:hover:bg-white/10 transition-colors">
-                        <Settings className="w-3.5 h-3.5 text-[#0081c6] dark:text-sky-400 mb-0.5" />
-                        <span className="text-[9.5px] font-bold uppercase">MEP & Infra</span>
-                      </div>
-                      <div className="flex flex-col items-center justify-center p-1 rounded-md hover:bg-slate-50 dark:hover:bg-white/10 transition-colors">
-                        <Share2 className="w-3.5 h-3.5 text-[#0081c6] dark:text-sky-400 mb-0.5" />
-                        <span className="text-[9.5px] font-bold uppercase">IT & Tech</span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+                  <h3 className={`mt-4 text-[15px] font-bold leading-snug ${isTransparent ? "text-white" : "text-slate-900"}`}>
+                    {activeShowcase.title}
+                  </h3>
+                  <p className={`mt-1 text-[13px] leading-relaxed ${isTransparent ? "text-slate-400" : "text-slate-500"}`}>
+                    {activeShowcase.concept}
+                  </p>
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#0081c6] group-hover:text-[#006aa3] transition-colors">
+                    View service
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
               </div>
 
             </div>
