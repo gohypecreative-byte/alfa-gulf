@@ -3,7 +3,12 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, CheckCircle2, Phone, Mail, MapPin, ChevronRight, Server, ShieldCheck, Layers } from "lucide-react"
+import { ArrowRight, CheckCircle2, Phone, Mail, MapPin, ChevronRight } from "lucide-react"
+import { ScrollFrameSequence } from "@/components/ui/scroll-frame-sequence"
+
+const DATA_CENTRE_FRAME_COUNT = 200
+const getDataCentreFramePath = (i: number) =>
+  `/data-centre-frames/frame_${String(i + 1).padStart(3, "0")}.webp`
 
 export interface ITDataCenterData {
   slug: string
@@ -30,17 +35,13 @@ export interface ITDataCenterData {
 export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
   return (
     <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
-      {/* ── 1. FULL-SCREEN LIGHT HERO BANNER (No Text, No Dark Color) ── */}
-      <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
-        <Image
-          src={data.heroImage}
-          alt={data.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-      </section>
+      {/* ── 1. SCROLL-SCRUBBED DATA CENTRE BUILD SEQUENCE ── */}
+      <ScrollFrameSequence
+        frameCount={DATA_CENTRE_FRAME_COUNT}
+        getFramePath={getDataCentreFramePath}
+        scrollHeightVh={420}
+        className="border-b border-zinc-200/80"
+      />
 
       {/* ── 2. DATA CENTER ARCHITECTURE OVERVIEW ── */}
       <section className="px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24 border-b border-zinc-200/80 bg-white">

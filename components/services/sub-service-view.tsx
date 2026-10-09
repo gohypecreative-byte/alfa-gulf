@@ -4,6 +4,7 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin, ChevronRight, ShieldCheck } from "lucide-react"
+import { ScrollFrameSequence } from "@/components/ui/scroll-frame-sequence"
 
 export interface SubServiceData {
   slug: string
@@ -13,6 +14,8 @@ export interface SubServiceData {
   headline: string
   description: string
   heroImage: string
+  /** Optional scroll-scrubbed frame sequence that replaces the static hero. */
+  heroFrames?: { dir: string; count: number }
   overviewImage: string
   showcaseBanner: string
   complianceImage: string
@@ -39,20 +42,30 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
   const overviewImg = data.overviewImage
   const showcaseImg = data.showcaseBanner
   const complianceImg = data.complianceImage
+  const heroFrames = data.heroFrames
 
   return (
     <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
-      {/* ── 1. FULL-SCREEN LIGHT HERO BANNER (No Text, No Dark Color) ── */}
-      <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
-        <Image
-          src={data.heroImage}
-          alt={data.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
+      {/* ── 1. HERO: scroll-scrubbed frame sequence when provided, else static banner ── */}
+      {heroFrames ? (
+        <ScrollFrameSequence
+          frameCount={heroFrames.count}
+          getFramePath={(i) => `${heroFrames.dir}/frame_${String(i + 1).padStart(3, "0")}.webp`}
+          scrollHeightVh={420}
+          className="border-b border-zinc-200/80"
         />
-      </section>
+      ) : (
+        <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
+          <Image
+            src={data.heroImage}
+            alt={data.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </section>
+      )}
 
       {/* ── 2. HEADLINE & OVERVIEW SECTION WITH SIDE IMAGE ── */}
       <section className="relative px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24 border-b border-zinc-200/80 bg-white">

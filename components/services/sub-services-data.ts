@@ -10,6 +10,7 @@ export const SUB_SERVICES_DATA: Record<string, SubServiceData> = {
     headline: "Turnkey EPC general contracting for high-rise commercial towers, civic infrastructure, and industrial complexes.",
     description: "Alfa Gulf delivers comprehensive general contracting services from deep foundation piling and substructure excavations to reinforced concrete framing, curtain wall envelopes, and municipal handovers across Saudi Arabia in full compliance with SBC 201.",
     heroImage: "/services/commercial_projects.jpg",
+    heroFrames: { dir: "/general-construction-frames", count: 180 },
     overviewImage: "/categories/construction.jpg",
     showcaseBanner: "/building-facade.png",
     complianceImage: "/safety/teamwork_structural.jpg",
