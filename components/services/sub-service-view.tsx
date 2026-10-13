@@ -15,7 +15,7 @@ export interface SubServiceData {
   description: string
   heroImage: string
   /** Optional scroll-scrubbed frame sequence that replaces the static hero. */
-  heroFrames?: { dir: string; count: number }
+  heroFrames?: { dir: string; count: number; digits?: number }
   overviewImage: string
   showcaseBanner: string
   complianceImage: string
@@ -50,7 +50,7 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
       {heroFrames ? (
         <ScrollFrameSequence
           frameCount={heroFrames.count}
-          getFramePath={(i) => `${heroFrames.dir}/frame_${String(i + 1).padStart(3, "0")}.webp`}
+          getFramePath={(i) => `${heroFrames.dir}/frame_${String(i + 1).padStart(heroFrames.digits ?? 3, "0")}.webp`}
           scrollHeightVh={420}
           className="border-b border-zinc-200/80"
         />
