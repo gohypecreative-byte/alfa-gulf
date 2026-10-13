@@ -429,17 +429,13 @@ export function Navbar() {
                 className="flex items-center group py-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0081c6] rounded"
                 aria-label="Alfa Gulf Home"
               >
-                <div className="relative h-12 sm:h-14 w-auto aspect-[238/199]">
+                <div className="relative h-16 sm:h-[68px] w-auto aspect-[585/513]">
                   <Image
-                    src="/alfa-logo.png"
+                    src="/alfa-gulf-logo-transparent.png"
                     alt="Alfa Gulf Technologies & Construction Company"
                     fill
-                    sizes="(max-width: 640px) 140px, 180px"
-                    className={`object-contain transition-all duration-300 ${
-                      isTransparent
-                        ? "brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
-                        : ""
-                    }`}
+                    sizes="(max-width: 640px) 73px, 78px"
+                    className="object-contain"
                     priority
                   />
                 </div>

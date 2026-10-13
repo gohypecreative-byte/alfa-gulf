@@ -132,12 +132,12 @@ export function HoverFooter() {
           {/* Brand section */}
           <div className="flex flex-col space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="relative h-11 w-auto aspect-[238/199]">
+              <div className="relative h-16 w-auto aspect-[585/513] shrink-0">
                 <Image
-                  src="/alfa-logo.png"
+                  src="/alfa-gulf-logo-transparent.png"
                   alt="Alfa Gulf Technologies & Construction"
                   fill
-                  sizes="120px"
+                  sizes="73px"
                   className="object-contain object-left"
                   priority
                 />
