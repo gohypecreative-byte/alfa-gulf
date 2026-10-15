@@ -1,3 +1,4 @@
+import { COMPANY_CERTIFICATES, CERTIFICATION_RECORD } from "@/lib/certifications"
 import { SubServiceData } from "./sub-service-view"
 
 export const SUB_SERVICES_DATA: Record<string, SubServiceData> = {
@@ -24,14 +25,8 @@ export const SUB_SERVICES_DATA: Record<string, SubServiceData> = {
       { title: "Turnkey EPC Project Management", desc: "Integrated single-source delivery covering procurement, civil engineering, MEP coordination, and municipal licensing." },
       { title: "Authority Approvals & Civil Defense", desc: "Managing Balady permits, Civil Defense (Salama) clearances, and SASO building material test compliance." },
     ],
-    specifications: [
-      { label: "Building Code", value: "SBC 201 / SBC 301 Certified" },
-      { label: "Structural Standard", value: "Grade 60 Steel Rebar / Post-Tensioned" },
-      { label: "Quality Assurance", value: "ISO 9001:2015 & ISO 45001" },
-      { label: "Foundation Depth", value: "Up to 25m Deep Shoring" },
-      { label: "Execution Territory", value: "Riyadh & All KSA Provinces" },
-      { label: "Project Delivery", value: "Turnkey EPC Contracting" },
-    ],
+    specifications: COMPANY_CERTIFICATES,
+    certificationRecord: CERTIFICATION_RECORD,
   },
 
   "mep-services": {

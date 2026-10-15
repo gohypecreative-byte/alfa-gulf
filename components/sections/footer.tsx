@@ -2,6 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
+import footerLogo from "@/public/alfa-gulf-footer-transparent.png";
+import { DEPARTMENT_CONTACTS } from "@/lib/contact";
 import {
   Mail,
   Phone,
@@ -31,21 +33,16 @@ export function HoverFooter() {
         { label: "Featured Projects", href: "#projects" },
         { label: "Saudi Vision 2030", href: "#vision2030" },
         { label: "Safety & Culture Charter", href: "#safety" },
-        { label: "Careers", href: "#careers", pulse: true },
+        { label: "Careers", href: "#careers" },
       ],
     },
   ];
 
   const contactInfo = [
     {
-      icon: <Mail size={18} className="text-[#0081c6]" />,
-      text: "info@alfagulf.com",
-      href: "mailto:info@alfagulf.com",
-    },
-    {
       icon: <Phone size={18} className="text-[#0081c6]" />,
-      text: "+966 11 456 7890",
-      href: "tel:+966114567890",
+      text: "+966534979774",
+      href: "tel:+966534979774",
     },
     {
       icon: <MapPin size={18} className="text-[#0081c6]" />,
@@ -128,29 +125,15 @@ export function HoverFooter() {
   return (
     <footer className="w-full bg-white relative h-fit overflow-hidden text-slate-800 pt-14 sm:pt-16 lg:pt-20">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 z-40 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 lg:gap-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 md:gap-8 lg:gap-12 pb-12">
           {/* Brand section */}
           <div className="flex flex-col space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="relative h-16 w-auto aspect-[585/513] shrink-0">
-                <Image
-                  src="/alfa-gulf-logo-transparent.png"
-                  alt="Alfa Gulf Technologies & Construction"
-                  fill
-                  sizes="73px"
-                  className="object-contain object-left"
-                  priority
-                />
-              </div>
-              <span className="text-slate-900 text-2xl font-bold tracking-tight uppercase">
-                ALFA GULF
-              </span>
-            </div>
-            <p className="text-sm text-slate-600 leading-relaxed font-normal">
-              Operating at the forefront of Saudi Arabia&apos;s construction
-              renaissance. Delivering turnkey EPC, landmark towers, and
-              sustainable infrastructure aligned with Saudi Vision 2030.
-            </p>
+            <Image
+              src={footerLogo}
+              alt="Alfa Gulf Technologies & Construction Co. — Construction, IT & Trading"
+              sizes="(max-width: 767px) 320px, (max-width: 1023px) 50vw, 320px"
+              className="h-auto w-full max-w-[320px] object-contain"
+            />
           </div>
 
           {/* Footer link sections */}
@@ -168,9 +151,6 @@ export function HoverFooter() {
                     >
                       {link.label}
                     </a>
-                    {link.pulse && (
-                      <span className="absolute top-0 -right-2.5 w-2 h-2 rounded-full bg-[#0081c6] animate-pulse" />
-                    )}
                   </li>
                 ))}
               </ul>
@@ -183,6 +163,17 @@ export function HoverFooter() {
               Contact Us
             </h4>
             <ul className="space-y-4 text-sm text-slate-600">
+              {DEPARTMENT_CONTACTS.map(({ label, email }) => (
+                <li key={label}>
+                  <a href={`mailto:${email}`} className="flex items-start gap-3 hover:text-[#0081c6] transition-colors">
+                    <Mail size={18} className="mt-0.5 shrink-0 text-[#0081c6]" />
+                    <span className="min-w-0">
+                      <span className="block text-xs font-semibold text-slate-900">{label}</span>
+                      <span className="break-words">{email}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
               {contactInfo.map((item, i) => (
                 <li key={i} className="flex items-center space-x-3">
                   {item.icon}

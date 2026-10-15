@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { CertificationsSection } from "@/components/services/certifications-section"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin, ChevronRight, ShieldCheck } from "lucide-react"
@@ -29,7 +30,10 @@ export interface SubServiceData {
   specifications: {
     label: string
     value: string
+    certificateNumber?: string
+    href?: string
   }[]
+  certificationRecord?: string
   parentHref: string
   parentTitle: string
 }
@@ -41,17 +45,21 @@ interface SubServiceViewProps {
 export function SubServiceDetailView({ data }: SubServiceViewProps) {
   const overviewImg = data.overviewImage
   const showcaseImg = data.showcaseBanner
+  const isFacadeShowcase = showcaseImg === "/building-facade.png"
   const complianceImg = data.complianceImage
   const heroFrames = data.heroFrames
 
   return (
-    <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
+    <div className="bg-white text-zinc-950 min-h-screen pt-[84px] md:pt-[88px]">
       {/* ── 1. HERO: scroll-scrubbed frame sequence when provided, else static banner ── */}
       {heroFrames ? (
         <ScrollFrameSequence
           frameCount={heroFrames.count}
           getFramePath={(i) => `${heroFrames.dir}/frame_${String(i + 1).padStart(heroFrames.digits ?? 3, "0")}.webp`}
           scrollHeightVh={420}
+          fit="cover"
+          topOffsetClassName="top-[84px] md:top-[88px]"
+          stageHeightClassName="h-[calc(100dvh-84px)] md:h-[calc(100dvh-88px)]"
           className="border-b border-zinc-200/80"
         />
       ) : (
@@ -115,7 +123,7 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
-                    ISO 9001 & ISO 45001 Standards
+                    ISO 9001, ISO 14001 & ISO 45001 Certified
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
@@ -142,15 +150,16 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
       </section>
 
       {/* ── 3. WIDE SHOWCASE IMAGE BANNER CARD (No Text, No Dark Overlay) ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-12 border-b border-zinc-200/80 bg-zinc-50/50">
+      <section className={`px-6 sm:px-10 lg:px-16 py-12 ${isFacadeShowcase ? "bg-transparent" : "border-b border-zinc-200/80 bg-zinc-50/50"}`}>
         <div className="max-w-[1440px] mx-auto w-full">
-          <div className="relative aspect-[21/9] sm:aspect-[24/9] w-full rounded-none overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
+          <div className={`relative aspect-[21/9] sm:aspect-[24/9] w-full overflow-hidden ${isFacadeShowcase ? "bg-transparent" : "bg-zinc-100 border border-zinc-200/80 shadow-xs"}`}>
             <Image
               src={showcaseImg}
               alt={`${data.title} Field Showcase`}
               fill
               sizes="100vw"
-              className="object-cover"
+              className={isFacadeShowcase ? "object-cover mix-blend-multiply" : "object-cover"}
+              style={isFacadeShowcase ? { maskImage: "radial-gradient(ellipse at center, black 35%, transparent 72%)" } : undefined}
             />
           </div>
         </div>
@@ -239,7 +248,7 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
       </section>
 
       {/* ── 6. TECHNICAL SPECIFICATIONS GRID ── */}
-      {data.specifications && data.specifications.length > 0 && (
+      {!data.certificationRecord && data.specifications && data.specifications.length > 0 && (
         <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
           <div className="max-w-[1440px] mx-auto w-full">
             <div className="mb-12 space-y-2">
@@ -261,12 +270,16 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
                     {spec.label}
                   </span>
                   <p className="text-base sm:text-lg font-semibold text-zinc-900">{spec.value}</p>
+
                 </div>
               ))}
             </div>
+
           </div>
         </section>
       )}
+
+      <CertificationsSection />
 
       {/* ── 7. INQUIRY & CONTACT FOOTER ── */}
       <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
@@ -294,11 +307,11 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
               </Link>
 
               <a
-                href="tel:00966510737090"
+                href="tel:+966534979774"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-bold text-xs uppercase tracking-wider transition-colors border border-zinc-200/80"
               >
                 <Phone className="w-4 h-4 text-[#0081c6]" />
-                <span>+966 510 737 090</span>
+                <span>+966534979774</span>
               </a>
             </div>
           </div>

@@ -1,5 +1,6 @@
 "use client"
 
+import { CertificationsSection } from "@/components/services/certifications-section"
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -285,6 +286,8 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
         </div>
       </section>
 
+      <CertificationsSection />
+
       {/* ── 7. INQUIRY FOOTER ── */}
       <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
@@ -311,11 +314,11 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
               </Link>
 
               <a
-                href="tel:00966510737090"
+                href="tel:+966534979774"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-bold text-xs uppercase tracking-wider transition-colors border border-zinc-200/80"
               >
                 <Phone className="w-4 h-4 text-[#0081c6]" />
-                <span>+966 510 737 090</span>
+                <span>+966534979774</span>
               </a>
             </div>
           </div>

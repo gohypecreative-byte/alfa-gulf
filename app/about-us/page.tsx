@@ -1,5 +1,6 @@
 "use client"
 
+import { CertificationsSection } from "@/components/services/certifications-section"
 import React, { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -375,8 +376,9 @@ export default function AboutUsPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {[
                   "100% Saudi Building Code (SBC) Adherence",
-                  "ISO 9001 Quality Management Certified",
-                  "ISO 45001 Occupational Health & Safety",
+                  "ISO 9001:2015 Quality Management",
+                  "ISO 14001:2015 Environmental Management",
+                  "ISO 45001:2018 Occupational Health & Safety",
                   "UL-Certified Fireproofing Inspections",
                   "Direct Certified Material Procurement",
                   "Dedicated HSE Officers on Active Sites",
@@ -393,6 +395,8 @@ export default function AboutUsPage() {
           </div>
         </div>
       </section>
+
+      <CertificationsSection />
 
       {/* ── 6. CLEAN EDITORIAL CONTACT / CTA (Clean White Architectural Banner) ── */}
       <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
@@ -421,11 +425,11 @@ export default function AboutUsPage() {
               </Link>
 
               <a
-                href="tel:00966510737090"
+                href="tel:+966534979774"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-bold text-xs uppercase tracking-wider transition-colors border border-zinc-200/80"
               >
                 <Phone className="w-4 h-4 text-[#0081c6]" />
-                <span>+966 510 737 090</span>
+                <span>+966534979774</span>
               </a>
             </div>
           </div>

@@ -12,7 +12,7 @@ export default function Home() {
       {/* 1. 192-Frame Scroll Video Hero */}
       <VideoScrollHero />
 
-      {/* 2. Core Categories: Construction, IT & Technology, Transportation */}
+      {/* 2. Core Categories: Construction, IT & Technology, Trading */}
       <CategoriesSection />
 
       {/* 3. Sectors & Video Pin Reveal Section with Screenshot Content */}

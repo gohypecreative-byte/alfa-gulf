@@ -32,11 +32,11 @@ const CATEGORIES = [
   },
   {
     number: "03",
-    title: "Transportation",
-    subtitle: "Heavy Logistics & Fleet Mobility",
+    title: "Trading",
+    subtitle: "Materials, Equipment & Procurement",
     description:
-      "Specialized heavy equipment haulage, oversized structural transit, and agile supply chain logistics supporting jobsites across Saudi Arabia.",
-    image: "/categories/transportation.jpg",
+      "Sourcing and supplying building materials, industrial equipment, and essential project supplies for businesses across Saudi Arabia.",
+    image: "/categories/general-trading.jpg",
     href: "/services/building-materials",
   },
 ]
@@ -99,7 +99,7 @@ export function CategoriesSection({ className = "" }: { className?: string }) {
           )
           .to({}, { duration: 0.35 })
 
-          // ── Phase 3: Card 3 (Transportation) reveals last ──
+          // ── Phase 3: Card 3 (Trading) reveals last ──
           .to(
             validCards[2],
             {
@@ -171,7 +171,7 @@ export function CategoriesSection({ className = "" }: { className?: string }) {
                 </span>
 
                 <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-normal tracking-tight text-zinc-950 leading-[1.14]">
-                  Construction, digital infrastructure, and logistics mobility.
+                  Construction, digital infrastructure, and trading.
                 </h2>
               </div>
 

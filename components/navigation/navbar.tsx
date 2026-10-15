@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { DEPARTMENT_CONTACTS } from "@/lib/contact"
 import {
   Search,
   Menu,
@@ -1026,7 +1027,7 @@ export function Navbar() {
       {isContactOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
           <div
-            className="w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden animate-in zoom-in-95 duration-150"
+            className="w-full max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-100 animate-in zoom-in-95 duration-150"
             role="dialog"
             aria-modal="true"
           >
@@ -1048,7 +1049,7 @@ export function Navbar() {
               </div>
               <h3 className="text-xl font-bold text-slate-900">Get In Touch With Us</h3>
               <p className="text-slate-600 text-xs mt-1">
-                Have a project or construction inquiry? Speak directly with our team.
+                Contact our IT, construction, or trading team, or send a general query.
               </p>
               <button
                 type="button"
@@ -1061,9 +1062,9 @@ export function Navbar() {
             </div>
 
             {/* Quick Contact Numbers */}
-            <div className="grid grid-cols-2 gap-3 p-5 bg-slate-50 border-b border-slate-100">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-5 bg-slate-50 border-b border-slate-100">
               <a
-                href="tel:00966510737090"
+                href="tel:+966534979774"
                 className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200/80 hover:border-[#0081c6] transition-colors group"
               >
                 <div className="w-9 h-9 rounded-lg bg-sky-50 text-[#0081c6] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0081c6] group-hover:text-white transition-colors">
@@ -1071,22 +1072,25 @@ export function Navbar() {
                 </div>
                 <div>
                   <div className="text-[11px] text-slate-400 font-medium">Direct Call</div>
-                  <div className="text-xs font-bold text-slate-800 tracking-tight">+966 510 737 090</div>
+                  <div className="text-xs font-bold text-slate-800 tracking-tight">+966534979774</div>
                 </div>
               </a>
 
+              {DEPARTMENT_CONTACTS.map(({ label, email }) => (
               <a
-                href="mailto:info@alfa-gulf.com"
+                key={label}
+                href={`mailto:${email}`}
                 className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200/80 hover:border-[#0081c6] transition-colors group"
               >
                 <div className="w-9 h-9 rounded-lg bg-sky-50 text-[#0081c6] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0081c6] group-hover:text-white transition-colors">
                   <Mail className="w-4 h-4" />
                 </div>
-                <div>
-                  <div className="text-[11px] text-slate-400 font-medium">Email Inquiries</div>
-                  <div className="text-xs font-bold text-slate-800 tracking-tight">info@alfa-gulf.com</div>
+                <div className="min-w-0">
+                  <div className="text-[11px] text-slate-500 font-medium">{label}</div>
+                  <div className="text-xs font-bold text-slate-800 tracking-tight break-words">{email}</div>
                 </div>
               </a>
+              ))}
             </div>
 
             {/* Quick Inquiry Form */}

@@ -13,6 +13,8 @@ export interface ScrollFrameSequenceProps {
   /** Height of the fixed navbar, so the sticky stage sits under it. */
   topOffsetClassName?: string
   stageHeightClassName?: string
+  /** Contain preserves the full frame; cover fills the stage with cropping. */
+  fit?: "contain" | "cover"
   className?: string
   /** Optional overlay rendered above the canvas; receives 0..1 scroll progress. */
   children?: (progress: number) => React.ReactNode
@@ -30,6 +32,7 @@ export function ScrollFrameSequence({
   scrollHeightVh = 400,
   topOffsetClassName = "top-20 md:top-[84px]",
   stageHeightClassName = "h-[calc(100vh-80px)] md:h-[calc(100vh-84px)]",
+  fit = "cover",
   className = "",
   children,
   showScrollHint = true,
@@ -84,7 +87,7 @@ export function ScrollFrameSequence({
     }
   }, [frameCount, getFramePath])
 
-  // Draw a frame with cover-fit. Falls back to the nearest loaded earlier frame.
+  // Fit the frame to the stage. Falls back to the nearest loaded earlier frame.
   const draw = React.useCallback(
     (index: number) => {
       const canvas = canvasRef.current
@@ -104,12 +107,13 @@ export function ScrollFrameSequence({
 
       const cw = canvas.width
       const ch = canvas.height
-      const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight)
+      const scale = (fit === "contain" ? Math.min : Math.max)(cw / img.naturalWidth, ch / img.naturalHeight)
       const nw = img.naturalWidth * scale
       const nh = img.naturalHeight * scale
+      ctx.clearRect(0, 0, cw, ch)
       ctx.drawImage(img, (cw - nw) / 2, (ch - nh) / 2, nw, nh)
     },
-    []
+    [fit]
   )
 
   // Size the canvas backing store to the stage at device pixel ratio.
