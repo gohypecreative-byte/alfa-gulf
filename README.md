@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alfa Gulf website
 
-## Getting Started
+Next.js App Router website built with TypeScript and Tailwind CSS.
 
-First, run the development server:
+## Development
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Restart the development server after moving source folders.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+app/                 Routes, layouts, metadata, and global CSS
+  about-us/
+  services/          Construction, IT, and trading routes
+components/
+  navigation/        Shared navigation
+  sections/          Homepage sections and footer
+  services/          Shared service page templates and certificates
+    it/              Specialized IT page templates
+  ui/                Reusable UI and animation components
+data/
+  services/
+    divisions.ts     Main service division content
+    sub-services.ts  Individual service content
+  certifications.ts  Certificate numbers and PDF links
+  contact.ts         Shared contact information
+hooks/               Reusable React hooks
+lib/                 Utility functions
+types/
+  services.ts        Service content interfaces
+public/                Images, videos, frame sequences, and certificate PDFs
+```
 
-## Learn More
+Project configuration stays at the repository root. `.next/` and `node_modules/` are generated folders; do not edit them.
 
-To learn more about Next.js, take a look at the following resources:
+## Where to make changes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Edit service copy in `data/services/`.
+- Edit the IT workplace layout in `components/services/it/it-workplace-view.tsx`.
+- Update certificates in `data/certifications.ts`; their shared presentation is in `components/services/certifications-section.tsx`.
+- Add or change a route in `app/`. Folder names here determine URLs.
+- Put public assets in `public/` and reference them with `/filename`, without a `public` prefix.
+- Import application files using `@/`, which resolves to the project root.
+- Keep shared content types in `types/` and use `import type` for them. Data should not depend on UI components.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Validation
 
-## Deploy on Vercel
+```bash
+npx next typegen
+npx tsc --noEmit
+npm run lint
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The production build downloads the configured Google fonts and requires network access to Google Fonts.

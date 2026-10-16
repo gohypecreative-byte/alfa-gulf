@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { ServiceDetailView } from "@/components/services/service-detail-view"
-import { SERVICES_DATA } from "@/components/services/services-data"
+import { SERVICES_DATA } from "@/data/services/divisions"
 
 export const metadata: Metadata = {
   title: "Steel Structure & Fire Proofing | Alfa Gulf Construction & Technologies",

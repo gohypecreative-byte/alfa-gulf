@@ -7,36 +7,8 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin, ChevronRight, ShieldCheck } from "lucide-react"
 import { ScrollFrameSequence } from "@/components/ui/scroll-frame-sequence"
 
-export interface SubServiceData {
-  slug: string
-  title: string
-  category: string
-  department: string // "CONSTRUCTION SERVICES" | "IT SOLUTIONS" | "GENERAL TRADING"
-  headline: string
-  description: string
-  heroImage: string
-  /** Optional scroll-scrubbed frame sequence that replaces the static hero. */
-  heroFrames?: { dir: string; count: number; digits?: number }
-  overviewImage: string
-  showcaseBanner: string
-  complianceImage: string
-  complianceItems?: string[]
-  /** Real site photos shown in place of the stock showcase banner. */
-  gallery?: { src: string; alt: string; caption?: string }[]
-  features: {
-    title: string
-    desc: string
-  }[]
-  specifications: {
-    label: string
-    value: string
-    certificateNumber?: string
-    href?: string
-  }[]
-  certificationRecord?: string
-  parentHref: string
-  parentTitle: string
-}
+import type { SubServiceData } from "@/types/services"
+
 
 interface SubServiceViewProps {
   data: SubServiceData

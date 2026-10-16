@@ -6,28 +6,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin, ChevronRight, ShieldCheck } from "lucide-react"
 
-export interface ITSecurityData {
-  slug: string
-  title: string
-  category: string
-  headline: string
-  description: string
-  heroImage: string
-  overviewImage: string
-  galleryImage?: string
-  showcaseBanner?: string
-  complianceImage: string
-  features: {
-    title: string
-    desc: string
-  }[]
-  specifications: {
-    label: string
-    value: string
-  }[]
-  parentHref: string
-  parentTitle: string
-}
+import type { ITSecurityData } from "@/types/services"
+
 
 export function ITSecurityView({ data }: { data: ITSecurityData }) {
   const galleryImg = data.galleryImage || data.showcaseBanner || data.overviewImage

@@ -1,5 +1,5 @@
-import { COMPANY_CERTIFICATES, CERTIFICATION_RECORD } from "@/lib/certifications"
-import { SubServiceData } from "./sub-service-view"
+import { COMPANY_CERTIFICATES, CERTIFICATION_RECORD } from "@/data/certifications"
+import type { SubServiceData } from "@/types/services"
 
 export const SUB_SERVICES_DATA: Record<string, SubServiceData> = {
   // ── 1. CONSTRUCTION SERVICES (11 Sub-Categories - Verified Existing Image Assets) ──

@@ -13,46 +13,8 @@ import {
   CheckCircle2,
 } from "lucide-react"
 
-export interface ServiceDetailData {
-  divisionNum: string
-  divisionTitle: string
-  category: string
-  headline: string
-  summary: string
-  heroImage: string
-  heroImageCaption: string
-  stats: {
-    num: string
-    label: string
-    desc: string
-  }[]
-  overviewEyebrow: string
-  overviewHeading: string
-  overviewDesc: string
-  accordionItems: {
-    title: string
-    content: string
-  }[]
-  overviewImage: string
-  capabilitiesEyebrow: string
-  capabilitiesHeading: string
-  capabilitiesDesc: string
-  capabilities: {
-    num: string
-    title: string
-    desc: string
-  }[]
-  complianceEyebrow: string
-  complianceHeading: string
-  complianceDesc: string
-  complianceItems: string[]
-  complianceImage: string
-  relatedDivisions: {
-    num: string
-    title: string
-    href: string
-  }[]
-}
+import type { ServiceDetailData } from "@/types/services"
+
 
 interface ServiceDetailViewProps {
   data: ServiceDetailData

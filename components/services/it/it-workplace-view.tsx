@@ -6,27 +6,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin, ChevronRight, Monitor, Headphones, Truck } from "lucide-react"
 
-export interface ITWorkplaceData {
-  slug: string
-  title: string
-  category: string
-  headline: string
-  description: string
-  heroImage: string
-  overviewImage: string
-  showcaseBanner: string
-  complianceImage: string
-  features: {
-    title: string
-    desc: string
-  }[]
-  specifications: {
-    label: string
-    value: string
-  }[]
-  parentHref: string
-  parentTitle: string
-}
+import type { ITWorkplaceData } from "@/types/services"
+
 
 export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
   return (

@@ -1,4 +1,4 @@
-import { ServiceDetailData } from "./service-detail-view"
+import type { ServiceDetailData } from "@/types/services"
 
 export const SERVICES_DATA: Record<string, ServiceDetailData> = {
   "commercial-projects": {

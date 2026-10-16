@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { ITSecurityView } from "@/components/services/it/it-security-view"
-import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
+import { SUB_SERVICES_DATA } from "@/data/services/sub-services"
 
 export const metadata: Metadata = {
   title: "Access Control & Biometrics | Alfa Gulf IT Solutions",

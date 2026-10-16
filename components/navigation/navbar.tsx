@@ -3,7 +3,8 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { DEPARTMENT_CONTACTS } from "@/lib/contact"
+import { Dialog } from "@base-ui/react/dialog"
+import { DEPARTMENT_CONTACTS } from "@/data/contact"
 import {
   Search,
   Menu,
@@ -11,8 +12,6 @@ import {
   ChevronDown,
   ChevronLeft,
   Phone,
-  Mail,
-  MapPin,
   Building2,
   Flame,
   Home as HomeIcon,
@@ -1023,156 +1022,85 @@ export function Navbar() {
         </div>
       )}
 
-      {/* GET IN TOUCH MODAL / DRAWER */}
-      {isContactOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
-          <div
-            className="w-full max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-100 animate-in zoom-in-95 duration-150"
-            role="dialog"
-            aria-modal="true"
-          >
-            {/* Header */}
-            <div className="bg-gradient-to-r from-[#e3f2fd] via-[#eaf5fe] to-[#f0f8ff] text-slate-800 border-b border-[#0081c6]/20 p-6 relative">
-              <div className="flex items-center gap-2.5 mb-1.5">
-                <span
-                  className="grid grid-cols-2 gap-[2.5px] w-3.5 h-3.5 text-[#0081c6]"
-                  aria-hidden="true"
-                >
-                  <span className="w-1.5 h-1.5 rounded-[0.5px] bg-current" />
-                  <span className="w-1.5 h-1.5 rounded-[0.5px] bg-current" />
-                  <span className="w-1.5 h-1.5 rounded-[0.5px] bg-current" />
-                  <span className="w-1.5 h-1.5 rounded-[0.5px] bg-current" />
-                </span>
-                <span className="text-xs uppercase tracking-widest text-[#0081c6] font-bold">
-                  Alfa Gulf Direct Contact
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900">Get In Touch With Us</h3>
-              <p className="text-slate-600 text-xs mt-1">
-                Contact our IT, construction, or trading team, or send a general query.
-              </p>
-              <button
-                type="button"
-                onClick={() => setIsContactOpen(false)}
-                className="absolute top-5 right-5 p-1 rounded-md text-slate-400 hover:text-slate-700 hover:bg-[#0081c6]/10 transition-colors"
-                aria-label="Close dialog"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Quick Contact Numbers */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-5 bg-slate-50 border-b border-slate-100">
-              <a
-                href="tel:+966534979774"
-                className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200/80 hover:border-[#0081c6] transition-colors group"
-              >
-                <div className="w-9 h-9 rounded-lg bg-sky-50 text-[#0081c6] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0081c6] group-hover:text-white transition-colors">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-[11px] text-slate-400 font-medium">Direct Call</div>
-                  <div className="text-xs font-bold text-slate-800 tracking-tight">+966534979774</div>
-                </div>
-              </a>
-
-              {DEPARTMENT_CONTACTS.map(({ label, email }) => (
-              <a
-                key={label}
-                href={`mailto:${email}`}
-                className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200/80 hover:border-[#0081c6] transition-colors group"
-              >
-                <div className="w-9 h-9 rounded-lg bg-sky-50 text-[#0081c6] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0081c6] group-hover:text-white transition-colors">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <div className="min-w-0">
-                  <div className="text-[11px] text-slate-500 font-medium">{label}</div>
-                  <div className="text-xs font-bold text-slate-800 tracking-tight break-words">{email}</div>
-                </div>
-              </a>
-              ))}
-            </div>
-
-            {/* Quick Inquiry Form */}
-            <form onSubmit={handleInquirySubmit} className="p-6 space-y-4">
-              {inquirySubmitted ? (
-                <div className="p-4 bg-emerald-50 text-emerald-800 rounded-xl text-center space-y-1">
-                  <div className="font-bold text-sm">Inquiry Received!</div>
-                  <div className="text-xs text-emerald-600">
-                    Our technical representative will get back to you shortly.
+      {/* Contact dialog */}
+      <Dialog.Root open={isContactOpen} onOpenChange={setIsContactOpen}>
+        <Dialog.Portal>
+          <Dialog.Backdrop className="fixed inset-0 z-[60] bg-slate-950/40 backdrop-blur-xs" />
+          <Dialog.Popup className="fixed left-1/2 top-1/2 z-[61] max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-contain rounded-2xl bg-white text-slate-900 shadow-2xl outline-none [color-scheme:light]" data-lenis-prevent>
+            <Dialog.Close aria-label="Close contact dialog" className="absolute right-3 top-3 z-10 flex size-10 items-center justify-center rounded-full bg-white text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
+              <X className="size-5" />
+            </Dialog.Close>
+            <div className="px-6 pb-6 pt-7 sm:px-8 sm:pb-8 sm:pt-8">
+              <Dialog.Title className="pr-10 text-2xl font-semibold tracking-tight">Get in touch</Dialog.Title>
+              <Dialog.Description className="mt-2 text-sm leading-6 text-slate-500">
+                Tell us a little about your project.
+              </Dialog.Description>
+              <form onSubmit={handleInquirySubmit} className="mt-6">
+                {inquirySubmitted ? (
+                  <div role="status" className="flex min-h-80 flex-col items-center justify-center text-center">
+                    <span className="mb-4 flex size-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700"><Check className="size-6" /></span>
+                    <h3 className="text-xl font-semibold">Inquiry received!</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">Our technical representative will get back to you shortly.</p>
                   </div>
-                </div>
-              ) : (
-                <>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Full Name
-                      </label>
-                      <input
-                        required
-                        type="text"
-                        placeholder="John Doe"
-                        className="w-full px-3 py-2 text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-[#0081c6] focus:ring-1 focus:ring-[#0081c6]"
-                      />
+                ) : (
+                  <>
+                    <div className="space-y-4 [&_label]:mb-2 [&_label]:block [&_label]:text-sm [&_label]:font-medium [&_label]:text-slate-700 [&_input]:min-h-12 [&_input]:w-full [&_input]:rounded-lg [&_input]:border [&_input]:border-slate-300 [&_input]:bg-white [&_input]:px-3.5 [&_input]:text-base [&_input]:text-slate-900 [&_input]:outline-none [&_input]:placeholder:text-slate-500 [&_input:focus]:border-sky-600 [&_input:focus]:ring-2 [&_input:focus]:ring-sky-600/15">
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <div>
+                          <label htmlFor="inquiry-name">Full name <span className="text-[#0074b3]">*</span></label>
+                          <input id="inquiry-name" name="name" autoComplete="name" required type="text" placeholder="Your name" />
+                        </div>
+                        <div>
+                          <label htmlFor="inquiry-phone">Phone / WhatsApp <span className="text-[#0074b3]">*</span></label>
+                          <input id="inquiry-phone" name="phone" autoComplete="tel" required type="tel" placeholder="+966 5X XXX XXXX" />
+                        </div>
+                      </div>
+                      <div>
+                        <label htmlFor="inquiry-service">Service <span className="text-[#0074b3]">*</span></label>
+                        <div className="relative">
+                          <select id="inquiry-service" name="service" required defaultValue="" className="min-h-12 w-full appearance-none rounded-lg border border-slate-300 bg-white py-3 pl-3.5 pr-10 text-base text-slate-900 outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/15">
+                            <option value="" disabled>Select a service</option>
+                            {DIVISIONS_28_DATA.map((category) => (
+                              <optgroup key={category.id} label={toTitleCase(category.title)}>
+                                {category.items.map((service) => <option key={service.href} value={service.title}>{service.title}</option>)}
+                              </optgroup>
+                            ))}
+                            <option value="General inquiry">General inquiry</option>
+                          </select>
+                          <ChevronDown className="pointer-events-none absolute right-3.5 top-4 size-4 text-slate-500" aria-hidden="true" />
+                        </div>
+                      </div>
+                      <div>
+                        <label htmlFor="inquiry-message">Project details <span className="font-normal text-slate-500">(optional)</span></label>
+                        <textarea id="inquiry-message" name="message" rows={3} placeholder="How can we help?" className="w-full resize-y rounded-lg border border-slate-300 bg-white px-3.5 py-3 text-base text-slate-900 outline-none placeholder:text-slate-500 focus:border-sky-600 focus:ring-2 focus:ring-sky-600/15" />
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Phone / WhatsApp
-                      </label>
-                      <input
-                        required
-                        type="tel"
-                        placeholder="+966 ..."
-                        className="w-full px-3 py-2 text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-[#0081c6] focus:ring-1 focus:ring-[#0081c6]"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Service Interested In
-                    </label>
-                    <select
-                      className="w-full px-3 py-2 text-xs rounded-lg border border-slate-200 bg-white focus:outline-none focus:border-[#0081c6] focus:ring-1 focus:ring-[#0081c6]"
-                      defaultValue="Commercial Projects"
-                    >
-                      {SERVICES.map((s) => (
-                        <option key={s.title} value={s.title}>
-                          {s.title}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Project Details / Message
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Describe your scope of work, timeline, or location..."
-                      className="w-full px-3 py-2 text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-[#0081c6] focus:ring-1 focus:ring-[#0081c6] resize-none"
-                    />
-                  </div>
-
-                  <div className="pt-2 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400" /> Riyadh, KSA
-                    </div>
-                    <button
-                      type="submit"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0081c6] hover:bg-[#0070ad] text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-colors shadow-sm"
-                    >
-                      <Send className="w-3.5 h-3.5" /> Submit Request
+                    <button type="submit" className="mt-6 flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#007bb9] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#006699] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
+                      Send inquiry <Send className="size-4" aria-hidden="true" />
                     </button>
+                  </>
+                )}
+              </form>
+              <div className="mt-6 border-t border-slate-100 pt-5">
+                <a href="tel:+966534979774" className="mx-auto flex min-h-8 w-fit items-center gap-2 text-sm font-medium text-slate-600 hover:text-[#007bb9] focus-visible:outline-2 focus-visible:outline-sky-600">
+                  <Phone className="size-4" aria-hidden="true" /> +966 53 497 9774
+                </a>
+                <details className="mt-2 text-center text-xs text-slate-500">
+                  <summary className="mx-auto w-fit cursor-pointer rounded py-2 hover:text-[#007bb9] focus-visible:outline-2 focus-visible:outline-sky-600">Email a department</summary>
+                  <div className="mt-2 space-y-1 text-left">
+                    {DEPARTMENT_CONTACTS.map(({ label, email }) => (
+                      <a key={label} href={`mailto:${email}`} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-md px-2 py-2.5 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-sky-600">
+                        <span>{label}</span>
+                        <span className="break-all font-medium text-[#007bb9]">{email}</span>
+                      </a>
+                    ))}
                   </div>
-                </>
-              )}
-            </form>
-          </div>
-        </div>
-      )}
+                </details>
+              </div>
+            </div>
+          </Dialog.Popup>
+        </Dialog.Portal>
+      </Dialog.Root>
 
     </>
   )

@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { SubServiceDetailView } from "@/components/services/sub-service-view"
-import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
+import { SUB_SERVICES_DATA } from "@/data/services/sub-services"
 
 export const metadata: Metadata = {
   title: "Construction Materials | Alfa Gulf General Trading",

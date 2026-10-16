@@ -11,27 +11,8 @@ const DATA_CENTRE_FRAME_COUNT = 200
 const getDataCentreFramePath = (i: number) =>
   `/data-centre-frames/frame_${String(i + 1).padStart(3, "0")}.webp`
 
-export interface ITDataCenterData {
-  slug: string
-  title: string
-  category: string
-  headline: string
-  description: string
-  heroImage: string
-  overviewImage: string
-  showcaseBanner: string
-  complianceImage: string
-  features: {
-    title: string
-    desc: string
-  }[]
-  specifications: {
-    label: string
-    value: string
-  }[]
-  parentHref: string
-  parentTitle: string
-}
+import type { ITDataCenterData } from "@/types/services"
+
 
 export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
   return (

@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { ITDataCenterView } from "@/components/services/it/it-datacenter-view"
-import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
+import { SUB_SERVICES_DATA } from "@/data/services/sub-services"
 
 export const metadata: Metadata = {
   title: "Servers & Data Storage | Alfa Gulf IT Solutions",

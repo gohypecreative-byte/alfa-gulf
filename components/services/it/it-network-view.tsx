@@ -6,28 +6,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin, ChevronRight, ShieldAlert, Cpu, Lock } from "lucide-react"
 
-export interface ITNetworkData {
-  slug: string
-  title: string
-  category: string
-  headline: string
-  description: string
-  heroImage: string
-  overviewImage: string
-  showcaseBanner: string
-  complianceImage: string
-  gallery?: { src: string; alt: string; caption?: string }[]
-  features: {
-    title: string
-    desc: string
-  }[]
-  specifications: {
-    label: string
-    value: string
-  }[]
-  parentHref: string
-  parentTitle: string
-}
+import type { ITNetworkData } from "@/types/services"
+
 
 export function ITNetworkView({ data }: { data: ITNetworkData }) {
   return (

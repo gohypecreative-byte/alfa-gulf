@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { ITWorkplaceView } from "@/components/services/it/it-workplace-view"
-import { SUB_SERVICES_DATA } from "@/components/services/sub-services-data"
+import { SUB_SERVICES_DATA } from "@/data/services/sub-services"
 
 export const metadata: Metadata = {
   title: "Smart Meeting Rooms | Alfa Gulf IT Solutions",

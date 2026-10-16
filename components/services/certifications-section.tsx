@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react"
-import { COMPANY_CERTIFICATES, CERTIFICATION_RECORD } from "@/lib/certifications"
+import { COMPANY_CERTIFICATES, CERTIFICATION_RECORD } from "@/data/certifications"
 
 export function CertificationsSection() {
   return (

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import footerLogo from "@/public/alfa-gulf-footer-transparent.png";
-import { DEPARTMENT_CONTACTS } from "@/lib/contact";
+import { DEPARTMENT_CONTACTS } from "@/data/contact";
 import {
   Mail,
   Phone,
