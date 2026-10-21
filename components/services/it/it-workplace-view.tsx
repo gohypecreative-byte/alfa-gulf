@@ -29,21 +29,21 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
         <div className="max-w-[1440px] mx-auto w-full">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 mb-8 text-xs text-zinc-500 font-mono">
-            <Link href="/services" className="hover:text-[#0081c6] transition-colors uppercase">
+            <Link href="/services" className="hover:text-brand transition-colors uppercase">
               Services
             </Link>
             <ChevronRight className="w-3 h-3 text-zinc-400" />
-            <Link href={data.parentHref} className="hover:text-[#0081c6] transition-colors uppercase">
+            <Link href={data.parentHref} className="hover:text-brand transition-colors uppercase">
               {data.parentTitle}
             </Link>
             <ChevronRight className="w-3 h-3 text-zinc-400" />
-            <span className="text-[#0081c6] font-bold uppercase">{data.title}</span>
+            <span className="text-brand font-bold uppercase">{data.title}</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Workplace Digital Transformation
               </span>
               <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-normal leading-[1.12] text-zinc-950 tracking-tight">
@@ -61,25 +61,25 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
               {/* Workplace Checklist */}
               <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     Authorized OEM Distribution (Dell, HP, Cisco, Lenovo)
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     Teams & Zoom Rooms Certified Integration
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     24/7 Managed IT Support & Maintenance SLAs
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     SASO & CITC Compliant Logistics Supply
                   </span>
@@ -105,7 +105,7 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
       <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-zinc-50/50">
         <div className="max-w-[1440px] mx-auto w-full space-y-8">
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
               Procurement & Ecosystem
             </span>
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -115,28 +115,28 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="p-6 rounded-2xl bg-white border border-zinc-200/80 space-y-2 shadow-xs">
-              <div className="w-8 h-8 rounded-lg bg-sky-50 text-[#0081c6] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-sky-50 text-brand flex items-center justify-center">
                 <Monitor className="w-4 h-4" />
               </div>
               <h3 className="text-base font-semibold text-zinc-950">Hardware Procurement</h3>
               <p className="text-xs text-zinc-600 leading-relaxed">Direct bulk supply of commercial workstations, laptops, and displays.</p>
             </div>
             <div className="p-6 rounded-2xl bg-white border border-zinc-200/80 space-y-2 shadow-xs">
-              <div className="w-8 h-8 rounded-lg bg-sky-50 text-[#0081c6] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-sky-50 text-brand flex items-center justify-center">
                 <Headphones className="w-4 h-4" />
               </div>
               <h3 className="text-base font-semibold text-zinc-950">Managed Helpdesk SLAs</h3>
               <p className="text-xs text-zinc-600 leading-relaxed">Dedicated certified engineers providing 24/7 on-site and remote IT operations.</p>
             </div>
             <div className="p-6 rounded-2xl bg-white border border-zinc-200/80 space-y-2 shadow-xs">
-              <div className="w-8 h-8 rounded-lg bg-sky-50 text-[#0081c6] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-sky-50 text-brand flex items-center justify-center">
                 <Truck className="w-4 h-4" />
               </div>
               <h3 className="text-base font-semibold text-zinc-950">Kingdom-Wide Logistics</h3>
               <p className="text-xs text-zinc-600 leading-relaxed">Fast-track delivery and staging from our central warehousing hub in Riyadh.</p>
             </div>
             <div className="p-6 rounded-2xl bg-white border border-zinc-200/80 space-y-2 shadow-xs">
-              <div className="w-8 h-8 rounded-lg bg-sky-50 text-[#0081c6] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-sky-50 text-brand flex items-center justify-center">
                 <CheckCircle2 className="w-4 h-4" />
               </div>
               <h3 className="text-base font-semibold text-zinc-950">OEM On-Site Support</h3>
@@ -166,7 +166,7 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
         <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-zinc-50/50">
           <div className="max-w-[1440px] mx-auto w-full">
             <div className="mb-12 space-y-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Workplace Solutions
               </span>
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -178,9 +178,9 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
               {data.features.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl bg-white border border-zinc-200/80 space-y-3 shadow-xs hover:border-[#0081c6] transition-colors"
+                  className="p-6 rounded-2xl bg-white border border-zinc-200/80 space-y-3 shadow-xs hover:border-brand transition-colors"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-sky-50 text-[#0081c6] flex items-center justify-center font-mono font-bold text-xs">
+                  <div className="w-8 h-8 rounded-lg bg-sky-50 text-brand flex items-center justify-center font-mono font-bold text-xs">
                     0{idx + 1}
                   </div>
                   <h3 className="text-lg font-medium text-zinc-950">{feat.title}</h3>
@@ -196,7 +196,7 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
       <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="mb-12 space-y-2">
-            <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
               Technical Metrics
             </span>
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -225,7 +225,7 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
         <div className="max-w-[1440px] mx-auto w-full space-y-16">
           {/* Vendor Ecosystem */}
           <div className="space-y-6">
-            <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
               Global OEM Partnerships
             </span>
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -255,7 +255,7 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
 
           {/* Staging Timeline */}
           <div className="space-y-6 pt-8 border-t border-zinc-200/80">
-            <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
               Lifecycle Execution
             </span>
             <h2 className="text-2xl sm:text-3xl font-normal tracking-tight text-zinc-950">
@@ -263,28 +263,28 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
               <div className="p-5 rounded-xl bg-white border border-zinc-200/80 space-y-2 shadow-xs">
-                <span className="text-xs font-mono text-[#0081c6] font-bold uppercase">Phase 01</span>
+                <span className="text-xs font-mono text-brand font-bold uppercase">Phase 01</span>
                 <h5 className="font-semibold text-zinc-900 text-sm">Needs Assessment & BOQ</h5>
                 <p className="text-xs text-zinc-600 leading-relaxed">
                   Analyzing workstation specs, license requirements, and generating official BOQs.
                 </p>
               </div>
               <div className="p-5 rounded-xl bg-white border border-zinc-200/80 space-y-2 shadow-xs">
-                <span className="text-xs font-mono text-[#0081c6] font-bold uppercase">Phase 02</span>
+                <span className="text-xs font-mono text-brand font-bold uppercase">Phase 02</span>
                 <h5 className="font-semibold text-zinc-900 text-sm">Pre-Delivery Warehouse Staging</h5>
                 <p className="text-xs text-zinc-600 leading-relaxed">
                   RAM/SSD upgrades, OS image flashing, BIOS hardening, and hardware testing.
                 </p>
               </div>
               <div className="p-5 rounded-xl bg-white border border-zinc-200/80 space-y-2 shadow-xs">
-                <span className="text-xs font-mono text-[#0081c6] font-bold uppercase">Phase 03</span>
+                <span className="text-xs font-mono text-brand font-bold uppercase">Phase 03</span>
                 <h5 className="font-semibold text-zinc-900 text-sm">On-Site Rack & Desk Setup</h5>
                 <p className="text-xs text-zinc-600 leading-relaxed">
                   Physical installation, cable organization, AV calibration, and network registration.
                 </p>
               </div>
               <div className="p-5 rounded-xl bg-white border border-zinc-200/80 space-y-2 shadow-xs">
-                <span className="text-xs font-mono text-[#0081c6] font-bold uppercase">Phase 04</span>
+                <span className="text-xs font-mono text-brand font-bold uppercase">Phase 04</span>
                 <h5 className="font-semibold text-zinc-900 text-sm">24/7 SLA Operations</h5>
                 <p className="text-xs text-zinc-600 leading-relaxed">
                   Helpdesk ticket monitoring, warranty handling, and resident engineer support.
@@ -302,7 +302,7 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Workplace Consultation • {data.title}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
@@ -316,7 +316,7 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <Link
                 href="/about-us"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#0081c6] hover:bg-[#0070ad] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand hover:bg-brand-hover text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
               >
                 <span>About Alfa Gulf</span>
                 <ArrowRight className="w-4 h-4" />
@@ -326,7 +326,7 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
                 href="tel:+966534979774"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-bold text-xs uppercase tracking-wider transition-colors border border-zinc-200/80"
               >
-                <Phone className="w-4 h-4 text-[#0081c6]" />
+                <Phone className="w-4 h-4 text-brand" />
                 <span>+966534979774</span>
               </a>
             </div>
@@ -334,11 +334,11 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
 
           <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-500">
             <div className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-[#0081c6]" />
+              <MapPin className="w-3.5 h-3.5 text-brand" />
               <span>Riyadh, Kingdom of Saudi Arabia</span>
             </div>
             <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-[#0081c6]" />
+              <Mail className="w-3.5 h-3.5 text-brand" />
               <span>info@alfa-gulf.com</span>
             </div>
             <div>

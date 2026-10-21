@@ -1,23 +1,21 @@
 "use client"
 
 import * as React from "react"
-import { ChevronDown } from "lucide-react"
+import { AnimatePresence, motion, useReducedMotion } from "motion/react"
 
 const TOTAL_FRAMES = 192
+const FRAMES_PER_SECOND = 24
 
 const getFramePath = (index: number) => {
   const frameNum = String(index + 1).padStart(4, "0")
   return `/video_frames_smooth_1080p_webp/frames/frame_${frameNum}.webp`
 }
 
-// 2-line clean chapter headlines
-// Chapter 1 is displayed on initial view (not blank) and fills on scroll
+// Headlines stay readable between transitions and follow the video chapters.
 const CHAPTERS = [
   {
     id: "chapter-industrial",
     start: 0.0,
-    end: 0.33,
-    isInitial: true,
     lines: [
       "Pioneering the future of",
       "heavy industrial construction",
@@ -26,8 +24,6 @@ const CHAPTERS = [
   {
     id: "chapter-mep",
     start: 0.36,
-    end: 0.66,
-    isInitial: false,
     lines: [
       "Engineering smart infrastructure &",
       "mission-critical datacenter systems",
@@ -36,8 +32,6 @@ const CHAPTERS = [
   {
     id: "chapter-architecture",
     start: 0.68,
-    end: 0.88,
-    isInitial: false,
     lines: [
       "Delivering landmark commercial complexes",
       "across Saudi Arabia",
@@ -45,204 +39,15 @@ const CHAPTERS = [
   },
 ]
 
-// Calculates motion + character fill percentage based on scroll progress
-function getChapterTransition(
-  progress: number,
-  start: number,
-  end: number,
-  isInitial: boolean = false
-) {
-  // First chapter: visible on initial load (not blank), fills as user scrolls
-  if (isInitial) {
-    if (progress > end) {
-      return {
-        opacity: 0,
-        translateX: -50,
-        fillRatio: 1.0,
-        isVisible: false,
-      }
-    }
-
-    const duration = end - start
-    const p = Math.max(0, Math.min(1, (progress - start) / duration))
-
-    // 1. Initial view at scroll 0 is visible; fills character-by-character as you scroll
-    if (p < 0.55) {
-      const fill = p / 0.55
-      const drift = (p / 0.55) * -10
-      return {
-        opacity: 1,
-        translateX: drift,
-        fillRatio: fill,
-        isVisible: true,
-      }
-    }
-
-    // 2. Center hold (p: 0.55 -> 0.76)
-    if (p <= 0.76) {
-      return {
-        opacity: 1,
-        translateX: -10,
-        fillRatio: 1.0,
-        isVisible: true,
-      }
-    }
-
-    // 3. Smooth exit (p: 0.76 -> 1.0)
-    const t = (p - 0.76) / 0.24
-    return {
-      opacity: Math.max(0, 1 - t * 1.5),
-      translateX: -10 - t * 40,
-      fillRatio: 1.0,
-      isVisible: true,
-    }
-  }
-
-  // Subsequent chapters: enter from right as user scrolls into their range
-  if (progress < start || progress > end) {
-    return {
-      opacity: 0,
-      translateX: 140,
-      fillRatio: 0,
-      isVisible: false,
-    }
-  }
-
-  const duration = end - start
-  const p = (progress - start) / duration // 0.0 -> 1.0
-
-  // 1. Enter from the RIGHT as scroll begins (p: 0.0 -> 0.28)
-  if (p < 0.28) {
-    const t = p / 0.28
-    const ease = 1 - Math.pow(1 - t, 3) // cubic ease-out
-    return {
-      opacity: Math.min(1, t * 1.6),
-      translateX: 150 * (1 - ease), // 150px -> 0px (coming from the right)
-      fillRatio: t * 0.4,
-      isVisible: true,
-    }
-  }
-
-  // 2. Center hold & progressive character fill (p: 0.28 -> 0.76)
-  if (p <= 0.76) {
-    const t = (p - 0.28) / (0.76 - 0.28) // 0 -> 1
-    return {
-      opacity: 1,
-      translateX: -t * 12, // subtle drift
-      fillRatio: 0.4 + t * 0.6, // completes fill to 100%
-      isVisible: true,
-    }
-  }
-
-  // 3. Exit (p: 0.76 -> 1.0)
-  const t = (p - 0.76) / 0.24
-  return {
-    opacity: Math.max(0, 1 - t * 1.5),
-    translateX: -12 - t * 50,
-    fillRatio: 1.0,
-    isVisible: true,
-  }
-}
-
-// Letter-by-letter scroll fill component with reduced size and reduced boldness
-function FillableHeadline({
-  lines,
-  fillRatio,
-}: {
-  lines: string[]
-  fillRatio: number
-}) {
-  let totalChars = 0
-  for (const line of lines) {
-    totalChars += line.length
-  }
-
-  const currentActiveIndex = Math.min(
-    totalChars,
-    Math.max(0, Math.floor(fillRatio * (totalChars + 2)))
-  )
-
-  let charTracker = 0
-
-  return (
-    <div className="space-y-1 sm:space-y-2 select-none">
-      {lines.map((line, lineIdx) => {
-        const words = line.split(" ")
-
-        return (
-          <div
-            key={lineIdx}
-            className="flex flex-wrap items-center justify-center gap-x-[0.26em] text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight leading-[1.18]"
-          >
-            {words.map((word, wordIdx) => {
-              const wordChars = word.split("")
-
-              const renderedChars = wordChars.map((char, cIdx) => {
-                const thisIndex = charTracker
-                charTracker++
-
-                const isFilled = thisIndex < currentActiveIndex
-                const isActive = thisIndex === currentActiveIndex
-
-                // Active leading letter being filled (Alfa Gulf brand blue highlight)
-                if (isActive && fillRatio < 0.98) {
-                  return (
-                    <span
-                      key={cIdx}
-                      className="text-[#0081c6] font-bold drop-shadow-[0_0_18px_rgba(0,129,198,0.95)] scale-110 inline-block transition-transform duration-75"
-                    >
-                      {char}
-                    </span>
-                  )
-                }
-
-                // Filled letters: clean white
-                if (isFilled || fillRatio >= 0.98) {
-                  return (
-                    <span
-                      key={cIdx}
-                      className="text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.85)] transition-colors duration-75"
-                    >
-                      {char}
-                    </span>
-                  )
-                }
-
-                // Upcoming letters: translucent white with subtle contrast
-                return (
-                  <span
-                    key={cIdx}
-                    className="text-white/40 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] transition-colors duration-75"
-                  >
-                    {char}
-                  </span>
-                )
-              })
-
-              charTracker++ // space between words
-
-              return (
-                <span key={wordIdx} className="inline-flex whitespace-nowrap">
-                  {renderedChars}
-                </span>
-              )
-            })}
-          </div>
-        )
-      })}
-    </div>
-  )
-}
-
 export function VideoScrollHero() {
-  const containerRef = React.useRef<HTMLDivElement | null>(null)
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null)
   const imagesRef = React.useRef<(HTMLImageElement | null)[]>([])
-  const targetFrameRef = React.useRef(0)
   const currentFrameRef = React.useRef(0)
   const animFrameIdRef = React.useRef<number | null>(null)
 
-  const [scrollProgress, setScrollProgress] = React.useState(0)
+  const [chapterIndex, setChapterIndex] = React.useState(0)
+  const reduceMotion = useReducedMotion()
+  const chapter = CHAPTERS[chapterIndex]
   const [isFirstFrameReady, setIsFirstFrameReady] = React.useState(false)
 
   // Preload frames progressively
@@ -338,69 +143,45 @@ export function VideoScrollHero() {
     }
   }, [isFirstFrameReady, renderFrameToCanvas])
 
-  // Continuous animation loop for buttery smooth scrubbing
+  // Play the original eight-second sequence independently of page scrolling.
   React.useEffect(() => {
-    let active = true
+    if (!isFirstFrameReady) return
 
-    const loop = () => {
-      if (!active) return
+    let lastTime: number | null = null
+    let elapsed = 0
+    let lastFrame = -1
 
-      const target = targetFrameRef.current
-      const current = currentFrameRef.current
-      const diff = target - current
+    const loop = (time: number) => {
+      if (lastTime !== null && !document.hidden) {
+        elapsed += Math.min(time - lastTime, 100)
+      }
+      lastTime = time
+      const frame = Math.floor((elapsed / 1000) * FRAMES_PER_SECOND) % TOTAL_FRAMES
 
-      if (Math.abs(diff) > 0.001) {
-        currentFrameRef.current += diff * 0.15
-        const frameIdx = Math.min(
-          TOTAL_FRAMES - 1,
-          Math.max(0, Math.round(currentFrameRef.current))
-        )
-        renderFrameToCanvas(frameIdx)
+      if (frame !== lastFrame) {
+        currentFrameRef.current = frame
+        renderFrameToCanvas(frame)
+        const progress = frame / TOTAL_FRAMES
+        setChapterIndex(progress >= CHAPTERS[2].start ? 2 : progress >= CHAPTERS[1].start ? 1 : 0)
+        lastFrame = frame
       }
 
       animFrameIdRef.current = requestAnimationFrame(loop)
     }
 
     animFrameIdRef.current = requestAnimationFrame(loop)
-
     return () => {
-      active = false
-      if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current)
+      if (animFrameIdRef.current !== null) cancelAnimationFrame(animFrameIdRef.current)
     }
-  }, [renderFrameToCanvas])
-
-  // Map container scroll position to frame index
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const container = containerRef.current
-      if (!container) return
-
-      const rect = container.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-      const totalScrollableDistance = container.offsetHeight - windowHeight
-
-      if (totalScrollableDistance <= 0) return
-
-      const scrolled = -rect.top
-      const progress = Math.min(1, Math.max(0, scrolled / totalScrollableDistance))
-
-      setScrollProgress(progress)
-      targetFrameRef.current = progress * (TOTAL_FRAMES - 1)
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    handleScroll()
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [isFirstFrameReady, renderFrameToCanvas])
 
   return (
     <div
-      ref={containerRef}
       id="video-hero-section"
-      className="relative w-full h-[450vh] bg-slate-950 select-none"
+      className="relative w-full h-svh bg-slate-950 select-none"
     >
-      {/* Sticky Fullscreen Canvas Viewport */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-slate-950">
+      {/* Fullscreen playback viewport */}
+      <div className="relative h-full w-full overflow-hidden flex items-center justify-center bg-slate-950">
         {/* Canvas rendering 1080p WebP frame sequence */}
         <canvas
           ref={canvasRef}
@@ -417,44 +198,32 @@ export function VideoScrollHero() {
           className="absolute inset-0 flex items-center justify-center pointer-events-none px-4 sm:px-8 z-20 overflow-hidden transition-opacity duration-500"
           style={{ opacity: isFirstFrameReady ? 1 : 0 }}
         >
-          <div className="relative w-full max-w-4xl flex items-center justify-center">
-            {CHAPTERS.map((ch) => {
-              const transition = getChapterTransition(
-                scrollProgress,
-                ch.start,
-                ch.end,
-                ch.isInitial
-              )
-
-              if (!transition.isVisible) return null
-
-              return (
-                <div
-                  key={ch.id}
-                  style={{
-                    opacity: transition.opacity,
-                    transform: `translate3d(${transition.translateX}px, 0, 0)`,
-                  }}
-                  className="absolute inset-x-0 flex flex-col items-center justify-center text-center pointer-events-auto will-change-transform"
-                >
-                  {/* Character fill headline (refined font-bold, 2 lines) */}
-                  <FillableHeadline
-                    lines={ch.lines}
-                    fillRatio={transition.fillRatio}
-                  />
-                </div>
-              )
-            })}
+          <div className="relative grid w-full max-w-4xl items-center">
+            <AnimatePresence initial={false}>
+              <motion.h1
+                key={chapter.id}
+                initial={{ opacity: 0, x: reduceMotion ? 0 : 24, scale: reduceMotion ? 1 : 0.98 }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                  scale: 1,
+                  transition: { duration: reduceMotion ? 0.2 : 0.5, delay: reduceMotion ? 0 : 0.26, ease: [0.2, 0, 0, 1] },
+                }}
+                exit={{
+                  opacity: 0,
+                  x: reduceMotion ? 0 : -20,
+                  scale: reduceMotion ? 1 : 0.98,
+                  transition: { duration: reduceMotion ? 0.2 : 0.36, ease: [0.4, 0, 1, 1] },
+                }}
+                className="col-start-1 row-start-1 space-y-1 sm:space-y-2 text-center text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight leading-[1.18] text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.85)]"
+              >
+                {chapter.lines.map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
+              </motion.h1>
+            </AnimatePresence>
           </div>
         </div>
-
-        {/* Subtle Scroll Prompt at very top */}
-        {scrollProgress < 0.05 && (
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60 text-xs font-semibold tracking-widest uppercase animate-bounce pointer-events-none z-20">
-            <span>Scroll To Explore</span>
-            <ChevronDown className="w-4 h-4 text-[#0081c6]" />
-          </div>
-        )}
       </div>
     </div>
   )

@@ -168,7 +168,6 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
   const badgeRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const descRef = useRef<HTMLParagraphElement>(null)
-  const headerLineRef = useRef<HTMLDivElement>(null)
   const pillarsRef = useRef<HTMLDivElement>(null)
   const pillarCardRefs = useRef<(HTMLDivElement | null)[]>([])
   const sectorsSectionRef = useRef<HTMLElement>(null)
@@ -177,28 +176,7 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
   const videoWrapperRef = useRef<HTMLDivElement>(null)
   const videoBoxRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const topHudRef = useRef<HTMLDivElement>(null)
-  const overlayContentRef = useRef<HTMLDivElement>(null)
-
-  const handlePillarHover = (idx: number, isHovering: boolean) => {
-    const card = pillarCardRefs.current[idx]
-    if (!card) return
-    const tag = card.querySelector(".pillar-tag")
-    const dot = card.querySelector(".pillar-dot")
-    const line = card.querySelector(".pillar-accent-line")
-
-    if (isHovering) {
-      gsap.to(card, { y: -5, duration: 0.35, ease: "power2.out" })
-      if (tag) gsap.to(tag, { x: 5, duration: 0.25, ease: "power2.out" })
-      if (dot) gsap.to(dot, { scale: 2.0, backgroundColor: "#09090b", duration: 0.3, ease: "back.out(2)" })
-      if (line) gsap.to(line, { scaleX: 1, duration: 0.35, ease: "power2.out" })
-    } else {
-      gsap.to(card, { y: 0, duration: 0.35, ease: "power2.out" })
-      if (tag) gsap.to(tag, { x: 0, duration: 0.25, ease: "power2.out" })
-      if (dot) gsap.to(dot, { scale: 1, backgroundColor: "#d4d4d8", duration: 0.3 })
-      if (line) gsap.to(line, { scaleX: 0, duration: 0.35, ease: "power2.out" })
-    }
-  }
+  const videoCaptionRef = useRef<HTMLDivElement>(null)
 
   const handleSectorHover = (idx: number, isHovering: boolean) => {
     const card = cardRefs.current[idx]
@@ -218,9 +196,9 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
       }
       if (tags.length) {
         gsap.to(tags, {
-          backgroundColor: "#09090b",
+          backgroundColor: "#232d92",
           color: "#ffffff",
-          borderColor: "#09090b",
+          borderColor: "#232d92",
           stagger: 0.04,
           duration: 0.25,
         })
@@ -256,65 +234,21 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
 
     const ctx = gsap.context(() => {
       // ── 1. Architectural Corporate Foundation Reveal ────────────────────────
-      if (corporateSectionRef.current) {
-        const corpTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: corporateSectionRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        })
-
-        if (badgeRef.current) {
-          corpTl.fromTo(
-            badgeRef.current,
-            { opacity: 0, y: 15 },
-            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
-          )
-        }
-
-        if (titleRef.current) {
-          corpTl.fromTo(
-            titleRef.current,
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-            "-=0.35"
-          )
-        }
-
-        if (descRef.current) {
-          corpTl.fromTo(
-            descRef.current,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-            "-=0.5"
-          )
-        }
-
-        if (headerLineRef.current) {
-          corpTl.fromTo(
-            headerLineRef.current,
-            { scaleX: 0 },
-            { scaleX: 1, duration: 1.0, ease: "power2.inOut" },
-            "-=0.5"
-          )
-        }
-
-        const validPillars = pillarCardRefs.current.filter(Boolean) as HTMLDivElement[]
-        if (validPillars.length > 0) {
-          corpTl.fromTo(
-            validPillars,
-            { opacity: 0, y: 35 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.85,
-              stagger: 0.15,
-              ease: "power3.out",
+      if (corporateSectionRef.current && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const groups = [badgeRef.current, titleRef.current, descRef.current, ...pillarCardRefs.current].filter(Boolean)
+        groups.forEach((group) => {
+          gsap.fromTo(group, { y: 16 }, {
+            y: 0,
+            duration: 0.7,
+            ease: "power2.out",
+            clearProps: "transform",
+            scrollTrigger: {
+              trigger: group,
+              start: "top 92%",
+              once: true,
             },
-            "-=0.4"
-          )
-        }
+          })
+        })
       }
 
       // ── 2. "Our sectors" Section: Clean Upward Stagger Reveal on Scroll ───
@@ -369,13 +303,13 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
             pin: true,
             pinSpacing: true,
             anticipatePin: 1,
-            onRefresh: (self: any) => {
-              if (self.spacer) self.spacer.style.backgroundColor = "#ffffff"
-              if (self.pin) self.pin.style.backgroundColor = "#ffffff"
+            onRefresh: (self) => {
+              if (self.pin?.parentElement) gsap.set(self.pin.parentElement, { backgroundColor: "#ffffff" })
+              if (self.pin) gsap.set(self.pin, { backgroundColor: "#ffffff" })
             },
-            onToggle: (self: any) => {
-              if (self.spacer) self.spacer.style.backgroundColor = "#ffffff"
-              if (self.pin) self.pin.style.backgroundColor = "#ffffff"
+            onToggle: (self) => {
+              if (self.pin?.parentElement) gsap.set(self.pin.parentElement, { backgroundColor: "#ffffff" })
+              if (self.pin) gsap.set(self.pin, { backgroundColor: "#ffffff" })
             },
           },
         })
@@ -387,16 +321,12 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
             { clipPath: "circle(150% at 50% 50%)", ease: "power1.inOut", duration: 0.6 }
           )
           .fromTo(
-            overlayContentRef.current,
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, ease: "power2.out", duration: 0.35 },
+            videoCaptionRef.current,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.3, ease: "power2.out" },
             0.35
           )
           .to({}, { duration: 0.25 })
-          .to(
-            overlayContentRef.current,
-            { opacity: 0, y: -15, ease: "power1.in", duration: 0.2 }
-          )
       })
 
       // Mid Screens (Tablets 640px - 1023.9px)
@@ -412,13 +342,13 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
             pin: true,
             pinSpacing: true,
             anticipatePin: 1,
-            onRefresh: (self: any) => {
-              if (self.spacer) self.spacer.style.backgroundColor = "#ffffff"
-              if (self.pin) self.pin.style.backgroundColor = "#ffffff"
+            onRefresh: (self) => {
+              if (self.pin?.parentElement) gsap.set(self.pin.parentElement, { backgroundColor: "#ffffff" })
+              if (self.pin) gsap.set(self.pin, { backgroundColor: "#ffffff" })
             },
-            onToggle: (self: any) => {
-              if (self.spacer) self.spacer.style.backgroundColor = "#ffffff"
-              if (self.pin) self.pin.style.backgroundColor = "#ffffff"
+            onToggle: (self) => {
+              if (self.pin?.parentElement) gsap.set(self.pin.parentElement, { backgroundColor: "#ffffff" })
+              if (self.pin) gsap.set(self.pin, { backgroundColor: "#ffffff" })
             },
           },
         })
@@ -430,16 +360,12 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
             { clipPath: "circle(150% at 50% 50%)", ease: "power1.inOut", duration: 0.6 }
           )
           .fromTo(
-            [overlayContentRef.current, topHudRef.current],
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, ease: "power2.out", duration: 0.35 },
+            videoCaptionRef.current,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.3, ease: "power2.out" },
             0.35
           )
           .to({}, { duration: 0.25 })
-          .to(
-            [overlayContentRef.current, topHudRef.current],
-            { opacity: 0, y: -15, ease: "power1.in", duration: 0.2 }
-          )
       })
 
       // Large Screens (Desktop >= 1024px)
@@ -455,13 +381,13 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
             pin: true,
             pinSpacing: true,
             anticipatePin: 1,
-            onRefresh: (self: any) => {
-              if (self.spacer) self.spacer.style.backgroundColor = "#ffffff"
-              if (self.pin) self.pin.style.backgroundColor = "#ffffff"
+            onRefresh: (self) => {
+              if (self.pin?.parentElement) gsap.set(self.pin.parentElement, { backgroundColor: "#ffffff" })
+              if (self.pin) gsap.set(self.pin, { backgroundColor: "#ffffff" })
             },
-            onToggle: (self: any) => {
-              if (self.spacer) self.spacer.style.backgroundColor = "#ffffff"
-              if (self.pin) self.pin.style.backgroundColor = "#ffffff"
+            onToggle: (self) => {
+              if (self.pin?.parentElement) gsap.set(self.pin.parentElement, { backgroundColor: "#ffffff" })
+              if (self.pin) gsap.set(self.pin, { backgroundColor: "#ffffff" })
             },
           },
         })
@@ -473,16 +399,12 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
             { clipPath: "circle(150% at 50% 50%)", ease: "power1.inOut", duration: 0.6 }
           )
           .fromTo(
-            [overlayContentRef.current, topHudRef.current],
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, ease: "power2.out", duration: 0.35 },
+            videoCaptionRef.current,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.3, ease: "power2.out" },
             0.35
           )
           .to({}, { duration: 0.25 })
-          .to(
-            [overlayContentRef.current, topHudRef.current],
-            { opacity: 0, y: -15, ease: "power1.in", duration: 0.2 }
-          )
       })
     })
 
@@ -514,22 +436,21 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
       {/* ── Section 1: Architectural Corporate Profile & Core Pillars ──────── */}
       <section
         ref={corporateSectionRef}
-        className="w-full pt-20 sm:pt-28 pb-16 sm:pb-20 px-6 sm:px-10 lg:px-16 bg-white border-b border-zinc-200/80"
+        className="w-full pt-20 sm:pt-28 pb-16 sm:pb-20 px-6 sm:px-10 lg:px-16 bg-white"
         style={{ backgroundColor: "#ffffff" }}
       >
         <div className="max-w-[1440px] mx-auto">
           {/* Header Row: Title & Editorial Narrative */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-12 sm:pb-16">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 sm:pb-10">
             <div className="space-y-3.5 max-w-2xl">
               <div ref={badgeRef} className="flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-zinc-950" />
-                <span className="text-xs sm:text-sm font-semibold tracking-wider text-zinc-500 uppercase">
+                <span className="text-xs sm:text-sm font-semibold tracking-wider text-brand uppercase">
                   Corporate Foundation
                 </span>
               </div>
               <h2
                 ref={titleRef}
-                className="text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight text-zinc-950 leading-[1.12]"
+                className="text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight text-slate-900 leading-[1.12]"
               >
                 Engineering monumental structures with uncompromising precision.
               </h2>
@@ -542,39 +463,30 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
             </p>
           </div>
 
-          {/* Animated Architectural Blueprint Horizontal Line */}
-          <div
-            ref={headerLineRef}
-            className="w-full h-[1px] bg-zinc-200/80 origin-left"
-          />
 
           {/* 3 Modular Architectural Pillars */}
           <div
             ref={pillarsRef}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 pt-12 sm:pt-14 divide-y md:divide-y-0 md:divide-x divide-zinc-200/80"
+            className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 pt-4 sm:pt-6"
           >
             {/* 01: Who We Are */}
             <div
               ref={(el) => {
                 pillarCardRefs.current[0] = el
               }}
-              onMouseEnter={() => handlePillarHover(0, true)}
-              onMouseLeave={() => handlePillarHover(0, false)}
-              className="group cursor-pointer pt-8 md:pt-0 md:pr-8 lg:pr-12 space-y-4"
+              className="group pt-8 md:pt-0 md:pr-8 lg:pr-12 space-y-4"
             >
               <div className="flex items-center justify-between">
-                <span className="pillar-tag text-xs font-mono font-bold tracking-widest text-zinc-950 uppercase inline-block">
-                  01 // {whoWeAre.label}
+                <span className="text-sm font-medium text-brand inline-block">
+                  Who we are
                 </span>
-                <span className="pillar-dot w-1.5 h-1.5 rounded-full bg-zinc-300 inline-block" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-zinc-950 tracking-tight leading-snug group-hover:text-zinc-700 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight leading-snug">
                 Transforming ideas into enduring landmarks.
               </h3>
               <p className="text-[14.5px] sm:text-[15px] text-zinc-600 leading-relaxed font-normal">
                 {whoWeAre.text}
               </p>
-              <div className="pillar-accent-line w-full h-[1.5px] bg-zinc-950 origin-left scale-x-0" />
             </div>
 
             {/* 02: Our Mission */}
@@ -582,23 +494,19 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
               ref={(el) => {
                 pillarCardRefs.current[1] = el
               }}
-              onMouseEnter={() => handlePillarHover(1, true)}
-              onMouseLeave={() => handlePillarHover(1, false)}
-              className="group cursor-pointer pt-8 md:pt-0 md:px-8 lg:px-12 space-y-4"
+              className="group pt-8 md:pt-0 md:px-8 lg:px-12 space-y-4"
             >
               <div className="flex items-center justify-between">
-                <span className="pillar-tag text-xs font-mono font-bold tracking-widest text-zinc-950 uppercase inline-block">
-                  02 // {ourMission.label}
+                <span className="text-sm font-medium text-brand inline-block">
+                  Our mission
                 </span>
-                <span className="pillar-dot w-1.5 h-1.5 rounded-full bg-zinc-300 inline-block" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-zinc-950 tracking-tight leading-snug group-hover:text-zinc-700 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight leading-snug">
                 Empowering Saudi Vision 2030.
               </h3>
               <p className="text-[14.5px] sm:text-[15px] text-zinc-600 leading-relaxed font-normal">
                 {ourMission.text.replace(/^"|"$/g, "")}
               </p>
-              <div className="pillar-accent-line w-full h-[1.5px] bg-zinc-950 origin-left scale-x-0" />
             </div>
 
             {/* 03: Core Values */}
@@ -606,23 +514,19 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
               ref={(el) => {
                 pillarCardRefs.current[2] = el
               }}
-              onMouseEnter={() => handlePillarHover(2, true)}
-              onMouseLeave={() => handlePillarHover(2, false)}
-              className="group cursor-pointer pt-8 md:pt-0 md:pl-8 lg:pl-12 space-y-4"
+              className="group pt-8 md:pt-0 md:pl-8 lg:pl-12 space-y-4"
             >
               <div className="flex items-center justify-between">
-                <span className="pillar-tag text-xs font-mono font-bold tracking-widest text-zinc-950 uppercase inline-block">
-                  03 // {coreValues.label}
+                <span className="text-sm font-medium text-brand inline-block">
+                  Core values
                 </span>
-                <span className="pillar-dot w-1.5 h-1.5 rounded-full bg-zinc-300 inline-block" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-zinc-950 tracking-tight leading-snug group-hover:text-zinc-700 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight leading-snug">
                 Unyielding integrity & safety.
               </h3>
               <p className="text-[14.5px] sm:text-[15px] text-zinc-600 leading-relaxed font-normal">
                 {coreValues.text}
               </p>
-              <div className="pillar-accent-line w-full h-[1.5px] bg-zinc-950 origin-left scale-x-0" />
             </div>
           </div>
         </div>
@@ -754,48 +658,19 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
               <source src={videoSrc} type="video/mp4" />
             </video>
 
-            {/* TOP HUD: Project Location & Coordinates */}
+            {/* A restrained caption keeps the architecture visible. */}
             <div
-              ref={topHudRef}
-              className="absolute top-24 sm:top-28 inset-x-6 sm:inset-x-12 lg:inset-x-16 z-20 flex items-center justify-between pointer-events-none opacity-0 will-change-transform"
+              ref={videoCaptionRef}
+              className="absolute inset-x-0 bottom-0 z-20 px-6 pb-10 pt-20 text-white sm:px-10 sm:pb-16 lg:px-16 lg:pb-20"
             >
-              <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-white/20 text-white text-xs font-mono font-medium shadow-lg">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>ACTIVE SITE // 24°42&apos;N 46°40&apos;E</span>
-              </div>
-              <div className="hidden sm:flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-white/20 text-white/90 text-xs font-mono shadow-lg">
-                <span>RIYADH &amp; EASTERN PROVINCE · KSA</span>
-              </div>
-            </div>
-
-            {/* LOWER CONTENT: Glassmorphic Architectural Showcase Card */}
-            <div
-              ref={overlayContentRef}
-              className="absolute bottom-5 sm:bottom-12 inset-x-4 sm:inset-x-auto sm:left-12 lg:left-16 sm:max-w-xl z-20 pointer-events-none opacity-0 will-change-transform"
-            >
-              <div className="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-black/55 backdrop-blur-xl border border-white/20 text-white shadow-2xl space-y-2.5 sm:space-y-3.5 pointer-events-auto">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white" />
-                  <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-zinc-300 uppercase">
-                    FIELD EXECUTION RIGOR
-                  </span>
-                </div>
-                <h3 className="text-lg sm:text-[28px] font-semibold tracking-tight leading-snug text-white">
-                  Heavy Industrial &amp; Megastructure Capabilities
-                </h3>
-                <p className="text-xs sm:text-[15px] text-zinc-300 leading-relaxed font-normal">
-                  Delivering complex petrochemical installations, structural steel erection, and certified fireproofing systems engineered for extreme operational demands.
-                </p>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-0.5 sm:pt-1">
-                  <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg bg-white/10 border border-white/15 text-[11px] sm:text-xs text-zinc-200 font-medium">
-                    Turnkey EPC
-                  </span>
-                  <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg bg-white/10 border border-white/15 text-[11px] sm:text-xs text-zinc-200 font-medium">
-                    100% SBC Compliant
-                  </span>
-                  <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg bg-white/10 border border-white/15 text-[11px] sm:text-xs text-zinc-200 font-medium">
-                    Saudi Vision 2030
-                  </span>
+              <div className="mx-auto max-w-[1312px]">
+                <div className="max-w-2xl border-l-[3px] border-[#3545a5] pl-5 sm:pl-7">
+                  <h3 className="max-w-[18ch] text-[clamp(1.9rem,4vw,3.75rem)] font-medium leading-[1.08] tracking-[-0.035em] text-balance drop-shadow-lg">
+                    Heavy industrial.<br />Built with precision.
+                  </h3>
+                  <p className="mt-4 max-w-[48ch] text-sm leading-relaxed text-white/85 sm:mt-5 sm:text-base lg:text-lg">
+                    Petrochemical installations, structural steel and fireproofing systems for Saudi Arabia&apos;s most demanding projects.
+                  </p>
                 </div>
               </div>
             </div>

@@ -215,7 +215,7 @@ export function ScrollFrameSequence({
             style={{ opacity: progress < 0.04 && firstFrameReady ? 1 : 0 }}
           >
             <span className="drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">Scroll</span>
-            <ChevronDown className="w-4 h-4 text-[#0081c6] animate-bounce" />
+            <ChevronDown className="w-4 h-4 text-brand animate-bounce" />
           </div>
         )}
       </div>

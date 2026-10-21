@@ -81,7 +81,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left: Heading & Accordion */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 {data.overviewEyebrow}
               </span>
 
@@ -107,8 +107,8 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
                         <span
                           className={`text-base sm:text-lg font-normal tracking-tight transition-colors ${
                             isOpen
-                              ? "text-[#0081c6] font-medium"
-                              : "text-zinc-950 hover:text-[#0081c6]"
+                              ? "text-brand font-medium"
+                              : "text-zinc-950 hover:text-brand"
                           }`}
                         >
                           {item.title}
@@ -116,8 +116,8 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
                         <ArrowUpRight
                           className={`w-4 h-4 transition-transform duration-200 ${
                             isOpen
-                              ? "text-[#0081c6] rotate-45"
-                              : "text-zinc-400 group-hover:text-[#0081c6]"
+                              ? "text-brand rotate-45"
+                              : "text-zinc-400 group-hover:text-brand"
                           }`}
                         />
                       </div>
@@ -161,7 +161,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-zinc-200/80 mb-12">
             <div className="space-y-2.5 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 {data.capabilitiesEyebrow}
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-normal tracking-tight text-zinc-950 leading-[1.14]">
@@ -182,11 +182,11 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
                 className="group flex items-start justify-between py-4 border-b border-zinc-100 hover:border-zinc-300 transition-colors"
               >
                 <div className="flex items-start gap-4">
-                  <span className="text-xs font-mono font-bold tracking-wider text-zinc-400 group-hover:text-[#0081c6] transition-colors pt-0.5">
+                  <span className="text-xs font-mono font-bold tracking-wider text-zinc-400 group-hover:text-brand transition-colors pt-0.5">
                     {cap.num}
                   </span>
                   <div>
-                    <h3 className="text-base font-medium text-zinc-950 group-hover:text-[#0081c6] transition-colors">
+                    <h3 className="text-base font-medium text-zinc-950 group-hover:text-brand transition-colors">
                       {cap.title}
                     </h3>
                     <p className="text-xs text-zinc-500 font-normal mt-1 max-w-md leading-relaxed">
@@ -195,7 +195,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
                   </div>
                 </div>
 
-                <div className="w-1.5 h-1.5 rounded-full bg-zinc-300 group-hover:bg-[#0081c6] transition-colors shrink-0 mt-2" />
+                <div className="w-1.5 h-1.5 rounded-full bg-zinc-300 group-hover:bg-brand transition-colors shrink-0 mt-2" />
               </div>
             ))}
           </div>
@@ -219,7 +219,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
 
             {/* Right Narrative */}
             <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 {data.complianceEyebrow}
               </span>
 
@@ -234,7 +234,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {data.complianceItems.map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                     <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                       {item}
                     </span>
@@ -256,7 +256,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
               </span>
               <Link
                 href="/about-us"
-                className="text-xs font-mono font-bold text-[#0081c6] hover:underline uppercase tracking-wider"
+                className="text-xs font-mono font-bold text-brand hover:underline uppercase tracking-wider"
               >
                 All 10 Divisions &rarr;
               </Link>
@@ -267,17 +267,17 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
                 <Link
                   key={rel.num}
                   href={rel.href}
-                  className="group flex items-center justify-between p-4 rounded-xl bg-white border border-zinc-200/80 hover:border-[#0081c6] transition-all"
+                  className="group flex items-center justify-between p-4 rounded-xl bg-white border border-zinc-200/80 hover:border-brand transition-all"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono font-bold text-zinc-400 group-hover:text-[#0081c6] transition-colors">
+                    <span className="text-xs font-mono font-bold text-zinc-400 group-hover:text-brand transition-colors">
                       {rel.num}
                     </span>
-                    <span className="text-sm font-medium text-zinc-900 group-hover:text-[#0081c6] transition-colors">
+                    <span className="text-sm font-medium text-zinc-900 group-hover:text-brand transition-colors">
                       {rel.title}
                     </span>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-zinc-400 group-hover:text-[#0081c6] group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-zinc-400 group-hover:text-brand group-hover:translate-x-1 transition-all" />
                 </Link>
               ))}
             </div>
@@ -292,7 +292,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Inquiries &amp; Project Scopes • {data.divisionTitle}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
@@ -307,7 +307,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <Link
                 href="/about-us"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#0081c6] hover:bg-[#0070ad] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand hover:bg-brand-hover text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
               >
                 <span>About Alfa Gulf</span>
                 <ArrowRight className="w-4 h-4" />
@@ -317,7 +317,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
                 href="tel:+966534979774"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-bold text-xs uppercase tracking-wider transition-colors border border-zinc-200/80"
               >
-                <Phone className="w-4 h-4 text-[#0081c6]" />
+                <Phone className="w-4 h-4 text-brand" />
                 <span>+966534979774</span>
               </a>
             </div>
@@ -326,11 +326,11 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
           {/* Quick Info Line */}
           <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-500">
             <div className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-[#0081c6]" />
+              <MapPin className="w-3.5 h-3.5 text-brand" />
               <span>Riyadh, Kingdom of Saudi Arabia</span>
             </div>
             <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-[#0081c6]" />
+              <Mail className="w-3.5 h-3.5 text-brand" />
               <span>info@alfa-gulf.com</span>
             </div>
             <div>

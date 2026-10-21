@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Dialog } from "@base-ui/react/dialog"
-import { DEPARTMENT_CONTACTS } from "@/data/contact"
+import { Select } from "@base-ui/react/select"
 import {
   Search,
   Menu,
@@ -115,8 +115,8 @@ const DIVISIONS_28_DATA: ServiceCategory[] = [
     num: "03",
     title: "GENERAL TRADING",
     badge: "DIVISION 03 • 5 SERVICES",
-    badgeColor: "text-amber-600 dark:text-amber-400",
-    badgeBg: "bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-300",
+    badgeColor: "text-sky-600 dark:text-sky-400",
+    badgeBg: "bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-300",
     activeTitle: "General Trading / Sourcing",
     items: [
       { num: "20", title: "General Trading / Sourcing", concept: "Requirement to Reality", href: "/services/general-trading/sourcing-supply", icon: Package, image: "/categories/general-trading.jpg" },
@@ -416,7 +416,7 @@ export function Navbar() {
         {/* Top accent bar line - brand azure blue line matching website palette */}
         <div
           className={`h-[3px] w-full transition-all duration-300 ${
-            isTransparent ? "opacity-0 bg-transparent" : "opacity-100 bg-[#0081c6]"
+            isTransparent ? "opacity-0 bg-transparent" : "opacity-100 bg-brand"
           }`}
         />
 
@@ -426,7 +426,7 @@ export function Navbar() {
             <div className="flex-shrink-0">
               <Link
                 href="/"
-                className="flex items-center group py-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0081c6] rounded"
+                className="flex items-center group py-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded"
                 aria-label="Alfa Gulf Home"
               >
                 <div className="relative h-16 sm:h-[68px] w-auto aspect-[585/513]">
@@ -436,6 +436,7 @@ export function Navbar() {
                     fill
                     sizes="(max-width: 640px) 73px, 78px"
                     className="object-contain"
+
                     priority
                   />
                 </div>
@@ -451,13 +452,13 @@ export function Navbar() {
                   className={`text-[13px] font-bold tracking-[0.08em] uppercase transition-colors py-2 relative group ${
                     isTransparent
                       ? "text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
-                      : "text-slate-800 hover:text-[#0081c6]"
+                      : "text-slate-800 hover:text-brand"
                   }`}
                 >
                   HOME
                   <span
                     className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-200 group-hover:w-full ${
-                      isTransparent ? "bg-white" : "bg-[#0081c6]"
+                      isTransparent ? "bg-white" : "bg-brand"
                     }`}
                   />
                 </Link>
@@ -467,13 +468,13 @@ export function Navbar() {
                   className={`text-[13px] font-bold tracking-[0.08em] uppercase transition-colors py-2 relative group ${
                     isTransparent
                       ? "text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
-                      : "text-slate-800 hover:text-[#0081c6]"
+                      : "text-slate-800 hover:text-brand"
                   }`}
                 >
                   ABOUT US
                   <span
                     className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-200 group-hover:w-full ${
-                      isTransparent ? "bg-white" : "bg-[#0081c6]"
+                      isTransparent ? "bg-white" : "bg-brand"
                     }`}
                   />
                 </Link>
@@ -494,18 +495,18 @@ export function Navbar() {
                           ? "text-white"
                           : "text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
                         : isServicesOpen
-                        ? "text-[#0081c6]"
-                        : "text-slate-800 hover:text-[#0081c6]"
+                        ? "text-brand"
+                        : "text-slate-800 hover:text-brand"
                     }`}
                   >
                     SERVICES
                     <ChevronDown
                       className={`w-3.5 h-3.5 transition-transform duration-300 ${
                         isServicesOpen
-                          ? "rotate-180 " + (isTransparent ? "text-sky-400" : "text-[#0081c6]")
+                          ? "rotate-180 " + (isTransparent ? "text-sky-400" : "text-brand")
                           : isTransparent
                           ? "text-white/80 group-hover:text-white"
-                          : "text-slate-500 group-hover:text-[#0081c6]"
+                          : "text-slate-500 group-hover:text-brand"
                       }`}
                     />
                     <span
@@ -515,8 +516,8 @@ export function Navbar() {
                             ? "bg-sky-400 w-full"
                             : "bg-white w-0 group-hover:w-full"
                           : isServicesOpen
-                          ? "bg-[#0081c6] w-full"
-                          : "bg-[#0081c6] w-0 group-hover:w-full"
+                          ? "bg-brand w-full"
+                          : "bg-brand w-0 group-hover:w-full"
                       }`}
                     />
                   </button>
@@ -527,13 +528,13 @@ export function Navbar() {
                   className={`text-[13px] font-bold tracking-[0.08em] uppercase transition-colors py-2 relative group ${
                     isTransparent
                       ? "text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
-                      : "text-slate-800 hover:text-[#0081c6]"
+                      : "text-slate-800 hover:text-brand"
                   }`}
                 >
-                  NEWS
+                  BLOG
                   <span
                     className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-200 group-hover:w-full ${
-                      isTransparent ? "bg-white" : "bg-[#0081c6]"
+                      isTransparent ? "bg-white" : "bg-brand"
                     }`}
                   />
                 </Link>
@@ -548,7 +549,7 @@ export function Navbar() {
                   className={`p-2 transition-colors focus:outline-none rounded-md ${
                     isTransparent
                       ? "text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
-                      : "text-slate-800 hover:text-[#0081c6]"
+                      : "text-slate-800 hover:text-brand"
                   }`}
                   aria-label="Open Search"
                 >
@@ -570,7 +571,7 @@ export function Navbar() {
                   className={`group flex items-center gap-2 text-[13px] font-bold tracking-[0.08em] uppercase transition-colors py-1.5 focus:outline-none ${
                     isTransparent
                       ? "text-white/95 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
-                      : "text-slate-900 hover:text-[#0081c6]"
+                      : "text-slate-900 hover:text-brand"
                   }`}
                 >
                   {/* Custom 2x2 square dot grid icon matching the reference image */}
@@ -578,7 +579,7 @@ export function Navbar() {
                     className={`grid grid-cols-2 gap-[2.5px] w-3 h-3 transition-colors ${
                       isTransparent
                         ? "text-white group-hover:text-sky-300"
-                        : "text-slate-900 group-hover:text-[#0081c6]"
+                        : "text-slate-900 group-hover:text-brand"
                     }`}
                     aria-hidden="true"
                   >
@@ -600,7 +601,7 @@ export function Navbar() {
                 className={`p-2 transition-colors focus:outline-none ${
                   isTransparent
                     ? "text-white hover:text-sky-300"
-                    : "text-slate-800 hover:text-[#0081c6]"
+                    : "text-slate-800 hover:text-brand"
                 }`}
                 aria-label="Open Search"
               >
@@ -613,7 +614,7 @@ export function Navbar() {
                 className={`p-2 transition-colors focus:outline-none ${
                   isTransparent
                     ? "text-white hover:text-sky-300"
-                    : "text-slate-800 hover:text-[#0081c6]"
+                    : "text-slate-800 hover:text-brand"
                 }`}
                 aria-label="Get in Touch"
               >
@@ -636,7 +637,7 @@ export function Navbar() {
                 className={`p-2 transition-colors focus:outline-none ${
                   isTransparent
                     ? "text-white hover:text-sky-300"
-                    : "text-slate-900 hover:text-[#0081c6]"
+                    : "text-slate-900 hover:text-brand"
                 }`}
                 aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
                 aria-expanded={isMobileMenuOpen}
@@ -701,7 +702,7 @@ export function Navbar() {
                           <span className="flex items-center gap-3 min-w-0">
                             <span
                               className={`w-1 h-4 rounded-full shrink-0 transition-colors ${
-                                isActive ? "bg-[#0081c6]" : "bg-transparent"
+                                isActive ? "bg-brand" : "bg-transparent"
                               }`}
                             />
                             <span className="truncate">{toTitleCase(cat.title)}</span>
@@ -718,7 +719,7 @@ export function Navbar() {
                 <Link
                   href="/services"
                   onClick={() => setIsServicesOpen(false)}
-                  className="group mt-5 ml-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#0081c6] hover:text-[#006aa3] transition-colors"
+                  className="group mt-5 ml-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-brand hover:text-[#1b2375] transition-colors"
                 >
                   All 28 services
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -753,7 +754,7 @@ export function Navbar() {
                         >
                           <IconComp
                             className={`w-4 h-4 shrink-0 transition-colors ${
-                              isSubActive ? "text-[#0081c6]" : isTransparent ? "text-slate-500" : "text-slate-400"
+                              isSubActive ? "text-brand" : isTransparent ? "text-slate-500" : "text-slate-400"
                             }`}
                           />
                           <span className="text-[13px] font-medium leading-snug truncate">{s.title}</span>
@@ -787,7 +788,7 @@ export function Navbar() {
                   <p className={`mt-1 text-[13px] leading-relaxed ${isTransparent ? "text-slate-400" : "text-slate-500"}`}>
                     {activeShowcase.concept}
                   </p>
-                  <span className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#0081c6] group-hover:text-[#006aa3] transition-colors">
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-brand group-hover:text-[#1b2375] transition-colors">
                     View service
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                   </span>
@@ -805,7 +806,7 @@ export function Navbar() {
               <Link
                 href="/"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="px-3 py-2.5 text-sm font-bold tracking-wider uppercase text-slate-800 hover:text-[#0081c6] hover:bg-slate-50 rounded-md transition-colors"
+                className="px-3 py-2.5 text-sm font-bold tracking-wider uppercase text-slate-800 hover:text-brand hover:bg-slate-50 rounded-md transition-colors"
               >
                 HOME
               </Link>
@@ -813,7 +814,7 @@ export function Navbar() {
               <Link
                 href="/about-us"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="px-3 py-2.5 text-sm font-bold tracking-wider uppercase text-slate-800 hover:text-[#0081c6] hover:bg-slate-50 rounded-md transition-colors"
+                className="px-3 py-2.5 text-sm font-bold tracking-wider uppercase text-slate-800 hover:text-brand hover:bg-slate-50 rounded-md transition-colors"
               >
                 ABOUT US
               </Link>
@@ -823,12 +824,12 @@ export function Navbar() {
                 <button
                   type="button"
                   onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                  className="w-full flex items-center justify-between px-3 py-2.5 text-sm font-bold tracking-wider uppercase text-slate-800 hover:text-[#0081c6] hover:bg-slate-50 rounded-md transition-colors"
+                  className="w-full flex items-center justify-between px-3 py-2.5 text-sm font-bold tracking-wider uppercase text-slate-800 hover:text-brand hover:bg-slate-50 rounded-md transition-colors"
                 >
                   <span>SERVICES</span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-200 ${
-                      isMobileServicesOpen ? "rotate-180 text-[#0081c6]" : "text-slate-400"
+                      isMobileServicesOpen ? "rotate-180 text-brand" : "text-slate-400"
                     }`}
                   />
                 </button>
@@ -837,7 +838,7 @@ export function Navbar() {
                     {DIVISIONS_28_DATA.map((cat) => (
                       <div key={cat.title} className="space-y-1.5">
                         <div className="flex items-center gap-2 px-2 pb-1 border-b border-slate-200/60">
-                          <span className="text-[11px] font-bold tracking-wider uppercase text-[#0081c6]">
+                          <span className="text-[11px] font-bold tracking-wider uppercase text-brand">
                             {cat.title} ({cat.items.length})
                           </span>
                         </div>
@@ -850,10 +851,10 @@ export function Navbar() {
                                 setIsMobileMenuOpen(false)
                                 setIsMobileServicesOpen(false)
                               }}
-                              className="flex items-center justify-between px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 hover:text-[#0081c6] hover:bg-[#0081c6]/10 rounded-lg transition-colors"
+                              className="flex items-center justify-between px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 hover:text-brand hover:bg-brand/10 rounded-lg transition-colors"
                             >
                               <div className="flex items-center gap-2 min-w-0">
-                                <span className="font-mono text-[10px] font-bold text-[#0081c6]">{s.num}</span>
+                                <span className="font-mono text-[10px] font-bold text-brand">{s.num}</span>
                                 <span className="truncate">{s.title}</span>
                               </div>
                             </Link>
@@ -868,9 +869,9 @@ export function Navbar() {
               <Link
                 href="/news"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="px-3 py-2.5 text-sm font-bold tracking-wider uppercase text-slate-800 hover:text-[#0081c6] hover:bg-slate-50 rounded-md transition-colors"
+                className="px-3 py-2.5 text-sm font-bold tracking-wider uppercase text-slate-800 hover:text-brand hover:bg-slate-50 rounded-md transition-colors"
               >
-                NEWS
+                BLOG
               </Link>
             </nav>
 
@@ -881,7 +882,7 @@ export function Navbar() {
                   setIsMobileMenuOpen(false)
                   setIsContactOpen(true)
                 }}
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-md bg-[#0081c6] text-white font-bold tracking-wider text-xs uppercase shadow-sm hover:bg-[#0070ad] transition-colors"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-md bg-brand text-white font-bold tracking-wider text-xs uppercase shadow-sm hover:bg-brand-hover transition-colors"
               >
                 <span
                   className="grid grid-cols-2 gap-[2px] w-3 h-3 text-white"
@@ -957,14 +958,14 @@ export function Navbar() {
                           className="flex items-center justify-between p-2.5 rounded-lg hover:bg-slate-50 transition-colors group"
                         >
                           <div>
-                            <div className="text-sm font-medium text-slate-900 group-hover:text-[#0081c6]">
+                            <div className="text-sm font-medium text-slate-900 group-hover:text-brand">
                               {service.title}
                             </div>
                             <div className="text-xs text-slate-500">
                               {service.description}
                             </div>
                           </div>
-                          <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#0081c6] transition-colors" />
+                          <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-brand transition-colors" />
                         </Link>
                       ))}
                     </div>
@@ -986,7 +987,7 @@ export function Navbar() {
                           key={tag}
                           type="button"
                           onClick={() => setSearchQuery(tag)}
-                          className="text-xs bg-slate-100 hover:bg-sky-50 hover:text-[#0081c6] text-slate-700 px-3 py-1.5 rounded-full transition-colors"
+                          className="text-xs bg-slate-100 hover:bg-sky-50 hover:text-brand text-slate-700 px-3 py-1.5 rounded-full transition-colors"
                         >
                           {tag}
                         </button>
@@ -1002,7 +1003,7 @@ export function Navbar() {
                       onClick={() => setIsSearchOpen(false)}
                       className="p-2 rounded hover:bg-slate-50 text-slate-700 flex items-center gap-2"
                     >
-                      <Building2 className="w-3.5 h-3.5 text-[#0081c6]" /> About Alfa Gulf
+                      <Building2 className="w-3.5 h-3.5 text-brand" /> About Alfa Gulf
                     </Link>
                     <button
                       type="button"
@@ -1012,7 +1013,7 @@ export function Navbar() {
                       }}
                       className="p-2 rounded hover:bg-slate-50 text-slate-700 flex items-center gap-2 text-left"
                     >
-                      <Phone className="w-3.5 h-3.5 text-[#0081c6]" /> Contact & Inquiries
+                      <Phone className="w-3.5 h-3.5 text-brand" /> Contact & Inquiries
                     </button>
                   </div>
                 </div>
@@ -1025,78 +1026,81 @@ export function Navbar() {
       {/* Contact dialog */}
       <Dialog.Root open={isContactOpen} onOpenChange={setIsContactOpen}>
         <Dialog.Portal>
-          <Dialog.Backdrop className="fixed inset-0 z-[60] bg-slate-950/40 backdrop-blur-xs" />
-          <Dialog.Popup className="fixed left-1/2 top-1/2 z-[61] max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-contain rounded-2xl bg-white text-slate-900 shadow-2xl outline-none [color-scheme:light]" data-lenis-prevent>
-            <Dialog.Close aria-label="Close contact dialog" className="absolute right-3 top-3 z-10 flex size-10 items-center justify-center rounded-full bg-white text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
+          <Dialog.Backdrop className="fixed inset-0 z-[60] bg-slate-950/50 backdrop-blur-[2px]" />
+          <Dialog.Popup className="fixed left-1/2 top-1/2 z-[61] max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-[520px] -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-contain rounded-md bg-white text-slate-900 shadow-2xl outline-none [color-scheme:light]" data-lenis-prevent>
+            <Dialog.Close aria-label="Close contact dialog" className="absolute right-3 top-3 z-10 flex size-10 items-center justify-center rounded-md bg-white/70 text-brand transition-colors hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
               <X className="size-5" />
             </Dialog.Close>
-            <div className="px-6 pb-6 pt-7 sm:px-8 sm:pb-8 sm:pt-8">
-              <Dialog.Title className="pr-10 text-2xl font-semibold tracking-tight">Get in touch</Dialog.Title>
-              <Dialog.Description className="mt-2 text-sm leading-6 text-slate-500">
-                Tell us a little about your project.
-              </Dialog.Description>
-              <form onSubmit={handleInquirySubmit} className="mt-6">
+            <div className="px-5 pb-5 sm:px-7 sm:pb-6">
+              <div className="-mx-5 mb-6 bg-brand-soft px-5 pb-6 pt-7 sm:-mx-7 sm:px-7">
+                <p className="mb-3 text-xs font-medium text-brand">Alfa Gulf / Project inquiries</p>
+                <Dialog.Title className="pr-10 text-[28px] font-medium leading-tight tracking-tight">Let&apos;s talk about your project.</Dialog.Title>
+                <Dialog.Description className="mt-3 max-w-sm text-sm leading-6 text-slate-600">Share what you need and how we can reach you.</Dialog.Description>
+              </div>
+              <form onSubmit={handleInquirySubmit} className="mt-0">
                 {inquirySubmitted ? (
                   <div role="status" className="flex min-h-80 flex-col items-center justify-center text-center">
-                    <span className="mb-4 flex size-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700"><Check className="size-6" /></span>
+                    <span className="mb-4 flex size-12 items-center justify-center rounded-full bg-sky-50 text-sky-700"><Check className="size-6" /></span>
                     <h3 className="text-xl font-semibold">Inquiry received!</h3>
                     <p className="mt-2 text-sm leading-6 text-slate-600">Our technical representative will get back to you shortly.</p>
                   </div>
                 ) : (
                   <>
-                    <div className="space-y-4 [&_label]:mb-2 [&_label]:block [&_label]:text-sm [&_label]:font-medium [&_label]:text-slate-700 [&_input]:min-h-12 [&_input]:w-full [&_input]:rounded-lg [&_input]:border [&_input]:border-slate-300 [&_input]:bg-white [&_input]:px-3.5 [&_input]:text-base [&_input]:text-slate-900 [&_input]:outline-none [&_input]:placeholder:text-slate-500 [&_input:focus]:border-sky-600 [&_input:focus]:ring-2 [&_input:focus]:ring-sky-600/15">
+                    <div className="space-y-4 [&_label]:mb-2 [&_label]:block [&_label]:text-sm [&_label]:font-medium [&_label]:text-slate-700 [&_input]:min-h-12 [&_input]:w-full [&_input]:rounded-md [&_input]:border [&_input]:border-slate-200 [&_input]:bg-slate-50/70 [&_input]:px-3.5 [&_input]:text-base [&_input]:text-slate-900 [&_input]:outline-none [&_input]:placeholder:text-slate-500 [&_input:focus]:border-sky-600 [&_input:focus]:ring-2 [&_input:focus]:ring-sky-600/15">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <div>
-                          <label htmlFor="inquiry-name">Full name <span className="text-[#0074b3]">*</span></label>
+                          <label htmlFor="inquiry-name">Full name <span className="text-[#232d92]">*</span></label>
                           <input id="inquiry-name" name="name" autoComplete="name" required type="text" placeholder="Your name" />
                         </div>
                         <div>
-                          <label htmlFor="inquiry-phone">Phone / WhatsApp <span className="text-[#0074b3]">*</span></label>
+                          <label htmlFor="inquiry-phone">Phone / WhatsApp <span className="text-[#232d92]">*</span></label>
                           <input id="inquiry-phone" name="phone" autoComplete="tel" required type="tel" placeholder="+966 5X XXX XXXX" />
                         </div>
                       </div>
                       <div>
-                        <label htmlFor="inquiry-service">Service <span className="text-[#0074b3]">*</span></label>
-                        <div className="relative">
-                          <select id="inquiry-service" name="service" required defaultValue="" className="min-h-12 w-full appearance-none rounded-lg border border-slate-300 bg-white py-3 pl-3.5 pr-10 text-base text-slate-900 outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/15">
-                            <option value="" disabled>Select a service</option>
-                            {DIVISIONS_28_DATA.map((category) => (
-                              <optgroup key={category.id} label={toTitleCase(category.title)}>
-                                {category.items.map((service) => <option key={service.href} value={service.title}>{service.title}</option>)}
-                              </optgroup>
-                            ))}
-                            <option value="General inquiry">General inquiry</option>
-                          </select>
-                          <ChevronDown className="pointer-events-none absolute right-3.5 top-4 size-4 text-slate-500" aria-hidden="true" />
-                        </div>
+                        <label htmlFor="inquiry-service">Service <span className="text-[#232d92]">*</span></label>
+                        <Select.Root name="service" required>
+                          <Select.Trigger id="inquiry-service" className="flex min-h-12 w-full items-center justify-between gap-3 rounded-md border border-slate-200 bg-slate-50/70 px-3.5 py-3 text-left text-base text-slate-900 outline-none transition-colors hover:border-slate-300 focus-visible:border-brand focus-visible:ring-2 focus-visible:ring-brand/15 data-placeholder:text-slate-500">
+                            <Select.Value placeholder="Choose a service" className="min-w-0 flex-1 truncate" />
+                            <Select.Icon><ChevronDown className="size-4 text-brand" /></Select.Icon>
+                          </Select.Trigger>
+                          <Select.Portal>
+                            <Select.Positioner side="bottom" align="start" sideOffset={6} alignItemWithTrigger={false} className="z-[80] outline-none">
+                              <Select.Popup className="w-[var(--anchor-width)] max-w-[calc(100vw-2rem)] overflow-hidden rounded-md border border-slate-200 bg-white p-1.5 text-slate-900 shadow-xl outline-none [color-scheme:light]">
+                                <Select.List className="max-h-[min(280px,var(--available-height))] overflow-y-auto overscroll-contain" data-lenis-prevent>
+                                  {DIVISIONS_28_DATA.map((category) => (
+                                    <Select.Group key={category.id} className="pb-2">
+                                      <Select.GroupLabel className="sticky top-0 z-10 bg-white px-3 py-2.5 text-xs font-semibold text-brand">{toTitleCase(category.title)}</Select.GroupLabel>
+                                      {category.items.map((service) => (
+                                        <Select.Item key={service.href} value={service.title} className="relative flex min-h-10 cursor-pointer items-center gap-3 rounded px-3 py-2 pr-9 text-sm outline-none data-highlighted:bg-brand-soft data-highlighted:text-brand data-selected:bg-brand-soft data-selected:font-medium data-selected:text-brand">
+                                          <Select.ItemText>{service.title}</Select.ItemText>
+                                          <Select.ItemIndicator className="absolute right-3"><Check className="size-4 text-brand" /></Select.ItemIndicator>
+                                        </Select.Item>
+                                      ))}
+                                    </Select.Group>
+                                  ))}
+                                  <Select.Item value="General inquiry" className="relative flex min-h-10 cursor-pointer items-center rounded px-3 py-2 pr-9 text-sm outline-none data-highlighted:bg-brand-soft data-highlighted:text-brand data-selected:bg-brand-soft">
+                                    <Select.ItemText>General inquiry</Select.ItemText>
+                                    <Select.ItemIndicator className="absolute right-3"><Check className="size-4 text-brand" /></Select.ItemIndicator>
+                                  </Select.Item>
+                                </Select.List>
+                              </Select.Popup>
+                            </Select.Positioner>
+                          </Select.Portal>
+                        </Select.Root>
                       </div>
                       <div>
                         <label htmlFor="inquiry-message">Project details <span className="font-normal text-slate-500">(optional)</span></label>
-                        <textarea id="inquiry-message" name="message" rows={3} placeholder="How can we help?" className="w-full resize-y rounded-lg border border-slate-300 bg-white px-3.5 py-3 text-base text-slate-900 outline-none placeholder:text-slate-500 focus:border-sky-600 focus:ring-2 focus:ring-sky-600/15" />
+                        <textarea id="inquiry-message" name="message" rows={2} placeholder="Project location, scope or timeline" className="w-full resize-y rounded-md border border-slate-200 bg-slate-50/70 px-3.5 py-3 text-base text-slate-900 outline-none placeholder:text-slate-500 focus:border-sky-600 focus:ring-2 focus:ring-sky-600/15" />
                       </div>
                     </div>
-                    <button type="submit" className="mt-6 flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#007bb9] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#006699] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
+                    <button type="submit" className="mt-5 flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-brand px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1b2375] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
                       Send inquiry <Send className="size-4" aria-hidden="true" />
                     </button>
                   </>
                 )}
               </form>
-              <div className="mt-6 border-t border-slate-100 pt-5">
-                <a href="tel:+966534979774" className="mx-auto flex min-h-8 w-fit items-center gap-2 text-sm font-medium text-slate-600 hover:text-[#007bb9] focus-visible:outline-2 focus-visible:outline-sky-600">
-                  <Phone className="size-4" aria-hidden="true" /> +966 53 497 9774
-                </a>
-                <details className="mt-2 text-center text-xs text-slate-500">
-                  <summary className="mx-auto w-fit cursor-pointer rounded py-2 hover:text-[#007bb9] focus-visible:outline-2 focus-visible:outline-sky-600">Email a department</summary>
-                  <div className="mt-2 space-y-1 text-left">
-                    {DEPARTMENT_CONTACTS.map(({ label, email }) => (
-                      <a key={label} href={`mailto:${email}`} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-md px-2 py-2.5 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-sky-600">
-                        <span>{label}</span>
-                        <span className="break-all font-medium text-[#007bb9]">{email}</span>
-                      </a>
-                    ))}
-                  </div>
-                </details>
-              </div>
+
             </div>
           </Dialog.Popup>
         </Dialog.Portal>

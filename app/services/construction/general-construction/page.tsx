@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 
 export default function GeneralConstructionPage() {
   const data = SUB_SERVICES_DATA["general-construction"]
-  return <SubServiceDetailView data={data} />
+  return <SubServiceDetailView data={data} showShowcase={false} />
 }

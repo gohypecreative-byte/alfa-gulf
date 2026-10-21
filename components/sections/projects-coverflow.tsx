@@ -145,11 +145,11 @@ const SITE_CLIPS: SiteClip[] = [
   { src: "/site-clips/stone-finishes.mp4", poster: "/site-clips/stone-finishes.jpg", title: "Stone cladding works" },
 ];
 
-export const ALFA_GULF_PROJECTS: CoverflowSlide[] = PROJECT_STAGES.flatMap((stage, idx) =>
+export const ALFA_GULF_PROJECTS: CoverflowSlide[] = PROJECT_STAGES.flatMap((stage) =>
   stage.photos.slice(0, 2).map((photo) => ({
     src: photo.src,
     alt: photo.alt,
-    title: `${String(idx + 1).padStart(2, "0")} · ${stage.title}`,
+    title: stage.title,
     subtitle: stage.summary,
   })),
 );
@@ -173,7 +173,7 @@ function SiteClipCard({ clip }: { clip: SiteClip }) {
 
   return (
     <figure className="flex flex-col">
-      <div className="relative aspect-9/16 w-full rounded-xl overflow-hidden bg-zinc-100">
+      <div className="relative aspect-9/16 w-full rounded-md overflow-hidden bg-zinc-100">
         <video
           ref={ref}
           src={clip.src}
@@ -193,16 +193,23 @@ function SiteClipCard({ clip }: { clip: SiteClip }) {
 export function ProjectsCoverflowSection() {
   const [activeIdx, setActiveIdx] = React.useState(0);
   const stage = PROJECT_STAGES[activeIdx];
+  const detailRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const timer = window.setInterval(() => {
+      const panel = detailRef.current;
+      if (!panel || document.hidden) return;
+      const bounds = panel.getBoundingClientRect();
+      if (bounds.top < window.innerHeight && bounds.bottom > 0) {
+        setActiveIdx((index) => (index + 1) % PROJECT_STAGES.length);
+      }
+    }, 6000);
+    return () => window.clearInterval(timer);
+  }, [activeIdx]);
 
   return (
     <section className="relative w-full bg-white text-zinc-900 pt-8 sm:pt-10 md:pt-12 pb-20 sm:pb-28 md:pb-36 overflow-hidden border-t border-zinc-100/70">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-10 sm:mb-14">
-        <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
-          <span className="text-sm sm:text-base md:text-lg font-medium tracking-wide text-zinc-900">
-            Projects
-          </span>
-          <span className="w-14 sm:w-20 md:w-24 h-[1.5px] bg-orange-600"></span>
-        </div>
 
         <div className="max-w-3xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900">
@@ -221,6 +228,7 @@ export function ProjectsCoverflowSection() {
         <CoverflowCarousel
           slides={ALFA_GULF_PROJECTS}
           label="Project photos"
+          pauseOnHover={false}
           cardWidth="clamp(220px, 25vw, 360px)"
           rotate={40}
           depth={0.65}
@@ -228,17 +236,20 @@ export function ProjectsCoverflowSection() {
           gap={0.08}
           showCaption={true}
           showNavigation={true}
-          showPagination={true}
-          cardClassName="shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] ring-1 ring-black/5 hover:ring-orange-500/40 transition-shadow duration-300"
+          showPagination={false}
+          cardClassName="shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] ring-1 ring-black/5 hover:ring-sky-500/40 transition-shadow duration-300"
         />
       </div>
 
       {/* Stage selector */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-16 sm:mt-20">
+      <div
+        ref={detailRef}
+        className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-10 sm:mt-12"
+      >
         <div
-          role="tablist"
-          aria-label="Project stages"
-          className="flex flex-wrap gap-2 border-b border-zinc-200 pb-4"
+          role="group"
+          aria-label="Project categories"
+          className="flex flex-wrap items-center gap-2 pb-4"
         >
           {PROJECT_STAGES.map((s, idx) => {
             const isActive = idx === activeIdx;
@@ -246,18 +257,14 @@ export function ProjectsCoverflowSection() {
               <button
                 key={s.id}
                 type="button"
-                role="tab"
-                aria-selected={isActive}
+                aria-pressed={isActive}
                 onClick={() => setActiveIdx(idx)}
                 className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-zinc-900 text-white"
+                    ? "bg-brand text-white"
                     : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900"
                 }`}
               >
-                <span className={`text-[11px] tabular-nums ${isActive ? "text-orange-400" : "text-zinc-400"}`}>
-                  {String(idx + 1).padStart(2, "0")}
-                </span>
                 {s.title}
               </button>
             );
@@ -268,7 +275,7 @@ export function ProjectsCoverflowSection() {
         <div key={stage.id} className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 animate-in fade-in duration-300">
           <div className="lg:col-span-7 grid grid-cols-2 gap-3">
             {stage.photos.map((photo) => (
-              <div key={photo.src} className="relative aspect-4/3 w-full rounded-xl overflow-hidden bg-zinc-100">
+              <div key={photo.src} className="relative aspect-4/3 w-full rounded-md overflow-hidden bg-zinc-100">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
@@ -281,9 +288,6 @@ export function ProjectsCoverflowSection() {
           </div>
 
           <div className="lg:col-span-5">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-orange-600">
-              Stage {String(activeIdx + 1).padStart(2, "0")} of {PROJECT_STAGES.length}
-            </p>
             <h3 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900">{stage.title}</h3>
             <p className="mt-3 text-base text-zinc-600 leading-relaxed">{stage.summary}</p>
 
@@ -293,7 +297,7 @@ export function ProjectsCoverflowSection() {
             <ul className="mt-3 space-y-2.5">
               {stage.scope.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-[15px] text-zinc-800 leading-snug">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-orange-600 shrink-0" />
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-sky-600 shrink-0" />
                   {item}
                 </li>
               ))}

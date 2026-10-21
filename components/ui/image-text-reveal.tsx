@@ -144,7 +144,7 @@ export const ImageTextReveal: React.FC<ImageTextRevealProps> = ({
 
   return (
     <div
-      className={`relative w-full bg-white text-zinc-900 overflow-x-hidden selection:bg-black selection:text-white cursor-default pt-20 md:pt-28 pb-10 md:pb-14 ${className}`}
+      className={`relative w-full bg-white text-zinc-900 overflow-x-hidden selection:bg-black selection:text-white cursor-default pt-8 md:pt-12 pb-10 md:pb-14 ${className}`}
     >
       {/* FLOATING IMAGE FOLLOWER */}
       <div
@@ -216,14 +216,14 @@ export const ImageTextReveal: React.FC<ImageTextRevealProps> = ({
       <div className="flex items-center justify-center gap-6 sm:gap-8 mt-8 sm:mt-10 md:mt-12">
         <a
           href="/about-us"
-          className="text-xs sm:text-sm font-bold tracking-wider text-zinc-900 hover:text-orange-600 transition-colors uppercase cursor-pointer"
+          className="text-xs sm:text-sm font-bold tracking-wider text-zinc-900 hover:text-sky-600 transition-colors uppercase cursor-pointer"
         >
           LEARN MORE
         </a>
         <span className="w-[1px] h-4 sm:h-5 bg-zinc-300"></span>
         <a
           href="#careers"
-          className="text-xs sm:text-sm font-bold tracking-wider text-zinc-900 hover:text-orange-600 transition-colors uppercase cursor-pointer"
+          className="text-xs sm:text-sm font-bold tracking-wider text-zinc-900 hover:text-sky-600 transition-colors uppercase cursor-pointer"
         >
           CAREERS AT ALFA GULF
         </a>

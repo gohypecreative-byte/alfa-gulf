@@ -173,7 +173,7 @@ export default function ServicesIndexPage() {
         <div className="max-w-[1440px] mx-auto w-full space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-zinc-200/80">
             <div>
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Contracting Divisions
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-normal tracking-tight text-zinc-950 mt-1">
@@ -191,7 +191,7 @@ export default function ServicesIndexPage() {
               <Link
                 key={item.num}
                 href={item.href}
-                className="group flex flex-col rounded-2xl overflow-hidden bg-white border border-zinc-200/80 hover:border-[#0081c6] transition-all duration-300 hover:shadow-md"
+                className="group flex flex-col rounded-2xl overflow-hidden bg-white border border-zinc-200/80 hover:border-brand transition-all duration-300 hover:shadow-md"
               >
                 {/* Image */}
                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100">
@@ -212,10 +212,10 @@ export default function ServicesIndexPage() {
                 {/* Content */}
                 <div className="p-6 sm:p-8 flex flex-col justify-between flex-1 space-y-4">
                   <div>
-                    <span className="text-[11px] font-mono font-bold tracking-wider text-[#0081c6] uppercase block mb-1">
+                    <span className="text-[11px] font-mono font-bold tracking-wider text-brand uppercase block mb-1">
                       {item.category}
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-medium text-zinc-950 group-hover:text-[#0081c6] transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-medium text-zinc-950 group-hover:text-brand transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-sm text-zinc-600 mt-2 font-normal leading-relaxed">
@@ -236,7 +236,7 @@ export default function ServicesIndexPage() {
                       ))}
                     </div>
 
-                    <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0081c6] uppercase tracking-wider shrink-0 group-hover:translate-x-1 transition-transform">
+                    <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand uppercase tracking-wider shrink-0 group-hover:translate-x-1 transition-transform">
                       <span>View</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </div>
@@ -253,7 +253,7 @@ export default function ServicesIndexPage() {
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 General Contracting Inquiries
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
@@ -268,7 +268,7 @@ export default function ServicesIndexPage() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <Link
                 href="/about-us"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#0081c6] hover:bg-[#0070ad] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand hover:bg-brand-hover text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
               >
                 <span>About Our Firm</span>
                 <ArrowRight className="w-4 h-4" />
@@ -278,7 +278,7 @@ export default function ServicesIndexPage() {
                 href="tel:+966534979774"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-bold text-xs uppercase tracking-wider transition-colors border border-zinc-200/80"
               >
-                <Phone className="w-4 h-4 text-[#0081c6]" />
+                <Phone className="w-4 h-4 text-brand" />
                 <span>+966534979774</span>
               </a>
             </div>
@@ -287,11 +287,11 @@ export default function ServicesIndexPage() {
           {/* Quick Info Line */}
           <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-500">
             <div className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-[#0081c6]" />
+              <MapPin className="w-3.5 h-3.5 text-brand" />
               <span>Riyadh, Kingdom of Saudi Arabia</span>
             </div>
             <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-[#0081c6]" />
+              <Mail className="w-3.5 h-3.5 text-brand" />
               <span>info@alfa-gulf.com</span>
             </div>
             <div>

@@ -40,12 +40,12 @@ export function HoverFooter() {
 
   const contactInfo = [
     {
-      icon: <Phone size={18} className="text-[#0081c6]" />,
+      icon: <Phone size={18} className="text-brand" />,
       text: "+966534979774",
       href: "tel:+966534979774",
     },
     {
-      icon: <MapPin size={18} className="text-[#0081c6]" />,
+      icon: <MapPin size={18} className="text-brand" />,
       text: "King Fahd Road, Al-Olaya, Riyadh, KSA",
     },
   ];
@@ -147,7 +147,7 @@ export function HoverFooter() {
                   <li key={link.label} className="relative">
                     <a
                       href={link.href}
-                      className="text-slate-600 hover:text-[#0081c6] transition-colors text-sm"
+                      className="text-slate-600 hover:text-brand transition-colors text-sm"
                     >
                       {link.label}
                     </a>
@@ -165,8 +165,8 @@ export function HoverFooter() {
             <ul className="space-y-4 text-sm text-slate-600">
               {DEPARTMENT_CONTACTS.map(({ label, email }) => (
                 <li key={label}>
-                  <a href={`mailto:${email}`} className="flex items-start gap-3 hover:text-[#0081c6] transition-colors">
-                    <Mail size={18} className="mt-0.5 shrink-0 text-[#0081c6]" />
+                  <a href={`mailto:${email}`} className="flex items-start gap-3 hover:text-brand transition-colors">
+                    <Mail size={18} className="mt-0.5 shrink-0 text-brand" />
                     <span className="min-w-0">
                       <span className="block text-xs font-semibold text-slate-900">{label}</span>
                       <span className="break-words">{email}</span>
@@ -180,7 +180,7 @@ export function HoverFooter() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="hover:text-[#0081c6] transition-colors"
+                      className="hover:text-brand transition-colors"
                     >
                       {item.text}
                     </a>
@@ -193,10 +193,9 @@ export function HoverFooter() {
           </div>
         </div>
 
-        <hr className="border-t border-slate-200/80 mt-8 mb-12" />
 
-        {/* Footer bottom bar - exact layout as in demo screenshot media_1788856754017.png */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0 relative z-30">
+        {/* Social links and copyright above the decorative wordmark */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0 mt-8 relative z-30">
           {/* Social icons */}
           <div className="flex space-x-6 text-slate-500">
             {socialLinks.map(({ icon, label, href }) => (
@@ -204,7 +203,7 @@ export function HoverFooter() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="hover:text-[#0081c6] transition-colors text-slate-500 hover:text-slate-900"
+                className="hover:text-brand transition-colors text-slate-500"
               >
                 {icon}
               </a>
@@ -216,10 +215,11 @@ export function HoverFooter() {
             &copy; {new Date().getFullYear()} ALFA GULF CONTRACTING COMPANY. All rights reserved.
           </p>
         </div>
+        <hr className="border-t border-slate-200/80 mt-6" />
       </div>
 
-      {/* Text hover effect cleanly positioned with line clearance and social bar overlap */}
-      <div className="w-full flex justify-center items-center h-[24rem] sm:h-[28rem] -mt-32 sm:-mt-38 -mb-24 sm:-mb-30 relative z-20 pointer-events-auto overflow-hidden">
+      {/* Wordmark in its own row without overlapping the footer information */}
+      <div className="w-full flex justify-center items-center h-24 sm:h-36 lg:h-44 mt-2 sm:mt-3 relative z-20 pointer-events-auto overflow-hidden">
         <TextHoverEffect text="ALFA GULF" className="w-full max-w-[1500px] px-2 sm:px-4 z-50" />
       </div>
 

@@ -12,9 +12,10 @@ import type { SubServiceData } from "@/types/services"
 
 interface SubServiceViewProps {
   data: SubServiceData
+  showShowcase?: boolean
 }
 
-export function SubServiceDetailView({ data }: SubServiceViewProps) {
+export function SubServiceDetailView({ data, showShowcase = true }: SubServiceViewProps) {
   const overviewImg = data.overviewImage
   const showcaseImg = data.showcaseBanner
   const isFacadeShowcase = showcaseImg === "/building-facade.png"
@@ -52,15 +53,15 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
         <div className="max-w-[1440px] mx-auto w-full">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 mb-8 text-xs text-zinc-500 font-mono">
-            <Link href="/services" className="hover:text-[#0081c6] transition-colors uppercase">
+            <Link href="/services" className="hover:text-brand transition-colors uppercase">
               Services
             </Link>
             <ChevronRight className="w-3 h-3 text-zinc-400" />
-            <Link href={data.parentHref} className="hover:text-[#0081c6] transition-colors uppercase">
+            <Link href={data.parentHref} className="hover:text-brand transition-colors uppercase">
               {data.parentTitle}
             </Link>
             <ChevronRight className="w-3 h-3 text-zinc-400" />
-            <span className="text-[#0081c6] font-bold uppercase">{data.title}</span>
+            <span className="text-brand font-bold uppercase">{data.title}</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -81,25 +82,25 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
               {/* Quality Checklist Highlights */}
               <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     Saudi Building Code (SBC) Certified
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     Civil Defense & Municipal Licensed
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     ISO 9001, ISO 14001 & ISO 45001 Certified
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     Turnkey Kingdom-Wide Execution
                   </span>
@@ -122,6 +123,7 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
       </section>
 
       {/* ── 3. WIDE SHOWCASE IMAGE BANNER CARD (No Text, No Dark Overlay) ── */}
+      {showShowcase && (
       <section className={`px-6 sm:px-10 lg:px-16 py-12 ${isFacadeShowcase ? "bg-transparent" : "border-b border-zinc-200/80 bg-zinc-50/50"}`}>
         <div className="max-w-[1440px] mx-auto w-full">
           <div className={`relative aspect-[21/9] sm:aspect-[24/9] w-full overflow-hidden ${isFacadeShowcase ? "bg-transparent" : "bg-zinc-100 border border-zinc-200/80 shadow-xs"}`}>
@@ -136,13 +138,14 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── 4. KEY CAPABILITIES & FEATURES GRID ── */}
       {data.features && data.features.length > 0 && (
         <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
           <div className="max-w-[1440px] mx-auto w-full">
             <div className="mb-12 space-y-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Scope & Capabilities
               </span>
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -154,9 +157,9 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
               {data.features.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-none bg-zinc-50/70 border border-zinc-200/80 space-y-3 shadow-xs hover:border-[#0081c6] hover:bg-white transition-all duration-200"
+                  className="p-6 rounded-none bg-zinc-50/70 border border-zinc-200/80 space-y-3 shadow-xs hover:border-brand hover:bg-white transition-all duration-200"
                 >
-                  <div className="w-8 h-8 rounded-none bg-sky-50 text-[#0081c6] flex items-center justify-center font-mono font-bold text-xs">
+                  <div className="w-8 h-8 rounded-none bg-sky-50 text-brand flex items-center justify-center font-mono font-bold text-xs">
                     0{idx + 1}
                   </div>
                   <h3 className="text-lg font-medium text-zinc-950">{feat.title}</h3>
@@ -185,7 +188,7 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
 
             {/* Right Compliance Narrative */}
             <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Quality Assurance & Regulatory Mandate
               </span>
 
@@ -207,7 +210,7 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
                   "BIM 3D Clash Detection Prior to Execution",
                 ]).map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2.5">
-                    <ShieldCheck className="w-4 h-4 text-[#0081c6] shrink-0" />
+                    <ShieldCheck className="w-4 h-4 text-brand shrink-0" />
                     <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                       {item}
                     </span>
@@ -224,7 +227,7 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
         <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
           <div className="max-w-[1440px] mx-auto w-full">
             <div className="mb-12 space-y-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Technical Specifications
               </span>
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -258,7 +261,7 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Technical Consultation • {data.title}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
@@ -272,7 +275,7 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <Link
                 href="/about-us"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#0081c6] hover:bg-[#0070ad] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand hover:bg-brand-hover text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
               >
                 <span>About Alfa Gulf</span>
                 <ArrowRight className="w-4 h-4" />
@@ -282,7 +285,7 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
                 href="tel:+966534979774"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-bold text-xs uppercase tracking-wider transition-colors border border-zinc-200/80"
               >
-                <Phone className="w-4 h-4 text-[#0081c6]" />
+                <Phone className="w-4 h-4 text-brand" />
                 <span>+966534979774</span>
               </a>
             </div>
@@ -290,11 +293,11 @@ export function SubServiceDetailView({ data }: SubServiceViewProps) {
 
           <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-500">
             <div className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-[#0081c6]" />
+              <MapPin className="w-3.5 h-3.5 text-brand" />
               <span>Riyadh, Kingdom of Saudi Arabia</span>
             </div>
             <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-[#0081c6]" />
+              <Mail className="w-3.5 h-3.5 text-brand" />
               <span>info@alfa-gulf.com</span>
             </div>
             <div>

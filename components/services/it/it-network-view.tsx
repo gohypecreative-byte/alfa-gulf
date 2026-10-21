@@ -29,21 +29,21 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
         <div className="max-w-[1440px] mx-auto w-full">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 mb-8 text-xs text-zinc-500 font-mono">
-            <Link href="/services" className="hover:text-[#0081c6] transition-colors uppercase">
+            <Link href="/services" className="hover:text-brand transition-colors uppercase">
               Services
             </Link>
             <ChevronRight className="w-3 h-3 text-zinc-400" />
-            <Link href={data.parentHref} className="hover:text-[#0081c6] transition-colors uppercase">
+            <Link href={data.parentHref} className="hover:text-brand transition-colors uppercase">
               {data.parentTitle}
             </Link>
             <ChevronRight className="w-3 h-3 text-zinc-400" />
-            <span className="text-[#0081c6] font-bold uppercase">{data.title}</span>
+            <span className="text-brand font-bold uppercase">{data.title}</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Enterprise Connectivity & Defense
               </span>
               <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-normal leading-[1.12] text-zinc-950 tracking-tight">
@@ -61,25 +61,25 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
               {/* Network Checklist */}
               <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     10Gbps Optical Fiber Backbone Architecture
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     NCA ECC & SAMA Cybersecurity Approved
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     High-Density Enterprise Wi-Fi 6 Access Points
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">
                     Zero-Trust Next-Gen Firewall (NGFW) Defense
                   </span>
@@ -106,7 +106,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
         <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-zinc-50/50">
           <div className="max-w-[1440px] mx-auto w-full">
             <div className="mb-10 space-y-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 On site
               </span>
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -159,7 +159,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
         <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
           <div className="max-w-[1440px] mx-auto w-full">
             <div className="mb-12 space-y-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Capability Matrix
               </span>
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -171,9 +171,9 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
               {data.features.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-none bg-zinc-50/70 border border-zinc-200/80 space-y-3 shadow-xs hover:border-[#0081c6] hover:bg-white transition-all duration-200"
+                  className="p-6 rounded-none bg-zinc-50/70 border border-zinc-200/80 space-y-3 shadow-xs hover:border-brand hover:bg-white transition-all duration-200"
                 >
-                  <div className="w-8 h-8 rounded-none bg-sky-50 text-[#0081c6] flex items-center justify-center font-mono font-bold text-xs">
+                  <div className="w-8 h-8 rounded-none bg-sky-50 text-brand flex items-center justify-center font-mono font-bold text-xs">
                     0{idx + 1}
                   </div>
                   <h3 className="text-lg font-medium text-zinc-950">{feat.title}</h3>
@@ -202,7 +202,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
 
             {/* Right Narrative */}
             <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Regulatory Cybersecurity Mandate
               </span>
 
@@ -216,19 +216,19 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 <div className="flex items-center gap-2.5">
-                  <ShieldAlert className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <ShieldAlert className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">NCA ECC Compliance Validated</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <ShieldAlert className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <ShieldAlert className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">AES-256 Bit Hardware Encryption</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <ShieldAlert className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <ShieldAlert className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">24/7 Security Operations Center (SOC)</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <ShieldAlert className="w-4 h-4 text-[#0081c6] shrink-0" />
+                  <ShieldAlert className="w-4 h-4 text-brand shrink-0" />
                   <span className="text-xs sm:text-sm text-zinc-700 font-medium">Fluke Tested & Certified Cable Drops</span>
                 </div>
               </div>
@@ -241,7 +241,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
       <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="mb-12 space-y-2">
-            <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
               Technical Metrics
             </span>
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -269,7 +269,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
       <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-sky-50/30">
         <div className="max-w-[1440px] mx-auto w-full space-y-12">
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
               Security Protocol Benchmarks
             </span>
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -279,7 +279,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl bg-white border border-zinc-200/80 space-y-3 shadow-xs">
-              <span className="text-xs font-mono text-[#0081c6] font-bold uppercase">Perimeter Firewall</span>
+              <span className="text-xs font-mono text-brand font-bold uppercase">Perimeter Firewall</span>
               <h4 className="text-lg font-semibold text-zinc-900">Deep Packet Inspection (DPI)</h4>
               <p className="text-xs text-zinc-600 leading-relaxed">
                 SSL decryption, sandboxing, and real-time signature updates isolating malicious payloads before entering the internal network LAN.
@@ -287,7 +287,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
             </div>
 
             <div className="p-6 rounded-2xl bg-white border border-zinc-200/80 space-y-3 shadow-xs">
-              <span className="text-xs font-mono text-[#0081c6] font-bold uppercase">Identity & Access</span>
+              <span className="text-xs font-mono text-brand font-bold uppercase">Identity & Access</span>
               <h4 className="text-lg font-semibold text-zinc-900">802.1X NAC & SAML 2.0 MFA</h4>
               <p className="text-xs text-zinc-600 leading-relaxed">
                 Hardware MAC filtering, 802.1X port authentication, and mandatory Multi-Factor Authentication (MFA) for every remote user connection.
@@ -295,7 +295,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
             </div>
 
             <div className="p-6 rounded-2xl bg-white border border-zinc-200/80 space-y-3 shadow-xs">
-              <span className="text-xs font-mono text-[#0081c6] font-bold uppercase">Continuous SOC</span>
+              <span className="text-xs font-mono text-brand font-bold uppercase">Continuous SOC</span>
               <h4 className="text-lg font-semibold text-zinc-900">24/7 SIEM Threat Isolation</h4>
               <p className="text-xs text-zinc-600 leading-relaxed">
                 Centralized syslog monitoring with AI automated endpoint containment responding to anomalies within 15 minutes.
@@ -312,7 +312,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#0081c6] uppercase">
+              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
                 Network Consultation • {data.title}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
@@ -326,7 +326,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <Link
                 href="/about-us"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#0081c6] hover:bg-[#0070ad] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand hover:bg-brand-hover text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
               >
                 <span>About Alfa Gulf</span>
                 <ArrowRight className="w-4 h-4" />
@@ -336,7 +336,7 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
                 href="tel:+966534979774"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-bold text-xs uppercase tracking-wider transition-colors border border-zinc-200/80"
               >
-                <Phone className="w-4 h-4 text-[#0081c6]" />
+                <Phone className="w-4 h-4 text-brand" />
                 <span>+966534979774</span>
               </a>
             </div>
@@ -344,11 +344,11 @@ export function ITNetworkView({ data }: { data: ITNetworkData }) {
 
           <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-500">
             <div className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-[#0081c6]" />
+              <MapPin className="w-3.5 h-3.5 text-brand" />
               <span>Riyadh, Kingdom of Saudi Arabia</span>
             </div>
             <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-[#0081c6]" />
+              <Mail className="w-3.5 h-3.5 text-brand" />
               <span>info@alfa-gulf.com</span>
             </div>
             <div>

@@ -9,13 +9,13 @@ import { ImageTextReveal } from "@/components/ui/image-text-reveal"
 export default function Home() {
   return (
     <div className="bg-white text-slate-900 min-h-screen">
-      {/* 1. 192-Frame Scroll Video Hero */}
+      {/* 1. Autoplaying Hero */}
       <VideoScrollHero />
 
       {/* 2. Core Categories: Construction, IT & Technology, Trading */}
       <CategoriesSection />
 
-      {/* 3. Sectors & Video Pin Reveal Section with Screenshot Content */}
+      {/* 3. Company Overview, Sectors & Video */}
       <HeroScrollVideoReveal videoSrc="/Aerial_view_of_industrial_complex_202609071617_gwr_video_mvp.mp4" />
 
       {/* 3. Services Section with GSAP SVG Interactive Clip-Path Stack */}
