@@ -229,6 +229,7 @@ export function ProjectsCoverflowSection() {
           slides={ALFA_GULF_PROJECTS}
           label="Project photos"
           pauseOnHover={false}
+          autoPlayInterval={1500}
           cardWidth="clamp(220px, 25vw, 360px)"
           rotate={40}
           depth={0.65}

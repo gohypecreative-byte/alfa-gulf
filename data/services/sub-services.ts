@@ -227,6 +227,7 @@ export const SUB_SERVICES_DATA: Record<string, SubServiceData> = {
     headline: "Bespoke corporate fit-outs, executive boardrooms, luxury retail flagships, and acoustic spaces.",
     description: "Transforming raw shell & core commercial floors into inspiring corporate work environments, coordinating acoustic drywall partitions, custom timber millwork, demountable glass walls, and concealed low-voltage services.",
     heroImage: "/services/fitout_works.jpg",
+    heroFrames: { dir: "/fit_out_parallax_frames", count: 900, digits: 4, ext: "jpg" },
     overviewImage: "/services/commercial_projects.jpg",
     showcaseBanner: "/services/residential_villas.jpg",
     complianceImage: "/safety/common_good_infra.jpg",

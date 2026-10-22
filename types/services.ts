@@ -48,7 +48,7 @@ export interface SubServiceData {
   description: string
   heroImage: string
   /** Optional scroll-scrubbed frame sequence that replaces the static hero. */
-  heroFrames?: { dir: string; count: number; digits?: number }
+  heroFrames?: { dir: string; count: number; digits?: number; ext?: "webp" | "jpg" }
   overviewImage: string
   showcaseBanner: string
   complianceImage: string

@@ -28,7 +28,7 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
       {heroFrames ? (
         <ScrollFrameSequence
           frameCount={heroFrames.count}
-          getFramePath={(i) => `${heroFrames.dir}/frame_${String(i + 1).padStart(heroFrames.digits ?? 3, "0")}.webp`}
+          getFramePath={(i) => `${heroFrames.dir}/frame_${String(i + 1).padStart(heroFrames.digits ?? 3, "0")}.${heroFrames.ext ?? "webp"}`}
           scrollHeightVh={420}
           fit="cover"
           topOffsetClassName="top-[84px] md:top-[88px]"
