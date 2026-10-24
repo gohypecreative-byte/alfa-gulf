@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { ITSecurityView } from "@/components/services/it/it-security-view"
+import { CctvScrollHero } from "@/components/services/it/cctv-scroll-hero"
 import { SUB_SERVICES_DATA } from "@/data/services/sub-services"
 
 export const metadata: Metadata = {
@@ -9,5 +10,5 @@ export const metadata: Metadata = {
 
 export default function CctvSubPage() {
   const data = SUB_SERVICES_DATA["cctv"]
-  return <ITSecurityView data={data} />
+  return <ITSecurityView data={data} hero={<CctvScrollHero key="cctv-scroll-hero" />} />
 }
