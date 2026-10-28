@@ -212,7 +212,7 @@ export function HoverFooter() {
 
           {/* Copyright */}
           <p className="text-center md:text-left text-slate-500 text-sm">
-            &copy; {new Date().getFullYear()} ALFA GULF CONTRACTING COMPANY. All rights reserved.
+            &copy; {new Date().getFullYear()} ALFA GULF TECHNOLOGIES & CONSTRUCTION COMPANY. All rights reserved.
           </p>
         </div>
         <hr className="border-t border-slate-200/80 mt-6" />

@@ -3,6 +3,7 @@
 import { CertificationsSection } from "@/components/services/certifications-section"
 import React from "react"
 import Image from "next/image"
+import { ScrollFrameSequence } from "@/components/ui/scroll-frame-sequence"
 import Link from "next/link"
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin, ChevronRight, Monitor, Headphones, Truck } from "lucide-react"
 
@@ -10,9 +11,26 @@ import type { ITWorkplaceData } from "@/types/services"
 
 
 export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
+  const heroFrames = data.heroFrames
+  const getFramePath = React.useCallback(
+    (index: number) => heroFrames
+      ? `${heroFrames.dir}/frame_${String(index + 1).padStart(heroFrames.digits ?? 3, "0")}.${heroFrames.ext ?? "webp"}`
+      : data.heroImage,
+    [heroFrames, data.heroImage]
+  )
+
   return (
     <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
-      {/* ── 1. FULL-SCREEN LIGHT HERO BANNER (No Text, No Dark Color) ── */}
+      {/* ── 1. SCROLL SEQUENCE OR STATIC HERO BANNER ── */}
+      {heroFrames ? (
+        <ScrollFrameSequence
+          frameCount={heroFrames.count}
+          getFramePath={getFramePath}
+          scrollHeightVh={420}
+          stageHeightClassName="h-[calc(100dvh-80px)] md:h-[calc(100dvh-84px)]"
+          className="border-b border-zinc-200/80"
+        />
+      ) : (
       <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
         <Image
           src={data.heroImage}
@@ -23,6 +41,7 @@ export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
           className="object-cover"
         />
       </section>
+      )}
 
       {/* ── 2. WORKPLACE TECHNOLOGY OVERVIEW ── */}
       <section className="px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24 border-b border-zinc-200/80 bg-white">

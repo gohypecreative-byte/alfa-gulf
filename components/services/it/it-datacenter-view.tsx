@@ -15,12 +15,20 @@ import type { ITDataCenterData } from "@/types/services"
 
 
 export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
+  const heroFrames = data.heroFrames
+  const getFramePath = React.useCallback(
+    (index: number) => heroFrames
+      ? `${heroFrames.dir}/frame_${String(index + 1).padStart(heroFrames.digits ?? 3, "0")}.${heroFrames.ext ?? "webp"}`
+      : getDataCentreFramePath(index),
+    [heroFrames]
+  )
+
   return (
     <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
-      {/* ── 1. SCROLL-SCRUBBED DATA CENTRE BUILD SEQUENCE ── */}
+      {/* ── 1. SCROLL-SCRUBBED SERVICE SEQUENCE ── */}
       <ScrollFrameSequence
-        frameCount={DATA_CENTRE_FRAME_COUNT}
-        getFramePath={getDataCentreFramePath}
+        frameCount={heroFrames?.count ?? DATA_CENTRE_FRAME_COUNT}
+        getFramePath={getFramePath}
         scrollHeightVh={420}
         className="border-b border-zinc-200/80"
       />

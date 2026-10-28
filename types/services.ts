@@ -77,6 +77,7 @@ export interface ITDataCenterData {
   headline: string
   description: string
   heroImage: string
+  heroFrames?: SubServiceData["heroFrames"]
   overviewImage: string
   showcaseBanner: string
   complianceImage: string
@@ -145,6 +146,7 @@ export interface ITWorkplaceData {
   headline: string
   description: string
   heroImage: string
+  heroFrames?: SubServiceData["heroFrames"]
   overviewImage: string
   showcaseBanner: string
   complianceImage: string
