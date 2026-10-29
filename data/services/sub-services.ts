@@ -292,7 +292,7 @@ export const SUB_SERVICES_DATA: Record<string, SubServiceData> = {
     headline: "Robotic concrete breaking, diamond wire sawing, CFRP strengthening, and Balady permits.",
     description: "Executing precise controlled demolition of reinforced concrete structures, selective interior strip-outs, foundation wire-sawing, and carbon fiber structural retrofits with zero impact to neighboring buildings.",
     heroImage: "/services/structural_demolition.jpg",
-    heroFrames: { dir: "/Demolition_Renovation", count: 795, digits: 4 },
+    heroFrames: { dir: "/demolition_scroll_frames", count: 331, digits: 4 },
     overviewImage: "/services/demolition_renovation.jpg",
     showcaseBanner: "/categories/construction.jpg",
     complianceImage: "/safety/teamwork_structural.jpg",
