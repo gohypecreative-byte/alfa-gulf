@@ -12,22 +12,23 @@ import type { ITWorkplaceData } from "@/types/services"
 
 export function ITWorkplaceView({ data }: { data: ITWorkplaceData }) {
   const heroFrames = data.heroFrames
-  const getFramePath = React.useCallback(
-    (index: number) => heroFrames
-      ? `${heroFrames.dir}/frame_${String(index + 1).padStart(heroFrames.digits ?? 3, "0")}.${heroFrames.ext ?? "webp"}`
-      : data.heroImage,
-    [heroFrames, data.heroImage]
-  )
+  const playbackCount = heroFrames?.sampleCount ?? heroFrames?.count ?? 1
+  const getFramePath = React.useCallback((index: number) => {
+    if (!heroFrames) return data.heroImage
+    const frame = playbackCount > 1
+      ? Math.round(index * (heroFrames.count - 1) / (playbackCount - 1)) + 1 : 1
+    return `${heroFrames.dir}/${heroFrames.prefix ?? "frame_"}${String(frame).padStart(heroFrames.digits ?? 3, "0")}.${heroFrames.ext ?? "webp"}`
+  }, [heroFrames, playbackCount, data.heroImage])
 
   return (
-    <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
+    <div className={`bg-white text-zinc-950 min-h-screen ${heroFrames ? "" : "pt-20 md:pt-[84px]"}`}>
       {/* ── 1. SCROLL SEQUENCE OR STATIC HERO BANNER ── */}
       {heroFrames ? (
         <ScrollFrameSequence
-          frameCount={heroFrames.count}
+          frameCount={playbackCount}
           getFramePath={getFramePath}
           scrollHeightVh={420}
-          stageHeightClassName="h-[calc(100dvh-80px)] md:h-[calc(100dvh-84px)]"
+          fit={heroFrames.fit ?? "cover"}
           className="border-b border-zinc-200/80"
         />
       ) : (

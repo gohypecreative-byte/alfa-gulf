@@ -12,7 +12,7 @@ import type { ITSecurityData } from "@/types/services"
 export function ITSecurityView({ data, hero }: { data: ITSecurityData; hero?: React.ReactNode }) {
   const galleryImg = data.galleryImage || data.showcaseBanner || data.overviewImage
   return (
-    <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
+    <div className={`bg-white text-zinc-950 min-h-screen ${hero ? "" : "pt-20 md:pt-[84px]"}`}>
       {/* ── 1. FULL-SCREEN LIGHT HERO BANNER (No Text, No Dark Color) ── */}
       {hero ?? <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
         <Image

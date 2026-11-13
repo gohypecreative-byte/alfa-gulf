@@ -24,7 +24,7 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
   )
 
   return (
-    <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
+    <div className="bg-white text-zinc-950 min-h-screen">
       {/* ── 1. SCROLL-SCRUBBED SERVICE SEQUENCE ── */}
       <ScrollFrameSequence
         frameCount={heroFrames?.count ?? DATA_CENTRE_FRAME_COUNT}

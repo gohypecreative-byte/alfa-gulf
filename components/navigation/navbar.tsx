@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { Dialog } from "@base-ui/react/dialog"
 import { Select } from "@base-ui/react/select"
 import {
@@ -296,6 +297,7 @@ const SERVICES = [
 ]
 
 export function Navbar() {
+  const pathname = usePathname()
   const [isOverHero, setIsOverHero] = React.useState(true)
   const [isServicesOpen, setIsServicesOpen] = React.useState(false)
   const [activeHoverCategory, setActiveHoverCategory] = React.useState<number>(0)
@@ -316,7 +318,7 @@ export function Navbar() {
   // Track whether the video scroll hero section is active under the navbar
   React.useEffect(() => {
     const handleScroll = () => {
-      const heroEl = document.getElementById("video-hero-section")
+      const heroEl = document.querySelector("[data-video-hero], #video-hero-section")
       if (!heroEl) {
         setIsOverHero(false)
         return
@@ -324,7 +326,7 @@ export function Navbar() {
       const rect = heroEl.getBoundingClientRect()
       const navHeight = headerRef.current?.offsetHeight || 84
       // The video scroll hero is active while its bottom is still below the navbar
-      setIsOverHero(rect.bottom > navHeight)
+      setIsOverHero(rect.top <= navHeight && rect.bottom > navHeight)
     }
 
     handleScroll()
@@ -334,9 +336,9 @@ export function Navbar() {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("resize", handleScroll)
     }
-  }, [])
+  }, [pathname])
 
-  const isTransparent = isOverHero && !isMobileMenuOpen
+  const isTransparent = isOverHero && !isMobileMenuOpen && !isServicesOpen
 
   // Focus search input when search modal opens
   React.useEffect(() => {
@@ -409,7 +411,7 @@ export function Navbar() {
           isTransparent
             ? isServicesOpen
               ? "bg-[#0b0f19]/98 backdrop-blur-2xl border-b border-white/10"
-              : "bg-gradient-to-b from-black/60 via-black/25 to-transparent border-b border-transparent shadow-none"
+              : "bg-transparent border-b border-transparent shadow-none drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"
             : "bg-white border-b border-slate-200/80 shadow-sm"
         }`}
       >

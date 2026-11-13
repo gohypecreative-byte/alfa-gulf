@@ -30,8 +30,8 @@ export function ScrollFrameSequence({
   frameCount,
   getFramePath,
   scrollHeightVh = 400,
-  topOffsetClassName = "top-20 md:top-[84px]",
-  stageHeightClassName = "h-[calc(100vh-80px)] md:h-[calc(100vh-84px)]",
+  topOffsetClassName = "top-0",
+  stageHeightClassName = "h-dvh",
   fit = "cover",
   className = "",
   children,
@@ -69,6 +69,7 @@ export function ScrollFrameSequence({
     load(0).then(() => {
       if (cancelled) return
       setFirstFrameReady(true)
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
       const batch = 8
       let next = 1
       const pump = async () => {
@@ -153,7 +154,8 @@ export function ScrollFrameSequence({
       if (scrollable <= 0) return
       const p = Math.min(1, Math.max(0, (stageTop - rect.top) / scrollable))
       setProgress(p)
-      targetFrameRef.current = p * (frameCount - 1)
+      targetFrameRef.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? 0 : p * (frameCount - 1)
     }
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
@@ -193,7 +195,8 @@ export function ScrollFrameSequence({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full select-none ${className}`}
+      data-video-hero
+      className={`relative w-full select-none motion-reduce:!h-auto ${className}`}
       style={{ height: `${scrollHeightVh}vh` }}
     >
       <div
@@ -211,7 +214,7 @@ export function ScrollFrameSequence({
 
         {showScrollHint && (
           <div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/80 text-[11px] font-semibold tracking-widest uppercase pointer-events-none transition-opacity duration-300"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/80 text-[11px] font-semibold tracking-widest uppercase pointer-events-none transition-opacity duration-300 motion-reduce:hidden"
             style={{ opacity: progress < 0.04 && firstFrameReady ? 1 : 0 }}
           >
             <span className="drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">Scroll</span>

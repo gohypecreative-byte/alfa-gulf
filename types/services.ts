@@ -48,7 +48,7 @@ export interface SubServiceData {
   description: string
   heroImage: string
   /** Optional scroll-scrubbed frame sequence that replaces the static hero. */
-  heroFrames?: { dir: string; count: number; digits?: number; ext?: "webp" | "jpg" }
+  heroFrames?: { dir: string; count: number; digits?: number; ext?: "webp" | "jpg"; prefix?: string; fit?: "contain" | "cover"; sampleCount?: number }
   overviewImage: string
   showcaseBanner: string
   complianceImage: string
@@ -100,6 +100,7 @@ export interface ITNetworkData {
   headline: string
   description: string
   heroImage: string
+  heroFrames?: SubServiceData["heroFrames"]
   overviewImage: string
   showcaseBanner: string
   complianceImage: string

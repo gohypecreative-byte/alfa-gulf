@@ -21,18 +21,23 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
   const isFacadeShowcase = showcaseImg === "/building-facade.png"
   const complianceImg = data.complianceImage
   const heroFrames = data.heroFrames
+  const playbackCount = heroFrames?.sampleCount ?? heroFrames?.count ?? 1
+  const getFramePath = React.useCallback((i: number) => {
+    // Sample across the entire source clip, including its first and last frames.
+    const frame = heroFrames && playbackCount > 1
+      ? Math.round(i * (heroFrames.count - 1) / (playbackCount - 1)) + 1 : 1
+    return `${heroFrames?.dir}/${heroFrames?.prefix ?? "frame_"}${String(frame).padStart(heroFrames?.digits ?? 3, "0")}.${heroFrames?.ext ?? "webp"}`
+  }, [heroFrames, playbackCount])
 
   return (
-    <div className="bg-white text-zinc-950 min-h-screen pt-[84px] md:pt-[88px]">
+    <div className={`bg-white text-zinc-950 min-h-screen ${heroFrames ? "" : "pt-[84px] md:pt-[88px]"}`}>
       {/* ── 1. HERO: scroll-scrubbed frame sequence when provided, else static banner ── */}
       {heroFrames ? (
         <ScrollFrameSequence
-          frameCount={heroFrames.count}
-          getFramePath={(i) => `${heroFrames.dir}/frame_${String(i + 1).padStart(heroFrames.digits ?? 3, "0")}.${heroFrames.ext ?? "webp"}`}
+          frameCount={playbackCount}
+          getFramePath={getFramePath}
           scrollHeightVh={420}
-          fit="cover"
-          topOffsetClassName="top-[84px] md:top-[88px]"
-          stageHeightClassName="h-[calc(100dvh-84px)] md:h-[calc(100dvh-88px)]"
+          fit={heroFrames.fit ?? "cover"}
           className="border-b border-zinc-200/80"
         />
       ) : (

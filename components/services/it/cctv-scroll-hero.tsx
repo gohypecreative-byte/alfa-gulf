@@ -23,9 +23,9 @@ export function CctvScrollHero() {
   const reducedMotion = useSyncExternalStore(subscribeToMotion, getReducedMotion, getServerSnapshot)
 
   return (
-    <section aria-label="CCTV surveillance camera showcase">
+    <section data-video-hero aria-label="CCTV surveillance camera showcase">
       {reducedMotion ? (
-        <div className="relative h-[calc(100svh-80px)] md:h-[calc(100svh-84px)] border-b border-zinc-200/80">
+        <div className="relative h-dvh border-b border-zinc-200/80">
           <Image src={getFramePath(0)} alt="CCTV surveillance camera" fill priority sizes="100vw" className="object-cover" />
         </div>
       ) : (
@@ -33,7 +33,6 @@ export function CctvScrollHero() {
           frameCount={FRAME_COUNT}
           getFramePath={getFramePath}
           scrollHeightVh={500}
-          stageHeightClassName="h-[calc(100svh-80px)] md:h-[calc(100svh-84px)]"
           className="border-b border-zinc-200/80"
         />
       )}
