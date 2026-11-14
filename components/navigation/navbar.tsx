@@ -92,7 +92,7 @@ const DIVISIONS_28_DATA: ServiceCategory[] = [
     id: "it-solutions",
     num: "02",
     title: "IT SOLUTIONS",
-    badge: "DIVISION 02 • 12 SERVICES",
+    badge: "DIVISION 02 • 14 SERVICES",
     badgeColor: "text-blue-600 dark:text-blue-400",
     badgeBg: "bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300",
     activeTitle: "Data Centre Solutions",
@@ -109,6 +109,8 @@ const DIVISIONS_28_DATA: ServiceCategory[] = [
       { num: "22", title: "Network Security & Cyber", concept: "Secure Every Connection", href: "/services/it-solutions/cybersecurity", icon: ShieldAlert, image: "/services/cctv/cybersecurity_network_defense.jpg" },
       { num: "23", title: "IP Telephony & Unified Comm.", concept: "Connected Organization", href: "/services/it-solutions/ip-telephony", icon: PhoneCall, image: "/services/cctv/biometric_access_control.jpg" },
       { num: "24", title: "Managed IT Services / AMC", concept: "Always Supported", href: "/services/it-solutions/managed-services", icon: Headphones, image: "/services/cctv/cctv_ai_surveillance.jpg" },
+      { num: "29", title: "Smart Building & Technology Integration", concept: "Connected Building Operations", href: "/services/it-solutions/smart-building", icon: Building2, image: "/services/it/it_network_hero.jpg" },
+      { num: "30", title: "Complete Office IT Setup / Turnkey IT Infrastructure", concept: "Your Office, Ready to Work", href: "/services/it-solutions/turnkey-it-infrastructure", icon: Network, image: "/services/cctv/structured_cabling_datacenter.jpg" },
     ],
   },
   {
@@ -723,7 +725,7 @@ export function Navbar() {
                   onClick={() => setIsServicesOpen(false)}
                   className="group mt-5 ml-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-brand hover:text-[#1b2375] transition-colors"
                 >
-                  All 28 services
+                  All {DIVISIONS_28_DATA.reduce((total, division) => total + division.items.length, 0)} services
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>
@@ -759,7 +761,7 @@ export function Navbar() {
                               isSubActive ? "text-brand" : isTransparent ? "text-slate-500" : "text-slate-400"
                             }`}
                           />
-                          <span className="text-[13px] font-medium leading-snug truncate">{s.title}</span>
+                          <span className="text-[13px] font-medium leading-snug">{s.title}</span>
                         </Link>
                       </li>
                     )

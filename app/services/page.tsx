@@ -7,10 +7,28 @@ import { ArrowRight, Phone, Mail, MapPin, CheckCircle2 } from "lucide-react"
 export const metadata: Metadata = {
   title: "Specialized Services & Divisions | Alfa Gulf Construction & Technologies",
   description:
-    "Explore Alfa Gulf's 10 specialized divisions delivering turnkey commercial construction, MEP engineering, structural steel, fit-out, and smart technology across Saudi Arabia.",
+    "Explore Alfa Gulf's construction, engineering, smart building integration, and turnkey office IT services across Saudi Arabia.",
 }
 
 const SERVICES_OVERVIEW = [
+  {
+    num: "11",
+    title: "Smart Building & Technology Integration",
+    category: "IT SOLUTIONS",
+    desc: "Coordinate building controls, lighting, security, sensors, and networks from design through commissioning.",
+    image: "/services/it/it_network_hero.jpg",
+    href: "/services/it-solutions/smart-building",
+    tags: ["Building Controls", "IoT", "Security Integration", "Commissioning"],
+  },
+  {
+    num: "12",
+    title: "Complete Office IT Setup / Turnkey IT Infrastructure",
+    category: "IT SOLUTIONS",
+    desc: "Office IT design, cabling, networks, Wi-Fi, devices, communications, and security delivered through one coordinated project.",
+    image: "/services/cctv/structured_cabling_datacenter.jpg",
+    href: "/services/it-solutions/turnkey-it-infrastructure",
+    tags: ["Office Networks", "Wi-Fi", "User Devices", "IT Handover"],
+  },
   {
     num: "01",
     title: "Commercial Projects",
@@ -137,9 +155,9 @@ export default function ServicesIndexPage() {
           {/* Key Numbers Strip */}
           <div className="mt-14 pt-10 border-t border-zinc-200/80 grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
-              <div className="text-4xl sm:text-5xl font-light text-zinc-950">10</div>
+              <div className="text-4xl sm:text-5xl font-light text-zinc-950">{SERVICES_OVERVIEW.length}</div>
               <div className="text-xs font-semibold uppercase text-zinc-900 mt-2">
-                Specialized Divisions
+                Core Service Areas
               </div>
               <div className="text-xs text-zinc-500 mt-0.5">Turnkey EPC under one roof</div>
             </div>
@@ -187,7 +205,7 @@ export default function ServicesIndexPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-            {SERVICES_OVERVIEW.map((item) => (
+            {[...SERVICES_OVERVIEW].sort((a, b) => Number(a.num) - Number(b.num)).map((item) => (
               <Link
                 key={item.num}
                 href={item.href}
