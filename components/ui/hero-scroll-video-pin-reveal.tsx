@@ -22,6 +22,7 @@ export interface HeroScrollVideoRevealProps {
   sectorsHeading?: string
   sectors?: SectorItem[]
   videoSrc?: string
+  posterSrc?: string
   badgeImgSrc?: string
   showPlayButton?: boolean
   className?: string
@@ -160,6 +161,7 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
   sectorsHeading = "Our sectors",
   sectors = DEFAULT_SECTORS,
   videoSrc = "/Aerial_view_of_industrial_complex_202609071617_gwr_video_mvp.mp4",
+  posterSrc = "/industrial-video-poster.webp",
   badgeImgSrc,
   showPlayButton = false,
   className = "",
@@ -651,6 +653,7 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
               loop
               playsInline
               preload="auto"
+              poster={posterSrc}
               crossOrigin="anonymous"
               className="w-full h-full object-cover bg-slate-900"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}

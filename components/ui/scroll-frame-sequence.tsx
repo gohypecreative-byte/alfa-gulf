@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import NextImage from "next/image"
 import { ChevronDown } from "lucide-react"
 
 export interface ScrollFrameSequenceProps {
@@ -48,8 +49,7 @@ export function ScrollFrameSequence({
   const [progress, setProgress] = React.useState(0)
   const [firstFrameReady, setFirstFrameReady] = React.useState(false)
 
-  // Preload: first frame immediately, then the rest in small batches so the
-  // network isn't flooded and the frames nearest the start arrive first.
+  // Show the server-rendered poster first, then load near the scroll target.
   React.useEffect(() => {
     imagesRef.current = new Array(frameCount).fill(null)
     let cancelled = false
@@ -58,6 +58,7 @@ export function ScrollFrameSequence({
       new Promise<void>((resolve) => {
         const img = new Image()
         img.decoding = "async"
+        img.fetchPriority = i === 0 ? "high" : "low"
         img.onload = () => {
           if (!cancelled) imagesRef.current[i] = img
           resolve()
@@ -68,15 +69,17 @@ export function ScrollFrameSequence({
 
     load(0).then(() => {
       if (cancelled) return
-      setFirstFrameReady(true)
+      lastDrawnRef.current = -1
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-      const batch = 8
-      let next = 1
+      const pending = new Set(Array.from({ length: frameCount - 1 }, (_, i) => i + 1))
       const pump = async () => {
-        while (next < frameCount && !cancelled) {
-          const jobs: Promise<void>[] = []
-          for (let k = 0; k < batch && next < frameCount; k++, next++) jobs.push(load(next))
-          await Promise.all(jobs)
+        while (pending.size && !cancelled) {
+          const target = Math.round(targetFrameRef.current)
+          const batch = [...pending]
+            .sort((a, b) => Math.abs(a - target) - Math.abs(b - target))
+            .slice(0, 4)
+          batch.forEach((index) => pending.delete(index))
+          await Promise.all(batch.map(load))
           lastDrawnRef.current = -1 // allow redraw if a better frame arrived
         }
       }
@@ -88,7 +91,7 @@ export function ScrollFrameSequence({
     }
   }, [frameCount, getFramePath])
 
-  // Fit the frame to the stage. Falls back to the nearest loaded earlier frame.
+  // Fit the frame to the stage, falling back to the closest loaded frame.
   const draw = React.useCallback(
     (index: number) => {
       const canvas = canvasRef.current
@@ -97,12 +100,15 @@ export function ScrollFrameSequence({
       if (!ctx) return
 
       let img: HTMLImageElement | null = null
-      for (let i = index; i >= 0; i--) {
-        const candidate = imagesRef.current[i]
-        if (candidate && candidate.complete && candidate.naturalWidth > 0) {
-          img = candidate
-          break
+      for (let distance = 0; distance < imagesRef.current.length; distance++) {
+        for (const i of distance === 0 ? [index] : [index - distance, index + distance]) {
+          const candidate = imagesRef.current[i]
+          if (candidate && candidate.complete && candidate.naturalWidth > 0) {
+            img = candidate
+            break
+          }
         }
+        if (img) break
       }
       if (!img) return
 
@@ -113,6 +119,7 @@ export function ScrollFrameSequence({
       const nh = img.naturalHeight * scale
       ctx.clearRect(0, 0, cw, ch)
       ctx.drawImage(img, (cw - nw) / 2, (ch - nh) / 2, nw, nh)
+      setFirstFrameReady(true)
     },
     [fit]
   )
@@ -203,9 +210,19 @@ export function ScrollFrameSequence({
         ref={stageRef}
         className={`sticky ${topOffsetClassName} ${stageHeightClassName} w-full overflow-hidden bg-zinc-100`}
       >
+        <NextImage
+          src={getFramePath(0)}
+          alt=""
+          fill
+          preload
+          unoptimized
+          sizes="100vw"
+          className={fit === "contain" ? "object-contain" : "object-cover"}
+          aria-hidden
+        />
         <canvas
           ref={canvasRef}
-          className="block w-full h-full transition-opacity duration-500"
+          className="relative block w-full h-full"
           style={{ opacity: firstFrameReady ? 1 : 0 }}
           aria-hidden
         />
