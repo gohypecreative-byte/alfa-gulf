@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { ITSecurityView } from "@/components/services/it/it-security-view"
+import { AccessControlScrollHero } from "@/components/services/it/access-control-scroll-hero"
 import { SUB_SERVICES_DATA } from "@/data/services/sub-services"
 
 export const metadata: Metadata = {
@@ -9,5 +10,5 @@ export const metadata: Metadata = {
 
 export default function AccessControlSubPage() {
   const data = SUB_SERVICES_DATA["access-control"]
-  return <ITSecurityView data={data} />
+  return <ITSecurityView data={data} hero={<AccessControlScrollHero />} />
 }
