@@ -1,8 +1,9 @@
 import React from "react"
+import { SERVICE_DIVISIONS } from "@/lib/services"
 import { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Phone, Mail, MapPin, CheckCircle2 } from "lucide-react"
+import Image from "next/image"
+import { ArrowRight, ArrowUpRight, Phone, Mail, MapPin, Building2, Network, Package } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Specialized Services & Divisions | Alfa Gulf Construction & Technologies",
@@ -10,263 +11,76 @@ export const metadata: Metadata = {
     "Explore Alfa Gulf's construction, engineering, smart building integration, and turnkey office IT services across Saudi Arabia.",
 }
 
-const SERVICES_OVERVIEW = [
-  {
-    num: "11",
-    title: "Smart Building & Technology Integration",
-    category: "IT SOLUTIONS",
-    desc: "Coordinate building controls, lighting, security, sensors, and networks from design through commissioning.",
-    image: "/services/it/it_network_hero.jpg",
-    href: "/services/it-solutions/smart-building",
-    tags: ["Building Controls", "IoT", "Security Integration", "Commissioning"],
-  },
-  {
-    num: "12",
-    title: "Complete Office IT Setup / Turnkey IT Infrastructure",
-    category: "IT SOLUTIONS",
-    desc: "Office IT design, cabling, networks, Wi-Fi, devices, communications, and security delivered through one coordinated project.",
-    image: "/services/cctv/structured_cabling_datacenter.jpg",
-    href: "/services/it-solutions/turnkey-it-infrastructure",
-    tags: ["Office Networks", "Wi-Fi", "User Devices", "IT Handover"],
-  },
-  {
-    num: "01",
-    title: "Commercial Projects",
-    category: "CIVIL & COMMERCIAL CONTRACTING",
-    desc: "Multi-story office towers, corporate headquarters, lifestyle centers, and industrial logistics facilities built to SBC 201.",
-    image: "/services/commercial_projects.jpg",
-    href: "/services/commercial-projects",
-    tags: ["Office Towers", "Mixed-Use", "Logistics Hubs", "SBC 201"],
-  },
-  {
-    num: "02",
-    title: "Residential Complex & Villas",
-    category: "HIGH-END RESIDENTIAL & COMPOUNDS",
-    desc: "Bespoke modern private estates, gated residential compounds, and master-planned communities with luxury architectural finishes.",
-    image: "/services/residential_villas.jpg",
-    href: "/services/residential-buildings-villas",
-    tags: ["Luxury Villas", "Gated Communities", "Smart Homes", "Waterproofing"],
-  },
-  {
-    num: "03",
-    title: "MEP Services",
-    category: "MECHANICAL, ELECTRICAL & PLUMBING",
-    desc: "Medium-voltage power distribution, potable water hydraulics, automatic fire suppression, and building automation systems (BMS).",
-    image: "/services/mep_services.jpg",
-    href: "/services/mep-services",
-    tags: ["Power Distribution", "Hydraulics", "Fire Fighting", "BIM LOD 400"],
-  },
-  {
-    num: "04",
-    title: "Steel Structure & Fire Proofing",
-    category: "INDUSTRIAL & STRUCTURAL ENGINEERING",
-    desc: "Heavy industrial structural steel frames, PEB warehouses, long-span roof trusses, and UL 263 certified intumescent coatings.",
-    image: "/services/steel_structures.jpg",
-    href: "/services/steel-structures",
-    tags: ["PEB Warehouses", "Intumescent Paint", "UL Certified", "AISC Standard"],
-  },
-  {
-    num: "05",
-    title: "Fit-Out Works",
-    category: "INTERIOR ARCHITECTURE & COMMERCIAL FIT-OUT",
-    desc: "Turnkey corporate interior fit-out, acoustic partitioning, executive boardrooms, bespoke joinery, and luxury retail environments.",
-    image: "/services/fitout_works.jpg",
-    href: "/services/fitout-works",
-    tags: ["Corporate HQs", "Acoustic Walls", "Bespoke Joinery", "Turnkey Delivery"],
-  },
-  {
-    num: "06",
-    title: "IT & CCTV Services",
-    category: "ENTERPRISE IT INFRASTRUCTURE & SECURITY",
-    desc: "AI-powered IP CCTV surveillance, biometric access control, optical fiber structured cabling, and Tier-rated data center buildouts.",
-    image: "/services/cctv_it_services.jpg",
-    href: "/services/cctv-it-sales",
-    tags: ["AI Surveillance", "Access Control", "Data Centers", "Civil Defense"],
-  },
-  {
-    num: "07",
-    title: "Landscaping Works",
-    category: "ARCHITECTURAL HARDSCAPING & IRRIGATION",
-    desc: "Commercial plazas, granite hardscaping, shade pergolas, automated water-efficient drip irrigation, and landscape lighting.",
-    image: "/services/landscaping_works.jpg",
-    href: "/services/landscaping-works",
-    tags: ["Hardscaping", "Smart Irrigation", "Pergolas", "Native Flora"],
-  },
-  {
-    num: "08",
-    title: "Building Material Supplies",
-    category: "STRUCTURAL MATERIAL PROCUREMENT & DISTRIBUTION",
-    desc: "Direct procurement of SASO & ASTM certified deformed steel rebar, ready-mix concrete, thermal XPS insulation, and site consumables.",
-    image: "/services/steel_rebar_supply.jpg",
-    href: "/services/building-materials",
-    tags: ["Deformed Rebar", "Ready-Mix", "XPS Insulation", "SASO Mark"],
-  },
-  {
-    num: "09",
-    title: "HVAC Systems",
-    category: "CLIMATE CONTROL & CENTRAL CHILLER PLANTS",
-    desc: "Central chilled water plants, VRF multisplit systems, industrial AHUs, and SMACNA certified galvanized duct fabrication.",
-    image: "/services/hvac_division.jpg",
-    href: "/services/hvac-division",
-    tags: ["Chilled Water Plants", "VRF Systems", "SMACNA Ducting", "SEEC Approved"],
-  },
-  {
-    num: "10",
-    title: "Demolition & Renovation",
-    category: "CONTROLLED STRUCTURAL DISMANTLING & RETROFIT",
-    desc: "Controlled structural demolition, robotic concrete breaking, diamond wire sawing, CFRP strengthening, and Balady municipal permits.",
-    image: "/services/structural_demolition.jpg",
-    href: "/services/demolition-renovation",
-    tags: ["Controlled Demolition", "Wire Sawing", "CFRP Retrofit", "Balady Permits"],
-  },
+const divisionDetails = [
+  { title: "Construction services", description: "From the first foundations to the final fit-out. Civil works, building systems, and specialist contracting for every stage of your project.", icon: Building2, short: "Build" },
+  { title: "IT solutions", description: "Connected workplaces, secure infrastructure, and technology that supports your daily operations.", icon: Network, short: "Connect" },
+  { title: "General trading", description: "Materials, equipment, and workplace essentials sourced to keep your projects moving.", icon: Package, short: "Supply" },
 ]
 
 export default function ServicesIndexPage() {
   return (
     <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
-      {/* ── 1. FULL-SCREEN LIGHT HERO BANNER (No Text, No Dark Color) ── */}
-      <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
-        <Image
-          src="/services/commercial_projects.jpg"
-          alt="Alfa Gulf Specialized Services"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-      </section>
-
-      {/* ── 2. EDITORIAL HEADLINE & OVERVIEW SECTION (Below Banner) ── */}
-      <section className="relative px-6 sm:px-10 lg:px-16 pt-12 sm:pt-16 pb-16 sm:pb-20 border-b border-zinc-200/80 bg-white">
-        <div className="max-w-[1440px] mx-auto w-full">
-          {/* Main Headline */}
-          <div className="max-w-4xl space-y-6">
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-normal leading-[1.12] text-zinc-950 tracking-tight">
-              Integrated engineering and construction capabilities across the Kingdom.
-            </h1>
-
-            <p className="text-base sm:text-lg lg:text-[19px] text-zinc-600 font-normal leading-relaxed max-w-3xl">
-              Alfa Gulf operates as a unified general contractor. By self-performing civil construction,
-              heavy structural steel, electro-mechanical systems, enterprise IT, and interior fit-out,
-              we eliminate subcontractor friction and guarantee strict adherence to the Saudi Building Code.
-            </p>
+      <section className="bg-brand-soft">
+        <div className="mx-auto max-w-[1340px] px-6 py-12 sm:px-10 sm:py-20 lg:px-8">
+          <p className="mb-5 text-sm font-medium text-brand">Our services</p>
+          <div className="grid items-end gap-7 lg:grid-cols-[1.25fr_1fr] lg:gap-20">
+            <h1 className="max-w-3xl text-[42px] font-medium leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">Built around<br />your project.</h1>
+            <p className="max-w-lg text-base leading-relaxed text-slate-600 sm:text-lg">Construction expertise, connected technology, and dependable supply. Explore all {SERVICE_DIVISIONS.reduce((total, division) => total + division.items.length, 0)} services across our three divisions.</p>
           </div>
-
-          {/* Key Numbers Strip */}
-          <div className="mt-14 pt-10 border-t border-zinc-200/80 grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <div className="text-4xl sm:text-5xl font-light text-zinc-950">{SERVICES_OVERVIEW.length}</div>
-              <div className="text-xs font-semibold uppercase text-zinc-900 mt-2">
-                Core Service Areas
-              </div>
-              <div className="text-xs text-zinc-500 mt-0.5">Turnkey EPC under one roof</div>
-            </div>
-            <div>
-              <div className="text-4xl sm:text-5xl font-light text-zinc-950">15+</div>
-              <div className="text-xs font-semibold uppercase text-zinc-900 mt-2">
-                Years of Execution
-              </div>
-              <div className="text-xs text-zinc-500 mt-0.5">Proven Kingdom track record</div>
-            </div>
-            <div>
-              <div className="text-4xl sm:text-5xl font-light text-zinc-950">100%</div>
-              <div className="text-xs font-semibold uppercase text-zinc-900 mt-2">
-                SBC Code Compliance
-              </div>
-              <div className="text-xs text-zinc-500 mt-0.5">Strict civil defense adherence</div>
-            </div>
-            <div>
-              <div className="text-4xl sm:text-5xl font-light text-zinc-950">Zero</div>
-              <div className="text-xs font-semibold uppercase text-zinc-900 mt-2">
-                Contractor Friction
-              </div>
-              <div className="text-xs text-zinc-500 mt-0.5">Single-source project accountability</div>
-            </div>
-          </div>
+          <nav aria-label="Service divisions" className="mt-10 grid gap-3 sm:mt-14 sm:grid-cols-3">
+            {SERVICE_DIVISIONS.map((division, index) => {
+              const detail = divisionDetails[index]
+              const Icon = detail.icon
+              return (
+                <a key={division.id} href={`#${division.id}`} className="group flex items-center gap-4 rounded-xl bg-white p-5 transition-colors hover:bg-brand hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:p-6">
+                  <Icon aria-hidden="true" className="size-7 shrink-0 text-brand group-hover:text-white" strokeWidth={1.5} />
+                  <div className="flex-1"><span className="block text-lg font-medium">{detail.short}</span><span className="mt-1 block text-sm text-slate-500 group-hover:text-white/80">{division.items.length} services</span></div>
+                  <ArrowRight aria-hidden="true" className="size-5" />
+                </a>
+              )
+            })}
+          </nav>
         </div>
       </section>
-
-      {/* ── 2. THE 10 DIVISIONS (Clean Architectural Cards) ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 border-b border-zinc-200/80">
-        <div className="max-w-[1440px] mx-auto w-full space-y-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-zinc-200/80">
-            <div>
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                Contracting Divisions
-              </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-normal tracking-tight text-zinc-950 mt-1">
-                Explore Our Core Service Capabilities
-              </h2>
-            </div>
-            <p className="text-sm text-zinc-600 max-w-md font-normal leading-relaxed">
-              Select a specialized division below to review detailed technical specifications,
-              compliance frameworks, and scopes of work.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-            {[...SERVICES_OVERVIEW].sort((a, b) => Number(a.num) - Number(b.num)).map((item) => (
-              <Link
-                key={item.num}
-                href={item.href}
-                className="group flex flex-col rounded-2xl overflow-hidden bg-white border border-zinc-200/80 hover:border-brand transition-all duration-300 hover:shadow-md"
-              >
-                {/* Image */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-white text-[11px] font-mono font-bold tracking-wider">
-                      {item.num}
-                    </span>
-                  </div>
+      <div className="mx-auto max-w-[1340px] px-6 sm:px-10 lg:px-8">
+        {SERVICE_DIVISIONS.map((division, index) => {
+          const detail = divisionDetails[index]
+          const DivisionIcon = detail.icon
+          return (
+            <section key={division.id} id={division.id} className="grid scroll-mt-28 gap-8 border-b border-slate-200 py-12 sm:py-16 lg:grid-cols-[280px_1fr] lg:gap-16">
+              <div>
+                <div className="lg:sticky lg:top-32">
+                  <DivisionIcon aria-hidden="true" className="mb-5 size-10 text-brand" strokeWidth={1.3} />
+                  <h2 className="text-3xl font-medium tracking-tight">{detail.title}</h2>
+                  <p className="mt-4 max-w-md text-sm leading-7 text-slate-500">{detail.description}</p>
+                  <p className="mt-5 text-sm font-medium text-brand">{division.items.length} specialist services</p>
                 </div>
+              </div>
+              <div className="grid content-start gap-x-6 gap-y-8 sm:grid-cols-2">
+                {division.items.map((item) => {
+                  const Icon = item.icon
+                  return (
+                    <Link key={item.href} href={item.href} className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition-colors hover:border-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-brand-soft">
+                        <Image src={item.image} alt={item.title} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 440px" className="object-cover transition-transform duration-300 motion-safe:group-hover:scale-105" />
+                      </div>
+                      <div className="flex w-full flex-1 items-start gap-3 p-5">
+                      <Icon aria-hidden="true" className="mt-1 size-5 shrink-0 text-brand" strokeWidth={1.5} />
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-base font-medium leading-6 text-slate-900 group-hover:text-brand">{item.title}</h3>
+                        <p className="mt-2 text-sm leading-6 text-slate-500">{item.concept}</p>
+                      </div>
+                      <ArrowUpRight aria-hidden="true" className="mt-1 size-4 shrink-0 text-slate-400 group-hover:text-brand" />
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
+            </section>
+          )
+        })}
+      </div>
 
-                {/* Content */}
-                <div className="p-6 sm:p-8 flex flex-col justify-between flex-1 space-y-4">
-                  <div>
-                    <span className="text-[11px] font-mono font-bold tracking-wider text-brand uppercase block mb-1">
-                      {item.category}
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-medium text-zinc-950 group-hover:text-brand transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-zinc-600 mt-2 font-normal leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-
-                  {/* Tags & Arrow */}
-                  <div className="pt-4 border-t border-zinc-100 flex items-center justify-between gap-4">
-                    <div className="flex flex-wrap gap-1.5">
-                      {item.tags.map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2 py-0.5 rounded text-[11px] font-medium bg-zinc-100 text-zinc-700"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand uppercase tracking-wider shrink-0 group-hover:translate-x-1 transition-transform">
-                      <span>View</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. CLEAN PROPOSAL & CONTACT FOOTER ── */}
       <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">

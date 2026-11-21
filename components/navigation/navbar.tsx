@@ -26,110 +26,10 @@ import {
   Send,
   ArrowRight,
   Check,
-  Server,
-  Network,
-  Cpu,
-  Shield,
-  ShieldAlert,
-  Bell,
-  HardHat,
-  Monitor,
-  Laptop,
-  PhoneCall,
-  Headphones,
-  Truck,
-  Armchair,
-  KeyRound,
-  Database,
-  Tv,
-  Fence,
 } from "lucide-react"
 
-export interface SubServiceItem {
-  num: string
-  title: string
-  concept: string
-  href: string
-  icon: React.ElementType
-  image: string
-}
-
-export interface ServiceCategory {
-  id: string
-  num: string
-  title: string
-  badge: string
-  badgeColor: string
-  badgeBg: string
-  activeTitle: string
-  items: SubServiceItem[]
-}
-
-const DIVISIONS_28_DATA: ServiceCategory[] = [
-  {
-    id: "construction",
-    num: "01",
-    title: "CONSTRUCTION SERVICES",
-    badge: "DIVISION 01 • 11 SERVICES",
-    badgeColor: "text-sky-600 dark:text-sky-400",
-    badgeBg: "bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-300",
-    activeTitle: "General Construction & Civil Works",
-    items: [
-      { num: "01", title: "General Construction & Civil Works", concept: "From Ground to Completion", href: "/services/construction/general-construction", icon: Building2, image: "/services/commercial_projects.jpg" },
-      { num: "02", title: "MEP Services", concept: "Hidden Systems Behind Every Building", href: "/services/construction/mep-services", icon: Wrench, image: "/services/mep_services.jpg" },
-      { num: "03", title: "HVAC Solutions", concept: "Invisible Comfort", href: "/services/construction/hvac-solutions", icon: Wind, image: "/services/chilled_water_plant.jpg" },
-      { num: "04", title: "Fire Alarm Systems", concept: "Every Second Counts", href: "/services/construction/fire-alarm-systems", icon: Bell, image: "/services/cctv_it_services.jpg" },
-      { num: "05", title: "Fire & Life Safety Systems", concept: "Designed Around Safety", href: "/services/construction/fire-life-safety", icon: Shield, image: "/safety/safety_team_site.jpg" },
-      { num: "06", title: "Fireproofing Works", concept: "Protection Within Structure", href: "/services/construction/fireproofing-works", icon: Flame, image: "/safety/teamwork_structural.jpg" },
-      { num: "07", title: "Steel Structure & Erection", concept: "Precision in Every Connection", href: "/services/construction/steel-structure", icon: Hammer, image: "/services/steel_structures.jpg" },
-      { num: "08", title: "Fit-Out & Renovation", concept: "From Empty Space to Finished", href: "/services/construction/fit-out-renovation", icon: HomeIcon, image: "/services/fitout_works.jpg" },
-      { num: "09", title: "Landscaping & External Works", concept: "Transforming Space Around You", href: "/services/construction/landscaping", icon: Trees, image: "/services/landscaping_works.jpg" },
-      { num: "10", title: "Demolition & Renovation", concept: "Make Way for What's Next", href: "/services/construction/demolition", icon: HardHat, image: "/services/structural_demolition.jpg" },
-      { num: "11", title: "Fencing, Gates & Barriers", concept: "Secure the Perimeter", href: "/services/construction/fencing-barriers", icon: Fence, image: "/services/landscaping/hardscaping_pergola.jpg" },
-    ],
-  },
-  {
-    id: "it-solutions",
-    num: "02",
-    title: "IT SOLUTIONS",
-    badge: "DIVISION 02 • 14 SERVICES",
-    badgeColor: "text-blue-600 dark:text-blue-400",
-    badgeBg: "bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300",
-    activeTitle: "Data Centre Solutions",
-    items: [
-      { num: "12", title: "Data Centre Solutions", concept: "Build the Digital Core", href: "/services/it-solutions/data-centre", icon: Server, image: "/services/cctv/structured_cabling_datacenter.jpg" },
-      { num: "13", title: "Structured Cabling", concept: "Network Beneath Everything", href: "/services/it-solutions/structured-cabling", icon: Network, image: "/services/cctv/structured_cabling_datacenter.jpg" },
-      { num: "14", title: "Enterprise Networking", concept: "Everything Connected", href: "/services/it-solutions/networking", icon: Cpu, image: "/services/cctv/cybersecurity_network_defense.jpg" },
-      { num: "15", title: "CCTV / IP Surveillance", concept: "See. Detect. Protect.", href: "/services/it-solutions/cctv", icon: Camera, image: "/services/cctv/cctv_ai_surveillance.jpg" },
-      { num: "16", title: "Access Control & Time Attendance", concept: "Access, Controlled.", href: "/services/it-solutions/access-control", icon: KeyRound, image: "/services/cctv/biometric_access_control.jpg" },
-      { num: "17", title: "Servers & Storage", concept: "Where Your Data Lives", href: "/services/it-solutions/servers-storage", icon: Database, image: "/services/cctv/cloud_server_infrastructure.jpg" },
-      { num: "18", title: "Meeting Room / AV Solutions", concept: "Connects Everyone", href: "/services/it-solutions/meeting-rooms", icon: Tv, image: "/services/cctv_it_services.jpg" },
-      { num: "19", title: "UPS & Power Backup Solutions", concept: "Power Without Interruption", href: "/services/it-solutions/ups", icon: Zap, image: "/services/chilled_water_plant.jpg" },
-      { num: "21", title: "IT Hardware & Tech Supply", concept: "Powers Your Business", href: "/services/it-solutions/hardware-supply", icon: Laptop, image: "/services/cctv/cloud_server_infrastructure.jpg" },
-      { num: "22", title: "Network Security & Cyber", concept: "Secure Every Connection", href: "/services/it-solutions/cybersecurity", icon: ShieldAlert, image: "/services/cctv/cybersecurity_network_defense.jpg" },
-      { num: "23", title: "IP Telephony & Unified Comm.", concept: "Connected Organization", href: "/services/it-solutions/ip-telephony", icon: PhoneCall, image: "/services/cctv/biometric_access_control.jpg" },
-      { num: "24", title: "Managed IT Services / AMC", concept: "Always Supported", href: "/services/it-solutions/managed-services", icon: Headphones, image: "/services/cctv/cctv_ai_surveillance.jpg" },
-      { num: "29", title: "Smart Building & Technology Integration", concept: "Connected Building Operations", href: "/services/it-solutions/smart-building", icon: Building2, image: "/services/it/it_network_hero.jpg" },
-      { num: "30", title: "Complete Office IT Setup / Turnkey IT Infrastructure", concept: "Your Office, Ready to Work", href: "/services/it-solutions/turnkey-it-infrastructure", icon: Network, image: "/services/cctv/structured_cabling_datacenter.jpg" },
-    ],
-  },
-  {
-    id: "general-trading",
-    num: "03",
-    title: "GENERAL TRADING",
-    badge: "DIVISION 03 • 5 SERVICES",
-    badgeColor: "text-sky-600 dark:text-sky-400",
-    badgeBg: "bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-300",
-    activeTitle: "General Trading / Sourcing",
-    items: [
-      { num: "20", title: "General Trading / Sourcing", concept: "Requirement to Reality", href: "/services/general-trading/sourcing-supply", icon: Package, image: "/categories/general-trading.jpg" },
-      { num: "25", title: "Construction, MEP & Electrical Supply", concept: "Keep Projects Moving", href: "/services/general-trading/construction-materials", icon: Truck, image: "/services/steel_rebar_supply.jpg" },
-      { num: "26", title: "IT & Tech Products Supply", concept: "Ready to Deploy", href: "/services/general-trading/it-products", icon: Monitor, image: "/services/cctv/cybersecurity_network_defense.jpg" },
-      { num: "27", title: "Office, Furniture & Facility Supply", concept: "Workplace Supply", href: "/services/general-trading/office-furniture", icon: Armchair, image: "/services/fitout_works.jpg" },
-      { num: "28", title: "Industrial Materials & PPE Supply", concept: "Ready for Project", href: "/services/general-trading/industrial-ppe", icon: HardHat, image: "/safety/safety_team_site.jpg" },
-    ],
-  },
-]
+import { SERVICE_DIVISIONS as DIVISIONS_28_DATA, type SubServiceItem } from "@/lib/services"
+export type { SubServiceItem, ServiceCategory } from "@/lib/services"
 
 const toTitleCase = (s: string) =>
   s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase()).replace(/\bIt\b/, "IT")
@@ -300,6 +200,8 @@ const SERVICES = [
 
 export function Navbar() {
   const pathname = usePathname()
+  const isActivePage = (href: string) =>
+    pathname === href || (href !== "/" && pathname.startsWith(`${href}/`))
   const [isOverHero, setIsOverHero] = React.useState(true)
   const [isServicesOpen, setIsServicesOpen] = React.useState(false)
   const [activeHoverCategory, setActiveHoverCategory] = React.useState<number>(0)
@@ -453,6 +355,7 @@ export function Navbar() {
               <nav className="flex items-center space-x-7 xl:space-x-9" aria-label="Main Navigation">
                 <Link
                   href="/"
+                  aria-current={isActivePage("/") ? "page" : undefined}
                   className={`text-[13px] font-bold tracking-[0.08em] uppercase transition-colors py-2 relative group ${
                     isTransparent
                       ? "text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
@@ -461,7 +364,7 @@ export function Navbar() {
                 >
                   HOME
                   <span
-                    className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-200 group-hover:w-full ${
+                    className={`absolute bottom-0 left-0 ${isActivePage("/") ? "w-full" : "w-0"} h-[2px] transition-all duration-200 group-hover:w-full ${
                       isTransparent ? "bg-white" : "bg-brand"
                     }`}
                   />
@@ -469,6 +372,7 @@ export function Navbar() {
 
                 <Link
                   href="/about-us"
+                  aria-current={isActivePage("/about-us") ? "page" : undefined}
                   className={`text-[13px] font-bold tracking-[0.08em] uppercase transition-colors py-2 relative group ${
                     isTransparent
                       ? "text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
@@ -477,7 +381,7 @@ export function Navbar() {
                 >
                   ABOUT US
                   <span
-                    className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-200 group-hover:w-full ${
+                    className={`absolute bottom-0 left-0 ${isActivePage("/about-us") ? "w-full" : "w-0"} h-[2px] transition-all duration-200 group-hover:w-full ${
                       isTransparent ? "bg-white" : "bg-brand"
                     }`}
                   />
@@ -514,12 +418,12 @@ export function Navbar() {
                       }`}
                     />
                     <span
-                      className={`absolute bottom-0 left-0 h-[2px] transition-all duration-200 ${
+                      className={`absolute -bottom-2 left-0 h-[2px] transition-all duration-200 ${
                         isTransparent
-                          ? isServicesOpen
+                          ? isServicesOpen || isActivePage("/services")
                             ? "bg-sky-400 w-full"
                             : "bg-white w-0 group-hover:w-full"
-                          : isServicesOpen
+                          : isServicesOpen || isActivePage("/services")
                           ? "bg-brand w-full"
                           : "bg-brand w-0 group-hover:w-full"
                       }`}
@@ -529,6 +433,7 @@ export function Navbar() {
 
                 <Link
                   href="/news"
+                  aria-current={isActivePage("/news") ? "page" : undefined}
                   className={`text-[13px] font-bold tracking-[0.08em] uppercase transition-colors py-2 relative group ${
                     isTransparent
                       ? "text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
@@ -537,7 +442,7 @@ export function Navbar() {
                 >
                   BLOG
                   <span
-                    className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-200 group-hover:w-full ${
+                    className={`absolute bottom-0 left-0 ${isActivePage("/news") ? "w-full" : "w-0"} h-[2px] transition-all duration-200 group-hover:w-full ${
                       isTransparent ? "bg-white" : "bg-brand"
                     }`}
                   />
