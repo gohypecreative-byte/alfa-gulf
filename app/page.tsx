@@ -5,6 +5,7 @@ import { BuildingForTheBest } from "@/components/sections/building-for-the-best/
 import { ServicesStackInteractor } from "@/components/ui/connoisseur-stack-interactor"
 import { ProjectsCoverflowSection } from "@/components/sections/projects-coverflow"
 import { ImageTextReveal } from "@/components/ui/image-text-reveal"
+import { CertificationsSection } from "@/components/sections/certifications"
 
 export default function Home() {
   return (
@@ -23,6 +24,8 @@ export default function Home() {
 
       {/* 4. Building for the Best Section (Stats & Architectural Facade) */}
       <BuildingForTheBest />
+
+      <CertificationsSection />
 
       {/* 5. Scroll Image Text Reveal with Mouse Follower */}
       <ImageTextReveal />
