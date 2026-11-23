@@ -18,8 +18,8 @@ const CATEGORIES = [
     subtitle: "Civil & Structural Engineering",
     description:
       "Turnkey commercial complexes, industrial plants, and certified structural steel erection engineered to Saudi Building Code standards.",
-    image: "/other-service/WhatsApp Image 2026-10-05 at 2.33.20 PM (2).jpeg",
-    alt: "Excavation and civil works beside an industrial building",
+    image: "/services/construction-overview-generated.webp",
+    alt: "Engineers beside a modern building under construction",
     href: "/services/commercial-projects",
   },
   {
@@ -28,8 +28,8 @@ const CATEGORIES = [
     subtitle: "Smart Systems & Digital Infrastructure",
     description:
       "Mission-critical tier datacenters, intelligent BMS automation, high-speed fiber networks, and integrated enterprise security ecosystems.",
-    image: "/img/network-cable-dressing-01.jpg",
-    alt: "Alfa Gulf technician installing network cabling",
+    image: "/services/cctv/cloud_server_infrastructure.jpg",
+    alt: "Server racks and network infrastructure in a data centre",
     href: "/services/cctv-it-sales",
   },
   {
@@ -38,8 +38,8 @@ const CATEGORIES = [
     subtitle: "Materials, Equipment & Procurement",
     description:
       "Sourcing and supplying building materials, industrial equipment, and essential project supplies for businesses across Saudi Arabia.",
-    image: "/other-service/WhatsApp Image 2026-10-05 at 2.33.21 PM (1).jpeg",
-    alt: "Project materials stored inside a construction site",
+    image: "/services/directory/sourcing-supply.jpg",
+    alt: "Quality inspection of steel reinforcement materials",
     href: "/services/building-materials",
   },
 ]
@@ -77,7 +77,7 @@ export function CategoriesSection({ className = "" }: { className?: string }) {
   return (
     <section
       id="categories"
-      className={`relative w-full bg-white text-zinc-950 border-b border-zinc-200/80 ${className}`}
+      className={`relative w-full bg-white text-zinc-950  border-zinc-200/80 ${className}`}
       style={{ backgroundColor: "#ffffff" }}
     >
       {/* Natural page flow keeps all divisions accessible together. */}
@@ -94,12 +94,10 @@ export function CategoriesSection({ className = "" }: { className?: string }) {
           <div className="max-w-[1440px] mx-auto w-full">
             {/* Section Header: Clean Architectural Split */}
             <div
-              className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-zinc-200/80"
+              className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 sm:pb-8  border-zinc-200/80"
             >
               <div className="space-y-2.5 max-w-2xl">
-                <span className="text-xs font-semibold tracking-wider text-brand uppercase">
-                  Core Categories
-                </span>
+
 
                 <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-normal tracking-tight text-zinc-950 leading-[1.14]">
                   Construction, digital infrastructure, and trading.

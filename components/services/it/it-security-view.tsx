@@ -14,7 +14,7 @@ export function ITSecurityView({ data, hero }: { data: ITSecurityData; hero?: Re
   return (
     <div className={`bg-white text-zinc-950 min-h-screen ${hero ? "" : "pt-20 md:pt-[84px]"}`}>
       {/* ── 1. FULL-SCREEN LIGHT HERO BANNER (No Text, No Dark Color) ── */}
-      {hero ?? <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
+      {hero ?? <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white  border-zinc-200/80 overflow-hidden">
         <Image
           src={data.heroImage}
           alt={data.title}
@@ -26,7 +26,7 @@ export function ITSecurityView({ data, hero }: { data: ITSecurityData; hero?: Re
       </section>}
 
       {/* ── 2. PHYSICAL SECURITY NARRATIVE & OVERVIEW ── */}
-      <section className="px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24 border-b border-zinc-200/80 bg-white">
+      <section className="px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24  border-zinc-200/80 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 mb-8 text-xs text-zinc-500 font-mono">
@@ -44,9 +44,7 @@ export function ITSecurityView({ data, hero }: { data: ITSecurityData; hero?: Re
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Column: Text Content */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                Physical & Optical Security
-              </span>
+
               <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-normal leading-[1.12] text-zinc-950 tracking-tight">
                 {data.title}
               </h1>
@@ -103,7 +101,7 @@ export function ITSecurityView({ data, hero }: { data: ITSecurityData; hero?: Re
       </section>
 
       {/* ── 3. DUAL SECURITY GALLERY SHOWCASE (No Text, No Dark Overlay) ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-12 border-b border-zinc-200/80 bg-zinc-50/50">
+      <section className="px-6 sm:px-10 lg:px-16 py-12  border-zinc-200/80 bg-zinc-50/50">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
@@ -129,12 +127,10 @@ export function ITSecurityView({ data, hero }: { data: ITSecurityData; hero?: Re
       </section>
 
       {/* ── 4. KEY DELIVERABLES MATRIX ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
+      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="mb-12 space-y-2">
-            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-              Security Scope
-            </span>
+
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
               Surveillance & Physical Access Deliverables
             </h2>
@@ -158,12 +154,10 @@ export function ITSecurityView({ data, hero }: { data: ITSecurityData; hero?: Re
       </section>
 
       {/* ── 5. TECHNICAL SPECIFICATIONS ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-zinc-50/50">
+      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-zinc-50/50">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="mb-12 space-y-2">
-            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-              Security Parameters
-            </span>
+
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
               System Specifications & Retention Benchmarks
             </h2>
@@ -186,13 +180,11 @@ export function ITSecurityView({ data, hero }: { data: ITSecurityData; hero?: Re
       </section>
 
       {/* ── 5B. REGULATORY COMPLIANCE & 4-STEP DEPLOYMENT ROADMAP ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
+      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-white">
         <div className="max-w-[1440px] mx-auto w-full space-y-16">
           {/* Compliance Framework */}
           <div className="space-y-6">
-            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-              Saudi Regulatory Compliance
-            </span>
+
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
               Government Mandates & Inspection Standards
             </h2>
@@ -229,10 +221,8 @@ export function ITSecurityView({ data, hero }: { data: ITSecurityData; hero?: Re
           </div>
 
           {/* Deployment Process Timeline */}
-          <div className="space-y-6 pt-8 border-t border-zinc-200/80">
-            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-              Engineering Execution
-            </span>
+          <div className="space-y-6 pt-8  border-zinc-200/80">
+
             <h2 className="text-2xl sm:text-3xl font-normal tracking-tight text-zinc-950">
               4-Step Security System Delivery
             </h2>
@@ -275,11 +265,9 @@ export function ITSecurityView({ data, hero }: { data: ITSecurityData; hero?: Re
       {/* ── 6. INQUIRY FOOTER ── */}
       <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12  border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                Technical Security Scope • {data.title}
-              </span>
+
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
                 Consult with our security engineers in Riyadh.
               </h2>

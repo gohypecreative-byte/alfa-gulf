@@ -124,7 +124,7 @@ export const BuildingForTheBest: React.FC<BuildingForTheBestProps> = ({ classNam
     <section
       ref={sectionRef}
       className={cn(
-        "relative w-full bg-[#e4e8f8] text-slate-900 py-24 sm:py-32 lg:py-36 xl:py-40 px-6 sm:px-10 lg:px-16 overflow-hidden select-none border-t border-sky-200/60 min-h-[85vh] flex flex-col justify-center",
+        "relative w-full bg-[#e4e8f8] text-slate-900 py-24 sm:py-32 lg:py-36 xl:py-40 px-6 sm:px-10 lg:px-16 overflow-hidden select-none  border-sky-200/60 min-h-[85vh] flex flex-col justify-center",
         className
       )}
       style={{ background: "linear-gradient(135deg, #f1f3fc 0%, #e4e8f8 45%, #cdd4f1 100%)" }}
@@ -148,7 +148,7 @@ export const BuildingForTheBest: React.FC<BuildingForTheBestProps> = ({ classNam
                 return (
                   <div
                     key={item.title}
-                    className="border-b border-sky-900/20 py-3.5 group cursor-pointer transition-colors duration-150"
+                    className=" border-sky-900/20 py-3.5 group cursor-pointer transition-colors duration-150"
                     onClick={() => toggleAccordion(idx)}
                   >
                     <div className="flex items-center justify-between">
@@ -205,7 +205,7 @@ export const BuildingForTheBest: React.FC<BuildingForTheBestProps> = ({ classNam
                 <p className="text-xs sm:text-[13px] font-medium tracking-wide text-slate-600 uppercase mt-2.5 sm:mt-3">
                   SBC Compliant
                 </p>
-                <div className="w-full h-[1px] bg-sky-900/20 mt-7 sm:mt-9" />
+
               </div>
 
               {/* Stat 2: 0 Defect Measures */}
@@ -216,7 +216,7 @@ export const BuildingForTheBest: React.FC<BuildingForTheBestProps> = ({ classNam
                 <p className="text-xs sm:text-[13px] font-medium tracking-wide text-slate-600 uppercase mt-2.5 sm:mt-3">
                   Defect Measures
                 </p>
-                <div className="w-full h-[1px] bg-sky-900/20 mt-7 sm:mt-9" />
+
               </div>
 
               {/* Stat 3: 15 Years Experience */}

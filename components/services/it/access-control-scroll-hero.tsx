@@ -15,7 +15,7 @@ export function AccessControlScrollHero() {
         getFramePath={getFramePath}
         scrollHeightVh={420}
         fit="cover"
-        className="border-b border-zinc-200/80"
+        className=" border-zinc-200/80"
       />
     </section>
   )

@@ -198,6 +198,7 @@ export interface ServicesStackInteractorProps {
   items?: MenuItem[]
   className?: string
   subtitle?: string
+  controls?: React.ReactNode
   heading?: string
   description?: string
 }
@@ -206,9 +207,11 @@ export const ServicesStackInteractor: React.FC<ServicesStackInteractorProps> = (
   items = DEFAULT_ALFAGULF_SERVICES,
   className = "",
   subtitle = "Services",
+  controls,
   description = "From towering commercial structures to bespoke residential villas, ALFA GULF CONTRACTING is equipped to handle diverse construction needs with precision and expertise. Our specialized divisions include:",
 }) => {
   const [activeIndex, setActiveIndex] = useState(0)
+  const activeItem = items[activeIndex] ?? items[0]
   const containerRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
   const masterTl = useRef<gsap.core.Timeline | null>(null)
@@ -266,11 +269,12 @@ export const ServicesStackInteractor: React.FC<ServicesStackInteractorProps> = (
   }
 
   useEffect(() => {
+    setActiveIndex(0)
     playAnimation(0)
     return () => {
       if (masterTl.current) masterTl.current.kill()
     }
-  }, [])
+  }, [items])
 
   const handleItemHover = (index: number) => {
     if (index === activeIndex) return
@@ -278,20 +282,20 @@ export const ServicesStackInteractor: React.FC<ServicesStackInteractorProps> = (
     playAnimation(index)
   }
 
-  // 5 unified horizontal rows pairing (01 & 06), (02 & 07), (03 & 08), (04 & 09), (05 & 10)
-  const serviceRows = [
-    { left: items[0], right: items[5], leftIdx: 0, rightIdx: 5 },
-    { left: items[1], right: items[6], leftIdx: 1, rightIdx: 6 },
-    { left: items[2], right: items[7], leftIdx: 2, rightIdx: 7 },
-    { left: items[3], right: items[8], leftIdx: 3, rightIdx: 8 },
-    { left: items[4], right: items[9], leftIdx: 4, rightIdx: 9 },
-  ]
+  // Keep the original two-column layout for the full service directory.
+  const columnLength = Math.ceil(items.length / 2)
+  const serviceRows = Array.from({ length: columnLength }, (_, index) => ({
+    left: items[index],
+    right: items[index + columnLength],
+    leftIdx: index,
+    rightIdx: index + columnLength,
+  }))
 
   return (
     <section
       ref={containerRef}
       className={cn(
-        "relative w-full bg-white text-zinc-900 py-12 sm:py-28 lg:py-32 px-4 sm:px-10 lg:px-16 overflow-hidden select-none border-t border-zinc-200/80 min-h-0 sm:min-h-[85vh] flex flex-col justify-center",
+        "relative w-full bg-white text-zinc-900 py-12 sm:py-16 lg:py-20 px-4 sm:px-10 lg:px-16 overflow-hidden select-none  border-zinc-200/80 min-h-0 flex flex-col justify-center",
         className
       )}
       style={{ backgroundColor: "#ffffff" }}
@@ -300,14 +304,9 @@ export const ServicesStackInteractor: React.FC<ServicesStackInteractorProps> = (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 xl:gap-14 items-center">
           {/* ── LEFT COLUMN: Header & Editorial Description ───────────── */}
           <div className="lg:col-span-4 xl:col-span-3 space-y-4 sm:space-y-6">
-            <div className="flex items-center gap-3">
-              <span className="text-xs sm:text-sm font-semibold tracking-wider text-zinc-500 uppercase">
-                {subtitle}
-              </span>
-              <span className="w-8 h-[2px] bg-zinc-950 inline-block" />
-            </div>
 
-            <p className="text-base sm:text-xl xl:text-[21px] font-normal leading-relaxed sm:leading-[1.62] text-zinc-700 tracking-tight">
+
+            <p className="text-base sm:text-lg xl:text-lg font-normal leading-relaxed sm:leading-[1.62] text-zinc-700 tracking-tight">
               {description.split("ALFA GULF CONTRACTING").map((part, i, arr) => (
                 <React.Fragment key={i}>
                   {part}
@@ -317,12 +316,13 @@ export const ServicesStackInteractor: React.FC<ServicesStackInteractorProps> = (
                 </React.Fragment>
               ))}
             </p>
+            {controls}
           </div>
 
           {/* ── MIDDLE COLUMN: 10 Services ── */}
           <div className="lg:col-span-5 xl:col-span-5">
             {/* Phone View: Clean Sequential 01 to 10 List */}
-            <div className="block sm:hidden border-t border-b border-zinc-200/80 divide-y divide-zinc-200/80">
+            <div className="block sm:hidden   border-zinc-200/80  divide-zinc-200/80">
               {items.map((item, idx) => {
                 const isActive = activeIndex === idx
 
@@ -371,7 +371,7 @@ export const ServicesStackInteractor: React.FC<ServicesStackInteractorProps> = (
             </div>
 
             {/* Desktop & Tablet View (>= sm): 5 Perfectly Aligned Rows (01-05 Left, 06-10 Right) */}
-            <div className="hidden sm:block border-t border-b border-zinc-200/80 divide-y divide-zinc-200/80">
+            <div className="hidden sm:block   border-zinc-200/80  divide-zinc-200/80">
               {serviceRows.map((row, rowIdx) => {
                 const isLeftActive = activeIndex === row.leftIdx
                 const isRightActive = activeIndex === row.rightIdx
@@ -379,7 +379,7 @@ export const ServicesStackInteractor: React.FC<ServicesStackInteractorProps> = (
                 return (
                   <div
                     key={rowIdx}
-                    className="grid grid-cols-2 gap-x-8 xl:gap-x-10 py-3.5 sm:py-4.5"
+                    className="grid grid-cols-2 gap-x-8 xl:gap-x-10 py-2 sm:py-3"
                   >
                     {/* Left Column Item (01-05) */}
                     {row.left && (
@@ -474,7 +474,7 @@ export const ServicesStackInteractor: React.FC<ServicesStackInteractorProps> = (
 
           {/* ── RIGHT COLUMN: Full Dynamic Geometric Image Effect (No Background Image, No Details) ─── */}
           <div className="lg:col-span-3 xl:col-span-4 flex items-center justify-center">
-            <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[440px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-zinc-900/10 bg-transparent">
+            <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[440px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden  bg-transparent">
               <svg
                 ref={svgRef}
                 viewBox="0 0 500 500"
@@ -491,7 +491,7 @@ export const ServicesStackInteractor: React.FC<ServicesStackInteractorProps> = (
                 {/* Foreground image revealed through the dynamic geometric architectural shapes */}
                 <g clipPath={`url(#geo-clip-${uid}-${activeIndex})`}>
                   <image
-                    href={items[activeIndex].image}
+                    href={activeItem.image}
                     width="500"
                     height="500"
                     preserveAspectRatio="xMidYMid slice"

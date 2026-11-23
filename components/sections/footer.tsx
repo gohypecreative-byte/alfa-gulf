@@ -215,7 +215,7 @@ export function HoverFooter() {
             &copy; {new Date().getFullYear()} ALFA GULF TECHNOLOGIES & CONSTRUCTION COMPANY. All rights reserved.
           </p>
         </div>
-        <hr className="border-t border-slate-200/80 mt-6" />
+
       </div>
 
       {/* Wordmark in its own row without overlapping the footer information */}

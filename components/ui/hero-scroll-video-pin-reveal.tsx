@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef } from "react"
+import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -117,17 +118,17 @@ function SectorIcon({ type }: { type: "commercial" | "residential" | "industrial
 
 const DEFAULT_WHO_WE_ARE = {
   label: "Who We Are",
-  text: "At ALFA GULF, we transform ideas into iconic structures with unmatched innovation, precision, and reliability.",
+  text: "Construction and engineering delivered with care, precision, and reliability.",
 }
 
 const DEFAULT_MISSION = {
   label: "Our Mission",
-  text: '"Revolutionizing construction with innovative, sustainable solutions to drive progress and realize Saudi Vision 2030."',
+  text: '"Practical, sustainable solutions that support Saudi Vision 2030."',
 }
 
 const DEFAULT_VALUES = {
   label: "Core Values",
-  text: "Driven by integrity, excellence, innovation, collaboration, and a customer-centric approach to deliver exceptional construction solutions.",
+  text: "Safe working practices, honest partnerships, and consistent quality.",
 }
 
 const DEFAULT_SECTORS: SectorItem[] = [
@@ -141,14 +142,14 @@ const DEFAULT_SECTORS: SectorItem[] = [
   {
     title: "Residential, Healthcare & Hospitals",
     description:
-      "Designing and building modern, functional, and aesthetically pleasing homes and communities. Delivering advanced healthcare facilities designed for efficiency and patient comfort. Creating luxurious hotels, resorts, and entertainment spaces that redefine guest experiences.",
+      "Homes, hospitals, and hospitality spaces designed for everyday comfort, efficient operations, and lasting value.",
     tags: ["Residential", "Public Buildings", "Hospitals", "Hospitality"],
     iconType: "residential",
   },
   {
     title: "Heavy Industrial",
     description:
-      "Constructing robust infrastructure to support manufacturing, logistics, and other industrial operations and the unique needs of clients in the petrochemical, oil and gas, pulp and paper, mining, and power and renewable industries.",
+      "Industrial facilities and infrastructure for manufacturing, logistics, energy, and petrochemical operations.",
     tags: ["Factory", "Refinery"],
     iconType: "industrial",
   },
@@ -167,7 +168,6 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
   className = "",
 }) => {
   const corporateSectionRef = useRef<HTMLElement>(null)
-  const badgeRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const descRef = useRef<HTMLParagraphElement>(null)
   const pillarsRef = useRef<HTMLDivElement>(null)
@@ -237,7 +237,7 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
     const ctx = gsap.context(() => {
       // ── 1. Architectural Corporate Foundation Reveal ────────────────────────
       if (corporateSectionRef.current && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        const groups = [badgeRef.current, titleRef.current, descRef.current, ...pillarCardRefs.current].filter(Boolean)
+        const groups = [titleRef.current, descRef.current, ...pillarCardRefs.current].filter(Boolean)
         groups.forEach((group) => {
           gsap.fromTo(group, { y: 16 }, {
             y: 0,
@@ -438,30 +438,24 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
       {/* ── Section 1: Architectural Corporate Profile & Core Pillars ──────── */}
       <section
         ref={corporateSectionRef}
-        className="w-full pt-20 sm:pt-28 pb-16 sm:pb-20 px-6 sm:px-10 lg:px-16 bg-white"
-        style={{ backgroundColor: "#ffffff" }}
+        className="w-full py-12 sm:py-16 px-6 sm:px-10 lg:px-16 bg-white"
       >
-        <div className="max-w-[1440px] mx-auto">
+        <div className="max-w-[1312px] mx-auto">
           {/* Header Row: Title & Editorial Narrative */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 sm:pb-10">
+          <div className="max-w-2xl space-y-4 pb-8 sm:pb-10">
             <div className="space-y-3.5 max-w-2xl">
-              <div ref={badgeRef} className="flex items-center gap-2.5">
-                <span className="text-xs sm:text-sm font-semibold tracking-wider text-brand uppercase">
-                  Corporate Foundation
-                </span>
-              </div>
               <h2
                 ref={titleRef}
-                className="text-3xl sm:text-4xl lg:text-[46px] font-normal tracking-tight text-slate-900 leading-[1.12]"
+                className="text-2xl sm:text-3xl font-medium tracking-tight text-slate-900 leading-[1.12]"
               >
-                Engineering monumental structures with uncompromising precision.
+                Building with precision.
               </h2>
             </div>
             <p
               ref={descRef}
-              className="text-[15px] sm:text-base text-zinc-600 max-w-md leading-relaxed font-normal"
+              className="text-base text-slate-600 max-w-xl leading-relaxed font-normal"
             >
-              Operating at the forefront of Saudi Arabia&apos;s construction renaissance, ALFA GULF integrates multidisciplinary engineering to bring iconic architectural visions to life.
+              ALFA GULF brings construction, engineering, and technology together to deliver projects across Saudi Arabia.
             </p>
           </div>
 
@@ -469,24 +463,20 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
           {/* 3 Modular Architectural Pillars */}
           <div
             ref={pillarsRef}
-            className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 pt-4 sm:pt-6"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10"
           >
             {/* 01: Who We Are */}
             <div
               ref={(el) => {
                 pillarCardRefs.current[0] = el
               }}
-              className="group pt-8 md:pt-0 md:pr-8 lg:pr-12 space-y-4"
+              className="space-y-2"
             >
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-brand inline-block">
-                  Who we are
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight leading-snug">
-                Transforming ideas into enduring landmarks.
+
+              <h3 className="text-lg font-medium text-slate-900 tracking-tight leading-snug">
+                Reliable delivery
               </h3>
-              <p className="text-[14.5px] sm:text-[15px] text-zinc-600 leading-relaxed font-normal">
+              <p className="text-base text-slate-600 leading-relaxed font-normal">
                 {whoWeAre.text}
               </p>
             </div>
@@ -496,17 +486,13 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
               ref={(el) => {
                 pillarCardRefs.current[1] = el
               }}
-              className="group pt-8 md:pt-0 md:px-8 lg:px-12 space-y-4"
+              className="space-y-2"
             >
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-brand inline-block">
-                  Our mission
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight leading-snug">
-                Empowering Saudi Vision 2030.
+
+              <h3 className="text-lg font-medium text-slate-900 tracking-tight leading-snug">
+                Sustainable progress
               </h3>
-              <p className="text-[14.5px] sm:text-[15px] text-zinc-600 leading-relaxed font-normal">
+              <p className="text-base text-slate-600 leading-relaxed font-normal">
                 {ourMission.text.replace(/^"|"$/g, "")}
               </p>
             </div>
@@ -516,17 +502,13 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
               ref={(el) => {
                 pillarCardRefs.current[2] = el
               }}
-              className="group pt-8 md:pt-0 md:pl-8 lg:pl-12 space-y-4"
+              className="space-y-2"
             >
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-brand inline-block">
-                  Core values
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight leading-snug">
-                Unyielding integrity & safety.
+
+              <h3 className="text-lg font-medium text-slate-900 tracking-tight leading-snug">
+                Integrity & safety
               </h3>
-              <p className="text-[14.5px] sm:text-[15px] text-zinc-600 leading-relaxed font-normal">
+              <p className="text-base text-slate-600 leading-relaxed font-normal">
                 {coreValues.text}
               </p>
             </div>
@@ -537,53 +519,56 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
       {/* ── Section 2: "Our Sectors" Simple Clean Layout ──────────────────── */}
       <section
         ref={sectorsSectionRef}
-        className="w-full pt-16 sm:pt-24 pb-16 sm:pb-24 px-6 sm:px-10 lg:px-16 bg-white"
+        className="w-full py-14 sm:py-20 px-6 sm:px-10 lg:px-16 bg-white"
         style={{ backgroundColor: "#ffffff" }}
       >
-        <div className="max-w-[1440px] mx-auto">
+        <div className="max-w-[1312px] mx-auto">
           {/* Clean Heading */}
           <h2
             ref={headingRef}
-            className="text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-zinc-950 mb-12 sm:mb-16 select-none"
+            className="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900 mb-8 sm:mb-10"
           >
             {sectorsHeading}
           </h2>
 
           {/* 3 Simple Minimal Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 xl:gap-16 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-9 w-full">
             {sectors.map((sector, idx) => (
               <div
                 key={sector.title}
                 ref={(el) => {
                   cardRefs.current[idx] = el
                 }}
-                onMouseEnter={() => handleSectorHover(idx, true)}
-                onMouseLeave={() => handleSectorHover(idx, false)}
-                className="group cursor-pointer flex flex-col justify-between"
+                className="flex flex-col"
               >
                 <div>
-                  {/* Minimal Icon directly on white canvas with GSAP interactive wrapper */}
-                  <div className="sector-icon-wrap mb-6 text-zinc-900 inline-block origin-bottom-left">
-                    <SectorIcon type={sector.iconType} />
+                  <div className="relative mb-5 aspect-[4/3] overflow-hidden rounded-xl bg-brand-soft">
+                    <Image
+                      src={sector.iconType === "commercial" ? "/services/commercial_projects.jpg" : sector.iconType === "residential" ? "/services/residential_villas.jpg" : "/services/construction-overview-generated.webp"}
+                      alt={sector.iconType === "commercial" ? "Commercial construction" : sector.iconType === "residential" ? "Residential architecture" : "Steel framework at a construction site"}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover"
+                    />
                   </div>
 
                   {/* Sector Title */}
-                  <h3 className="text-2xl sm:text-[26px] font-bold text-zinc-950 tracking-tight leading-snug mb-4 group-hover:text-zinc-700 transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight leading-snug mb-3">
                     {sector.title}
                   </h3>
 
                   {/* Sector Description */}
-                  <p className="text-[15px] text-zinc-600 leading-relaxed font-normal mb-8">
+                  <p className="text-base text-slate-600 leading-relaxed mb-5">
                     {sector.description}
                   </p>
                 </div>
 
                 {/* Simple Subtle Tag Pills */}
-                <div className="flex flex-wrap gap-2">
+                <div className="mt-auto flex flex-wrap gap-x-3 gap-y-1">
                   {sector.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="sector-tag-pill px-3 py-1 rounded-md bg-zinc-100 border border-transparent text-zinc-600 text-xs font-medium"
+                      className="text-slate-500 text-sm"
                     >
                       {tag}
                     </span>
@@ -598,21 +583,17 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
       {/* ── Section 3: Video Pin Reveal - Heavy Industrial Showcase ─────────── */}
       <section className="relative w-full bg-white" style={{ backgroundColor: "#ffffff" }}>
         {/* Architectural Section Intro Row */}
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-4 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-t border-zinc-200/80">
+        <div className="w-full px-6 sm:px-10 lg:px-16 pt-4 pb-6">
+          <div className="max-w-[1312px] mx-auto grid gap-4 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:gap-16">
           <div className="space-y-2">
-            <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-zinc-950 animate-pulse" />
-              <span className="text-xs sm:text-sm font-semibold tracking-wider text-zinc-500 uppercase">
-                Megaproject Execution
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-normal tracking-tight text-zinc-950 leading-tight">
-              Engineering Saudi Arabia&apos;s industrial backbone.
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-slate-900 leading-tight">
+              Industrial engineering across Saudi Arabia.
             </h2>
           </div>
-          <p className="text-[14.5px] sm:text-[15px] text-zinc-600 max-w-md leading-relaxed font-normal">
-            Orchestrating turnkey engineering, petrochemical installations, and heavy civil works with uncompromising safety and precision.
+          <p className="text-base text-slate-600 leading-relaxed">
+            Engineering, petrochemical installations, and civil works delivered with safety and precision.
           </p>
+          </div>
         </div>
 
         {/* Pinned Video Viewport */}
@@ -667,7 +648,7 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
               className="absolute inset-x-0 bottom-0 z-20 px-6 pb-10 pt-20 text-white sm:px-10 sm:pb-16 lg:px-16 lg:pb-20"
             >
               <div className="mx-auto max-w-[1312px]">
-                <div className="max-w-2xl border-l-[3px] border-[#3545a5] pl-5 sm:pl-7">
+                <div className="max-w-2xl  border-[#3545a5] pl-5 sm:pl-7">
                   <h3 className="max-w-[18ch] text-[clamp(1.9rem,4vw,3.75rem)] font-medium leading-[1.08] tracking-[-0.035em] text-balance drop-shadow-lg">
                     Heavy industrial.<br />Built with precision.
                   </h3>
@@ -682,7 +663,7 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
             {showPlayButton && (
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/25 backdrop-blur-md border border-white/50 flex justify-center items-center shadow-2xl">
-                  <div className="w-0 h-0 border-y-[7px] border-y-transparent border-l-[12px] border-l-white ml-1" />
+                  <div className="w-0 h-0  border-y-transparent  border-l-white ml-1" />
                 </div>
               </div>
             )}

@@ -26,7 +26,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
   return (
     <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
       {/* ── 1. FULL-SCREEN LIGHT HERO BANNER (No Text, No Dark Color) ── */}
-      <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
+      <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white  border-zinc-200/80 overflow-hidden">
         <Image
           src={data.heroImage}
           alt={data.divisionTitle}
@@ -38,7 +38,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       </section>
 
       {/* ── 2. HEADLINE & OVERVIEW SECTION (Below Full-Screen Banner) ── */}
-      <section className="relative px-6 sm:px-10 lg:px-16 pt-12 sm:pt-16 pb-16 sm:pb-20 border-b border-zinc-200/80 bg-white">
+      <section className="relative px-6 sm:px-10 lg:px-16 pt-12 sm:pt-16 pb-16 sm:pb-20  border-zinc-200/80 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
           {/* Main Headline */}
           <div className="max-w-4xl space-y-6">
@@ -54,7 +54,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       </section>
 
       {/* ── 2. KEY METRICS & BENCHMARKS ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80">
+      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
             {data.stats.map((stat, idx) => (
@@ -62,7 +62,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
                 <div className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-zinc-950 font-sans">
                   {stat.num}
                 </div>
-                <div className="w-full h-[1px] bg-zinc-200/90" />
+
                 <h4 className="text-xs sm:text-[13px] font-semibold tracking-wide text-zinc-900 uppercase">
                   {stat.label}
                 </h4>
@@ -76,14 +76,12 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       </section>
 
       {/* ── 3. OPERATING APPROACH & INTERACTIVE ACCORDION ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 border-b border-zinc-200/80">
+      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28  border-zinc-200/80">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left: Heading & Accordion */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                {data.overviewEyebrow}
-              </span>
+
 
               <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-normal tracking-tight text-zinc-950 leading-[1.14]">
                 {data.overviewHeading}
@@ -100,7 +98,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
                   return (
                     <div
                       key={item.title}
-                      className="border-b border-zinc-200/90 py-4 cursor-pointer transition-colors"
+                      className=" border-zinc-200/90 py-4 cursor-pointer transition-colors"
                       onClick={() => setOpenAccordion(isOpen ? null : idx)}
                     >
                       <div className="flex items-center justify-between">
@@ -156,14 +154,12 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       </section>
 
       {/* ── 4. SPECIALIZED CAPABILITIES & DELIVERABLES ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 border-b border-zinc-200/80">
+      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28  border-zinc-200/80">
         <div className="max-w-[1440px] mx-auto w-full">
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-zinc-200/80 mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8  border-zinc-200/80 mb-12">
             <div className="space-y-2.5 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                {data.capabilitiesEyebrow}
-              </span>
+
               <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-normal tracking-tight text-zinc-950 leading-[1.14]">
                 {data.capabilitiesHeading}
               </h2>
@@ -179,7 +175,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
             {data.capabilities.map((cap) => (
               <div
                 key={cap.num}
-                className="group flex items-start justify-between py-4 border-b border-zinc-100 hover:border-zinc-300 transition-colors"
+                className="group flex items-start justify-between py-4  border-zinc-100 hover:border-zinc-300 transition-colors"
               >
                 <div className="flex items-start gap-4">
                   <span className="text-xs font-mono font-bold tracking-wider text-zinc-400 group-hover:text-brand transition-colors pt-0.5">
@@ -203,7 +199,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       </section>
 
       {/* ── 5. QUALITY, SAFETY & COMPLIANCE ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 border-b border-zinc-200/80">
+      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28  border-zinc-200/80">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Image */}
@@ -219,9 +215,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
 
             {/* Right Narrative */}
             <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                {data.complianceEyebrow}
-              </span>
+
 
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950 leading-tight">
                 {data.complianceHeading}
@@ -248,12 +242,10 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
 
       {/* ── 6. RELATED DIVISIONS QUICK SWITCHER ── */}
       {data.relatedDivisions && data.relatedDivisions.length > 0 && (
-        <section className="px-6 sm:px-10 lg:px-16 py-16 border-b border-zinc-200/80 bg-zinc-50/50">
+        <section className="px-6 sm:px-10 lg:px-16 py-16  border-zinc-200/80 bg-zinc-50/50">
           <div className="max-w-[1440px] mx-auto w-full">
-            <div className="flex items-center justify-between pb-6 border-b border-zinc-200/80 mb-8">
-              <span className="text-xs font-mono font-bold tracking-widest text-zinc-500 uppercase">
-                Explore Adjacent Divisions
-              </span>
+            <div className="flex items-center justify-between pb-6  border-zinc-200/80 mb-8">
+
               <Link
                 href="/about-us"
                 className="text-xs font-mono font-bold text-brand hover:underline uppercase tracking-wider"
@@ -290,11 +282,9 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       {/* ── 7. CLEAN EDITORIAL PROPOSAL & INQUIRY FOOTER ── */}
       <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12  border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                Inquiries &amp; Project Scopes • {data.divisionTitle}
-              </span>
+
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
                 Engage our technical engineering team in Riyadh.
               </h2>

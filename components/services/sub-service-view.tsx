@@ -38,10 +38,10 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
           getFramePath={getFramePath}
           scrollHeightVh={420}
           fit={heroFrames.fit ?? "cover"}
-          className="border-b border-zinc-200/80"
+          className=" border-zinc-200/80"
         />
       ) : (
-        <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white border-b border-zinc-200/80 overflow-hidden">
+        <section className="relative w-full h-[calc(100vh-84px)] min-h-[500px] max-h-[1080px] bg-white  border-zinc-200/80 overflow-hidden">
           <Image
             src={data.heroImage}
             alt={data.title}
@@ -54,7 +54,7 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
       )}
 
       {/* ── 2. HEADLINE & OVERVIEW SECTION WITH SIDE IMAGE ── */}
-      <section className="relative px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24 border-b border-zinc-200/80 bg-white">
+      <section className="relative px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24  border-zinc-200/80 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 mb-8 text-xs text-zinc-500 font-mono">
@@ -129,7 +129,7 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
 
       {/* ── 3. WIDE SHOWCASE IMAGE BANNER CARD (No Text, No Dark Overlay) ── */}
       {showShowcase && (
-      <section className={`px-6 sm:px-10 lg:px-16 py-12 ${isFacadeShowcase ? "bg-transparent" : "border-b border-zinc-200/80 bg-zinc-50/50"}`}>
+      <section className={`px-6 sm:px-10 lg:px-16 py-12 ${isFacadeShowcase ? "bg-transparent" : " border-zinc-200/80 bg-zinc-50/50"}`}>
         <div className="max-w-[1440px] mx-auto w-full">
           <div className={`relative aspect-[21/9] sm:aspect-[24/9] w-full overflow-hidden ${isFacadeShowcase ? "bg-transparent" : "bg-zinc-100 border border-zinc-200/80 shadow-xs"}`}>
             <Image
@@ -147,12 +147,10 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
 
       {/* ── 4. KEY CAPABILITIES & FEATURES GRID ── */}
       {data.features && data.features.length > 0 && (
-        <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
+        <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-white">
           <div className="max-w-[1440px] mx-auto w-full">
             <div className="mb-12 space-y-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                Scope & Capabilities
-              </span>
+
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
                 Core Deliverables & Technical Expertise
               </h2>
@@ -177,7 +175,7 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
       )}
 
       {/* ── 5. QUALITY, SAFETY & COMPLIANCE SECTION WITH IMAGE ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-zinc-50/50">
+      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-zinc-50/50">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Compliance Image Card (No Text, No Dark Overlay) */}
@@ -193,9 +191,7 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
 
             {/* Right Compliance Narrative */}
             <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                Quality Assurance & Regulatory Mandate
-              </span>
+
 
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950 leading-tight">
                 Strict adherence to Saudi Building Codes and safety mandates.
@@ -229,12 +225,10 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
 
       {/* ── 6. TECHNICAL SPECIFICATIONS GRID ── */}
       {!data.certificationRecord && data.specifications && data.specifications.length > 0 && (
-        <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
+        <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-white">
           <div className="max-w-[1440px] mx-auto w-full">
             <div className="mb-12 space-y-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                Technical Specifications
-              </span>
+
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
                 System Parameters & Engineering Benchmarks
               </h2>
@@ -264,11 +258,9 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
       {/* ── 7. INQUIRY & CONTACT FOOTER ── */}
       <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12  border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                Technical Consultation • {data.title}
-              </span>
+
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
                 Discuss your {data.title} project scope with our engineers.
               </h2>

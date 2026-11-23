@@ -314,18 +314,11 @@ export function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
           isTransparent
             ? isServicesOpen
-              ? "bg-[#0b0f19]/98 backdrop-blur-2xl border-b border-white/10"
-              : "bg-transparent border-b border-transparent shadow-none drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"
-            : "bg-white border-b border-slate-200/80 shadow-sm"
+              ? "bg-[#0b0f19]/98 backdrop-blur-2xl  border-white/10"
+              : "bg-transparent  border-transparent shadow-none drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"
+            : "bg-white  border-slate-200/80 shadow-sm"
         }`}
       >
-        {/* Top accent bar line - brand azure blue line matching website palette */}
-        <div
-          className={`h-[3px] w-full transition-all duration-300 ${
-            isTransparent ? "opacity-0 bg-transparent" : "opacity-100 bg-brand"
-          }`}
-        />
-
         <div className="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 md:h-[84px]">
             {/* Left: ALFA Logo */}
@@ -569,7 +562,7 @@ export function Navbar() {
               : "bg-white text-slate-900"
           } ${
             isServicesOpen
-              ? `max-h-[640px] opacity-100 border-t border-b shadow-[0_24px_48px_-24px_rgba(0,0,0,0.35)] ${
+              ? `max-h-[640px] opacity-100   shadow-[0_24px_48px_-24px_rgba(0,0,0,0.35)] ${
                   isTransparent ? "border-white/10" : "border-slate-200/80"
                 }`
               : "max-h-0 opacity-0 border-0 pointer-events-none"
@@ -636,7 +629,7 @@ export function Navbar() {
               </div>
 
               {/* Services in the active division */}
-              <div className={`col-span-6 border-l pl-10 ${isTransparent ? "border-white/10" : "border-slate-200/80"}`}>
+              <div className={`col-span-6  pl-10 ${isTransparent ? "border-white/10" : "border-slate-200/80"}`}>
                 <p className={`text-[11px] font-semibold uppercase tracking-[0.14em] mb-3 ${isTransparent ? "text-slate-400" : "text-slate-500"}`}>
                   {toTitleCase(DIVISIONS_28_DATA[activeHoverCategory]?.title ?? "")}
                 </p>
@@ -710,7 +703,7 @@ export function Navbar() {
 
         {/* Mobile Slide-down Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-4 shadow-xl animate-in slide-in-from-top duration-200">
+          <div className="lg:hidden  border-slate-100 bg-white px-4 pt-3 pb-6 space-y-4 shadow-xl animate-in slide-in-from-top duration-200">
             <nav className="flex flex-col space-y-1">
               <Link
                 href="/"
@@ -746,7 +739,7 @@ export function Navbar() {
                   <div className="pl-2 pr-2 py-3 space-y-4 bg-slate-50/90 rounded-xl mt-1.5 border border-slate-200/70">
                     {DIVISIONS_28_DATA.map((cat) => (
                       <div key={cat.title} className="space-y-1.5">
-                        <div className="flex items-center gap-2 px-2 pb-1 border-b border-slate-200/60">
+                        <div className="flex items-center gap-2 px-2 pb-1  border-slate-200/60">
                           <span className="text-[11px] font-bold tracking-wider uppercase text-brand">
                             {cat.title} ({cat.items.length})
                           </span>
@@ -784,7 +777,7 @@ export function Navbar() {
               </Link>
             </nav>
 
-            <div className="pt-2 border-t border-slate-100">
+            <div className="pt-2  border-slate-100">
               <button
                 type="button"
                 onClick={() => {

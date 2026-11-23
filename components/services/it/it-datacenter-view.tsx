@@ -30,11 +30,11 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
         frameCount={heroFrames?.count ?? DATA_CENTRE_FRAME_COUNT}
         getFramePath={getFramePath}
         scrollHeightVh={420}
-        className="border-b border-zinc-200/80"
+        className=" border-zinc-200/80"
       />
 
       {/* ── 2. DATA CENTER ARCHITECTURE OVERVIEW ── */}
-      <section className="px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24 border-b border-zinc-200/80 bg-white">
+      <section className="px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24  border-zinc-200/80 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 mb-8 text-xs text-zinc-500 font-mono">
@@ -52,9 +52,7 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                Mission-Critical Infrastructure
-              </span>
+
               <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-normal leading-[1.12] text-zinc-950 tracking-tight">
                 {data.title}
               </h1>
@@ -111,12 +109,10 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       </section>
 
       {/* ── 3. FOUR-STAGE DEPLOYMENT PROCESS TIMELINE ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-zinc-50/50">
+      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-zinc-50/50">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="mb-12 space-y-2">
-            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-              Deployment Phases
-            </span>
+
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
               Data Center Engineering & Delivery Roadmap
             </h2>
@@ -148,7 +144,7 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       </section>
 
       {/* ── 4. WIDE DATA CENTER SHOWCASE BANNER (No Text, No Dark Overlay) ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-12 border-b border-zinc-200/80 bg-white">
+      <section className="px-6 sm:px-10 lg:px-16 py-12  border-zinc-200/80 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="relative aspect-[21/9] sm:aspect-[24/9] w-full rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
             <Image
@@ -163,12 +159,10 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       </section>
 
       {/* ── 5. CORE DELIVERABLES ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-zinc-50/50">
+      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-zinc-50/50">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="mb-12 space-y-2">
-            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-              System Scope
-            </span>
+
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
               Infrastructure Scope & Equipment Integration
             </h2>
@@ -192,12 +186,10 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       </section>
 
       {/* ── 6. TECHNICAL PARAMETERS ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-white">
+      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
           <div className="mb-12 space-y-2">
-            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-              Technical Metrics
-            </span>
+
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
               Data Center System Specifications
             </h2>
@@ -220,12 +212,10 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       </section>
 
       {/* ── 6B. DATA CENTER ARCHITECTURAL PILLARS ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24 border-b border-zinc-200/80 bg-zinc-50/50">
+      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-zinc-50/50">
         <div className="max-w-[1440px] mx-auto w-full space-y-12">
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-              Mission-Critical Architecture
-            </span>
+
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
               Data Center Engineering & Safety Pillars
             </h2>
@@ -280,11 +270,9 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       {/* ── 7. INQUIRY FOOTER ── */}
       <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12  border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                Data Center Consultation • {data.title}
-              </span>
+
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
                 Engage our data center engineering team in Riyadh.
               </h2>

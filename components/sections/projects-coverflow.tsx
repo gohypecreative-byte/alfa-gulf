@@ -208,8 +208,8 @@ export function ProjectsCoverflowSection() {
   }, [activeIdx]);
 
   return (
-    <section className="relative w-full bg-white text-zinc-900 pt-8 sm:pt-10 md:pt-12 pb-20 sm:pb-28 md:pb-36 overflow-hidden border-t border-zinc-100/70">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-10 sm:mb-14">
+    <section className="relative w-full bg-white text-zinc-900 pt-8 sm:pt-10 md:pt-12 pb-20 sm:pb-28 md:pb-36 overflow-hidden  border-zinc-100/70">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 mb-10 sm:mb-14">
 
         <div className="max-w-3xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900">
@@ -245,7 +245,7 @@ export function ProjectsCoverflowSection() {
       {/* Stage selector */}
       <div
         ref={detailRef}
-        className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-10 sm:mt-12"
+        className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 mt-10 sm:mt-12"
       >
         <div
           role="group"
@@ -308,7 +308,7 @@ export function ProjectsCoverflowSection() {
       </div>
 
       {/* Site footage */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-20 sm:mt-24">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 mt-20 sm:mt-24">
         <div className="max-w-3xl mb-8">
           <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900">From the site</h3>
           <p className="mt-2 text-zinc-600 leading-relaxed">

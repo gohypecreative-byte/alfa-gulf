@@ -47,7 +47,7 @@ export default function ServicesIndexPage() {
           const detail = divisionDetails[index]
           const DivisionIcon = detail.icon
           return (
-            <section key={division.id} id={division.id} className="grid scroll-mt-28 gap-8 border-b border-slate-200 py-12 sm:py-16 lg:grid-cols-[280px_1fr] lg:gap-16">
+            <section key={division.id} id={division.id} className="grid scroll-mt-28 gap-8  border-slate-200 py-12 sm:py-16 lg:grid-cols-[280px_1fr] lg:gap-16">
               <div>
                 <div className="lg:sticky lg:top-32">
                   <DivisionIcon aria-hidden="true" className="mb-5 size-10 text-brand" strokeWidth={1.3} />
@@ -83,11 +83,9 @@ export default function ServicesIndexPage() {
 
       <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
         <div className="max-w-[1440px] mx-auto w-full">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-zinc-200/80">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12  border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
-              <span className="text-xs font-mono font-bold tracking-widest text-brand uppercase">
-                General Contracting Inquiries
-              </span>
+
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
                 Partner with Alfa Gulf on your next project.
               </h2>
