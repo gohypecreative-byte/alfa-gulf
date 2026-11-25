@@ -1,27 +1,23 @@
-"use client"
-
-import * as React from "react"
 export function VideoScrollHero() {
-  const [isFirstFrameReady, setIsFirstFrameReady] = React.useState(false)
-
   return (
     <div
       id="video-hero-section"
-      className="relative w-full h-svh bg-slate-950 select-none"
+      className="relative w-full h-svh md:h-auto md:aspect-video bg-slate-950 select-none"
     >
-      {/* Fullscreen playback viewport */}
-      <div className="relative h-full w-full overflow-hidden flex items-center justify-center bg-slate-950">
+      {/* Keep the complete 16:9 frame visible on desktop. */}
+      <div className="absolute inset-0 overflow-hidden flex items-center justify-center bg-slate-950">
         <video
-          src="/alfa_enhanced_4K.mp4"
+          src="/alfa-hero-1080p.mp4"
+          poster="/alfa-hero-poster.webp"
+          width={1920}
+          height={1080}
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
           aria-hidden="true"
-          onLoadedData={() => setIsFirstFrameReady(true)}
-          className="w-full h-full object-cover transition-opacity duration-300"
-          style={{ opacity: isFirstFrameReady ? 1 : 0 }}
+          className="absolute inset-0 w-full h-full object-cover md:object-contain"
         />
 
       </div>

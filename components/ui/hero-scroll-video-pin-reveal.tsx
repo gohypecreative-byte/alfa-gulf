@@ -227,13 +227,22 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
   }
 
   useEffect(() => {
-    // Ensure video plays smoothly in background
-    if (videoRef.current) {
-      videoRef.current.defaultMuted = true
-      videoRef.current.muted = true
-      videoRef.current.play().catch(() => {})
-    }
+    // Let the above-the-fold hero load first; start this video near its section.
+    const video = videoRef.current
+    if (!video) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        video.muted = true
+        video.play().catch(() => {})
+      } else {
+        video.pause()
+      }
+    }, { rootMargin: "400px" })
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
 
+  useEffect(() => {
     const ctx = gsap.context(() => {
       // ── 1. Architectural Corporate Foundation Reveal ────────────────────────
       if (corporateSectionRef.current && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -629,11 +638,10 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
             {/* Video Element playing inside the aperture */}
             <video
               ref={videoRef}
-              autoPlay
               muted
               loop
               playsInline
-              preload="auto"
+              preload="none"
               poster={posterSrc}
               crossOrigin="anonymous"
               className="w-full h-full object-cover bg-slate-900"
