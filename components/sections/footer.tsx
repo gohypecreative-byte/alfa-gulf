@@ -50,8 +50,8 @@ export function HoverFooter() {
     },
   ];
 
-  // Social media icons matching media_1788856754017.png:
-  // Facebook, Instagram, Twitter, Dribbble, Globe
+  // Social media links:
+  // Facebook, Instagram, Twitter
   const socialLinks = [
     {
       icon: (
@@ -86,39 +86,6 @@ export function HoverFooter() {
       ),
       label: "Twitter",
       href: "#",
-    },
-    {
-      icon: (
-        <svg
-          className="w-5 h-5 stroke-current fill-none stroke-2"
-          viewBox="0 0 24 24"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94" />
-          <path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32" />
-          <path d="M8.56 2.75c4.37 6 6 9.42 8 17.72" />
-        </svg>
-      ),
-      label: "Dribbble",
-      href: "#",
-    },
-    {
-      icon: (
-        <svg
-          className="w-5 h-5 stroke-current fill-none stroke-2"
-          viewBox="0 0 24 24"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <line x1="2" x2="22" y1="12" y2="12" />
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-        </svg>
-      ),
-      label: "Globe",
-      href: "/",
     },
   ];
 
