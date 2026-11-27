@@ -315,7 +315,7 @@ export function Navbar() {
           isTransparent
             ? isServicesOpen
               ? "bg-[#0b0f19]/98 backdrop-blur-2xl  border-white/10"
-              : "bg-transparent  border-transparent shadow-none drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"
+              : "bg-transparent  border-transparent shadow-none"
             : "bg-white  border-slate-200/80 shadow-sm"
         }`}
       >
