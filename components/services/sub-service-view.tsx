@@ -54,8 +54,8 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
       )}
 
       {/* ── 2. HEADLINE & OVERVIEW SECTION WITH SIDE IMAGE ── */}
-      <section className="relative px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24  border-zinc-200/80 bg-white">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space relative px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-white">
+        <div className="max-w-[1312px] mx-auto w-full">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 mb-8 text-xs text-zinc-500 font-mono">
             <Link href="/services" className="hover:text-brand transition-colors uppercase">
@@ -129,8 +129,8 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
 
       {/* ── 3. WIDE SHOWCASE IMAGE BANNER CARD (No Text, No Dark Overlay) ── */}
       {showShowcase && (
-      <section className={`px-6 sm:px-10 lg:px-16 py-12 ${isFacadeShowcase ? "bg-transparent" : " border-zinc-200/80 bg-zinc-50/50"}`}>
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className={`px-6 sm:px-10 lg:px-16 section-space ${isFacadeShowcase ? "bg-transparent" : " border-zinc-200/80 bg-zinc-50/50"}`}>
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className={`relative aspect-[21/9] sm:aspect-[24/9] w-full overflow-hidden ${isFacadeShowcase ? "bg-transparent" : "bg-zinc-100 border border-zinc-200/80 shadow-xs"}`}>
             <Image
               src={showcaseImg}
@@ -147,8 +147,8 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
 
       {/* ── 4. KEY CAPABILITIES & FEATURES GRID ── */}
       {data.features && data.features.length > 0 && (
-        <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-white">
-          <div className="max-w-[1440px] mx-auto w-full">
+        <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-white">
+          <div className="max-w-[1312px] mx-auto w-full">
             <div className="mb-12 space-y-2">
 
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -175,8 +175,8 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
       )}
 
       {/* ── 5. QUALITY, SAFETY & COMPLIANCE SECTION WITH IMAGE ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-zinc-50/50">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-zinc-50/50">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Compliance Image Card (No Text, No Dark Overlay) */}
             <div className="lg:col-span-5 relative aspect-[4/3] rounded-none overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs order-2 lg:order-1">
@@ -225,8 +225,8 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
 
       {/* ── 6. TECHNICAL SPECIFICATIONS GRID ── */}
       {!data.certificationRecord && data.specifications && data.specifications.length > 0 && (
-        <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-white">
-          <div className="max-w-[1440px] mx-auto w-full">
+        <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-white">
+          <div className="max-w-[1312px] mx-auto w-full">
             <div className="mb-12 space-y-2">
 
               <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -256,8 +256,8 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
       <CertificationsSection />
 
       {/* ── 7. INQUIRY & CONTACT FOOTER ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16 bg-white">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12  border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
 
@@ -265,7 +265,7 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
                 Discuss your {data.title} project scope with our engineers.
               </h2>
               <p className="text-sm sm:text-base text-zinc-600 font-normal leading-relaxed">
-                Connect directly with Alfa Gulf engineering managers in Riyadh for tenders, technical data sheets, and BOQ estimates.
+                Connect directly with Alfa Gulf engineering managers in Al Khobar for tenders, technical data sheets, and BOQ estimates.
               </p>
             </div>
 
@@ -291,7 +291,7 @@ export function SubServiceDetailView({ data, showShowcase = true }: SubServiceVi
           <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-500">
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-brand" />
-              <span>Riyadh, Kingdom of Saudi Arabia</span>
+              <span>Al Khobar, Kingdom of Saudi Arabia</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5 text-brand" />

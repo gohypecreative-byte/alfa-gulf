@@ -295,12 +295,12 @@ export const ServicesStackInteractor: React.FC<ServicesStackInteractorProps> = (
     <section
       ref={containerRef}
       className={cn(
-        "relative w-full bg-white text-zinc-900 py-12 sm:py-16 lg:py-20 px-4 sm:px-10 lg:px-16 overflow-hidden select-none  border-zinc-200/80 min-h-0 flex flex-col justify-center",
+        "relative w-full bg-white text-zinc-900 section-space px-6 sm:px-10 lg:px-16 overflow-hidden select-none  border-zinc-200/80 min-h-0 flex flex-col justify-center",
         className
       )}
       style={{ backgroundColor: "#ffffff" }}
     >
-      <div className="max-w-[1520px] mx-auto w-full">
+      <div className="max-w-[1312px] mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 xl:gap-14 items-center">
           {/* ── LEFT COLUMN: Header & Editorial Description ───────────── */}
           <div className="lg:col-span-4 xl:col-span-3 space-y-4 sm:space-y-6">

@@ -124,12 +124,12 @@ export const BuildingForTheBest: React.FC<BuildingForTheBestProps> = ({ classNam
     <section
       ref={sectionRef}
       className={cn(
-        "relative w-full bg-[#e4e8f8] text-slate-900 py-24 sm:py-32 lg:py-36 xl:py-40 px-6 sm:px-10 lg:px-16 overflow-hidden select-none  border-sky-200/60 min-h-[85vh] flex flex-col justify-center",
+        "relative w-full bg-[#e4e8f8] text-slate-900 section-space px-6 sm:px-10 lg:px-16 overflow-hidden select-none  border-sky-200/60 min-h-0 flex flex-col justify-center",
         className
       )}
       style={{ background: "linear-gradient(135deg, #f1f3fc 0%, #e4e8f8 45%, #cdd4f1 100%)" }}
     >
-      <div className="max-w-[1520px] mx-auto w-full relative z-10">
+      <div className="max-w-[1312px] mx-auto w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
           {/* ── LEFT COLUMN: Heading, Editorial Copy & Interactive Links ──── */}
           <div className="lg:col-span-5 xl:col-span-4 z-10">

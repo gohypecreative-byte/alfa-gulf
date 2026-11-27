@@ -6,8 +6,8 @@ const CERTIFICATE_TITLES = ["Quality management", "Environmental management", "O
 
 export function CertificationsSection() {
   return (
-    <section id="certifications" className="scroll-mt-28 bg-gradient-to-br from-white to-brand-soft px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
-      <div className="mx-auto grid max-w-[1440px] gap-9 lg:grid-cols-[0.85fr_1.65fr] lg:gap-16">
+    <section id="certifications" className="section-space scroll-mt-28 bg-gradient-to-br from-white to-brand-soft px-6 sm:px-10 lg:px-16">
+      <div className="mx-auto grid max-w-[1312px] gap-9 lg:grid-cols-[0.85fr_1.65fr] lg:gap-16">
         <div className="lg:pt-3">
           <p className="mb-4 text-sm font-medium text-brand">Our certifications</p>
           <h2 className="max-w-sm text-3xl font-medium leading-tight tracking-tight text-slate-900 sm:text-4xl">Built on recognised standards.</h2>

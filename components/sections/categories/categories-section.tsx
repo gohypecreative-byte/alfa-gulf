@@ -91,7 +91,7 @@ export function CategoriesSection({ className = "" }: { className?: string }) {
           className="w-full px-6 sm:px-10 lg:px-16 py-16 sm:py-20 lg:py-24 bg-white"
           style={{ backgroundColor: "#ffffff" }}
         >
-          <div className="max-w-[1440px] mx-auto w-full">
+          <div className="max-w-[1312px] mx-auto w-full">
             {/* Section Header: Clean Architectural Split */}
             <div
               className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 sm:pb-8  border-zinc-200/80"

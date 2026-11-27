@@ -31,7 +31,7 @@ export function HoverFooter() {
       links: [
         { label: "About Alfa Gulf", href: "/about-us" },
         { label: "Featured Projects", href: "#projects" },
-        { label: "Saudi Vision 2030", href: "#vision2030" },
+        { label: "Saudi Vision 2030", href: "/#vision2030" },
         { label: "Safety & Culture Charter", href: "#safety" },
         { label: "Careers", href: "#careers" },
       ],
@@ -46,7 +46,7 @@ export function HoverFooter() {
     },
     {
       icon: <MapPin size={18} className="text-brand" />,
-      text: "King Fahd Road, Al-Olaya, Riyadh, KSA",
+      text: "Al Khobar, Kingdom of Saudi Arabia",
     },
   ];
 
@@ -123,8 +123,8 @@ export function HoverFooter() {
   ];
 
   return (
-    <footer className="w-full bg-white relative h-fit overflow-hidden text-slate-800 pt-14 sm:pt-16 lg:pt-20">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 z-40 relative">
+    <footer className="w-full bg-white relative h-fit overflow-hidden text-slate-800 section-space">
+      <div className="site-container z-40 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 md:gap-8 lg:gap-12 pb-12">
           {/* Brand section */}
           <div className="flex flex-col space-y-4">

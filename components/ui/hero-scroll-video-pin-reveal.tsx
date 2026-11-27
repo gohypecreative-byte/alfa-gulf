@@ -447,7 +447,7 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
       {/* ── Section 1: Architectural Corporate Profile & Core Pillars ──────── */}
       <section
         ref={corporateSectionRef}
-        className="w-full py-12 sm:py-16 px-6 sm:px-10 lg:px-16 bg-white"
+        className="w-full section-space px-6 sm:px-10 lg:px-16 bg-white"
       >
         <div className="max-w-[1312px] mx-auto">
           {/* Header Row: Title & Editorial Narrative */}
@@ -528,7 +528,7 @@ export const HeroScrollVideoReveal: React.FC<HeroScrollVideoRevealProps> = ({
       {/* ── Section 2: "Our Sectors" Simple Clean Layout ──────────────────── */}
       <section
         ref={sectorsSectionRef}
-        className="w-full py-14 sm:py-20 px-6 sm:px-10 lg:px-16 bg-white"
+        className="w-full section-space px-6 sm:px-10 lg:px-16 bg-white"
         style={{ backgroundColor: "#ffffff" }}
       >
         <div className="max-w-[1312px] mx-auto">

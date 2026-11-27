@@ -34,8 +34,8 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       />
 
       {/* ── 2. DATA CENTER ARCHITECTURE OVERVIEW ── */}
-      <section className="px-6 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 sm:pb-24  border-zinc-200/80 bg-white">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-white">
+        <div className="max-w-[1312px] mx-auto w-full">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 mb-8 text-xs text-zinc-500 font-mono">
             <Link href="/services" className="hover:text-brand transition-colors uppercase">
@@ -109,8 +109,8 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       </section>
 
       {/* ── 3. FOUR-STAGE DEPLOYMENT PROCESS TIMELINE ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-zinc-50/50">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-zinc-50/50">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="mb-12 space-y-2">
 
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -144,8 +144,8 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       </section>
 
       {/* ── 4. WIDE DATA CENTER SHOWCASE BANNER (No Text, No Dark Overlay) ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-12  border-zinc-200/80 bg-white">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-white">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="relative aspect-[21/9] sm:aspect-[24/9] w-full rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs">
             <Image
               src={data.showcaseBanner}
@@ -159,8 +159,8 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       </section>
 
       {/* ── 5. CORE DELIVERABLES ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-zinc-50/50">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-zinc-50/50">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="mb-12 space-y-2">
 
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -186,8 +186,8 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       </section>
 
       {/* ── 6. TECHNICAL PARAMETERS ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-white">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-white">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="mb-12 space-y-2">
 
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -212,8 +212,8 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       </section>
 
       {/* ── 6B. DATA CENTER ARCHITECTURAL PILLARS ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80 bg-zinc-50/50">
-        <div className="max-w-[1440px] mx-auto w-full space-y-12">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-zinc-50/50">
+        <div className="max-w-[1312px] mx-auto w-full space-y-12">
           <div className="space-y-2">
 
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-zinc-950">
@@ -268,13 +268,13 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
       <CertificationsSection />
 
       {/* ── 7. INQUIRY FOOTER ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16 bg-white">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12  border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
-                Engage our data center engineering team in Riyadh.
+                Engage our data center engineering team in Al Khobar.
               </h2>
               <p className="text-sm sm:text-base text-zinc-600 font-normal leading-relaxed">
                 Connect directly with Alfa Gulf data center consultants for thermal modeling, TIA-942 audit reports, and turnkey server room tenders.
@@ -303,7 +303,7 @@ export function ITDataCenterView({ data }: { data: ITDataCenterData }) {
           <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-500">
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-brand" />
-              <span>Riyadh, Kingdom of Saudi Arabia</span>
+              <span>Al Khobar, Kingdom of Saudi Arabia</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5 text-brand" />

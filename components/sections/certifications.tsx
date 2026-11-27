@@ -21,7 +21,7 @@ export function CertificationsSection() {
     <section
       id="certifications"
       aria-labelledby="certifications-heading"
-      className="bg-white px-6 py-14 sm:px-10 sm:py-16"
+      className="section-space bg-white px-6 sm:px-10"
     >
       <div className="mx-auto max-w-[1312px]">
         <div className="mb-8">

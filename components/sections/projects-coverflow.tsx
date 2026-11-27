@@ -145,8 +145,20 @@ const SITE_CLIPS: SiteClip[] = [
   { src: "/site-clips/stone-finishes.mp4", poster: "/site-clips/stone-finishes.jpg", title: "Stone cladding works" },
 ];
 
+// Curated by scene, not filename: several source photos show the same view
+// from slightly different angles and would look repeated in the carousel.
+const CAROUSEL_PHOTOS = new Set([
+  "/service-img/floor-epoxy-01.jpg",
+  "/service-img/ceiling-01.jpg",
+  "/service-img/mep-02.jpg",
+  "/service-img/lighting-01.jpg",
+  "/service-img/finishes-01.jpg",
+  "/service-img/finishes-03.jpg",
+  "/service-img/finishes-04.jpg",
+]);
+
 export const ALFA_GULF_PROJECTS: CoverflowSlide[] = PROJECT_STAGES.flatMap((stage) =>
-  stage.photos.slice(0, 2).map((photo) => ({
+  stage.photos.filter((photo) => CAROUSEL_PHOTOS.has(photo.src)).map((photo) => ({
     src: photo.src,
     alt: photo.alt,
     title: stage.title,
@@ -208,8 +220,8 @@ export function ProjectsCoverflowSection() {
   }, [activeIdx]);
 
   return (
-    <section className="relative w-full bg-white text-zinc-900 pt-8 sm:pt-10 md:pt-12 pb-20 sm:pb-28 md:pb-36 overflow-hidden  border-zinc-100/70">
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 mb-10 sm:mb-14">
+    <section className="section-space relative w-full bg-white text-zinc-900 overflow-hidden  border-zinc-100/70">
+      <div className="site-container mb-2">
 
         <div className="max-w-3xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900">
@@ -245,7 +257,7 @@ export function ProjectsCoverflowSection() {
       {/* Stage selector */}
       <div
         ref={detailRef}
-        className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 mt-10 sm:mt-12"
+        className="site-container content-gap-top"
       >
         <div
           role="group"
@@ -308,7 +320,7 @@ export function ProjectsCoverflowSection() {
       </div>
 
       {/* Site footage */}
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 mt-20 sm:mt-24">
+      <div className="site-container content-gap-top">
         <div className="max-w-3xl mb-8">
           <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900">From the site</h3>
           <p className="mt-2 text-zinc-600 leading-relaxed">

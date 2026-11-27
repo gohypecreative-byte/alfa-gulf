@@ -319,7 +319,7 @@ export function Navbar() {
             : "bg-white  border-slate-200/80 shadow-sm"
         }`}
       >
-        <div className="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container ">
           <div className="flex items-center justify-between h-20 md:h-[84px]">
             {/* Left: ALFA Logo */}
             <div className="flex-shrink-0">
@@ -570,7 +570,7 @@ export function Navbar() {
           onMouseEnter={handleMouseEnterServices}
           onMouseLeave={handleMouseLeaveServices}
         >
-          <div className="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="site-container py-8">
             <div className="grid grid-cols-12 gap-10">
 
               {/* Divisions */}

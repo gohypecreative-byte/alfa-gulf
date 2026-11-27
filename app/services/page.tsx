@@ -21,13 +21,13 @@ export default function ServicesIndexPage() {
   return (
     <div className="bg-white text-zinc-950 min-h-screen pt-20 md:pt-[84px]">
       <section className="bg-brand-soft">
-        <div className="mx-auto max-w-[1340px] px-6 py-12 sm:px-10 sm:py-20 lg:px-8">
+        <div className="site-container section-space">
           <p className="mb-5 text-sm font-medium text-brand">Our services</p>
           <div className="grid items-end gap-7 lg:grid-cols-[1.25fr_1fr] lg:gap-20">
             <h1 className="max-w-3xl text-[42px] font-medium leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">Built around<br />your project.</h1>
             <p className="max-w-lg text-base leading-relaxed text-slate-600 sm:text-lg">Construction expertise, connected technology, and dependable supply. Explore all {SERVICE_DIVISIONS.reduce((total, division) => total + division.items.length, 0)} services across our three divisions.</p>
           </div>
-          <nav aria-label="Service divisions" className="mt-10 grid gap-3 sm:mt-14 sm:grid-cols-3">
+          <nav aria-label="Service divisions" className="content-gap-top grid gap-3 sm:grid-cols-3">
             {SERVICE_DIVISIONS.map((division, index) => {
               const detail = divisionDetails[index]
               const Icon = detail.icon
@@ -42,12 +42,12 @@ export default function ServicesIndexPage() {
           </nav>
         </div>
       </section>
-      <div className="mx-auto max-w-[1340px] px-6 sm:px-10 lg:px-8">
+      <div className="site-container ">
         {SERVICE_DIVISIONS.map((division, index) => {
           const detail = divisionDetails[index]
           const DivisionIcon = detail.icon
           return (
-            <section key={division.id} id={division.id} className="grid scroll-mt-28 gap-8  border-slate-200 py-12 sm:py-16 lg:grid-cols-[280px_1fr] lg:gap-16">
+            <section key={division.id} id={division.id} className="section-space grid scroll-mt-28 gap-8  border-slate-200 lg:grid-cols-[280px_1fr] lg:gap-16">
               <div>
                 <div className="lg:sticky lg:top-32">
                   <DivisionIcon aria-hidden="true" className="mb-5 size-10 text-brand" strokeWidth={1.3} />
@@ -81,8 +81,8 @@ export default function ServicesIndexPage() {
         })}
       </div>
 
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16 bg-white">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12  border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
 
@@ -90,7 +90,7 @@ export default function ServicesIndexPage() {
                 Partner with Alfa Gulf on your next project.
               </h2>
               <p className="text-sm sm:text-base text-zinc-600 font-normal leading-relaxed">
-                Connect directly with our estimating and engineering directors in Riyadh
+                Connect directly with our estimating and engineering directors in Al Khobar
                 for project tenders, BOQs, and joint venture inquiries.
               </p>
             </div>
@@ -118,7 +118,7 @@ export default function ServicesIndexPage() {
           <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-500">
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-brand" />
-              <span>Riyadh, Kingdom of Saudi Arabia</span>
+              <span>Al Khobar, Kingdom of Saudi Arabia</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5 text-brand" />

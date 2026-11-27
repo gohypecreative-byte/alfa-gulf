@@ -144,7 +144,7 @@ export const ImageTextReveal: React.FC<ImageTextRevealProps> = ({
 
   return (
     <div
-      className={`relative w-full bg-white text-zinc-900 overflow-x-hidden selection:bg-black selection:text-white cursor-default pt-8 md:pt-12 pb-10 md:pb-14 ${className}`}
+      className={`relative w-full bg-white text-zinc-900 overflow-x-hidden selection:bg-black selection:text-white cursor-default section-space ${className}`}
     >
       {/* FLOATING IMAGE FOLLOWER */}
       <div

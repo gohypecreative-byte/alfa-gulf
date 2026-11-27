@@ -38,8 +38,8 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       </section>
 
       {/* ── 2. HEADLINE & OVERVIEW SECTION (Below Full-Screen Banner) ── */}
-      <section className="relative px-6 sm:px-10 lg:px-16 pt-12 sm:pt-16 pb-16 sm:pb-20  border-zinc-200/80 bg-white">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space relative px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-white">
+        <div className="max-w-[1312px] mx-auto w-full">
           {/* Main Headline */}
           <div className="max-w-4xl space-y-6">
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-normal leading-[1.12] text-zinc-950 tracking-tight">
@@ -54,8 +54,8 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       </section>
 
       {/* ── 2. KEY METRICS & BENCHMARKS ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-16 sm:py-24  border-zinc-200/80">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
             {data.stats.map((stat, idx) => (
               <div key={idx} className="space-y-3">
@@ -76,8 +76,8 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       </section>
 
       {/* ── 3. OPERATING APPROACH & INTERACTIVE ACCORDION ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28  border-zinc-200/80">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left: Heading & Accordion */}
             <div className="lg:col-span-6 space-y-6">
@@ -154,8 +154,8 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       </section>
 
       {/* ── 4. SPECIALIZED CAPABILITIES & DELIVERABLES ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28  border-zinc-200/80">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80">
+        <div className="max-w-[1312px] mx-auto w-full">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8  border-zinc-200/80 mb-12">
             <div className="space-y-2.5 max-w-2xl">
@@ -199,8 +199,8 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       </section>
 
       {/* ── 5. QUALITY, SAFETY & COMPLIANCE ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28  border-zinc-200/80">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Image */}
             <div className="lg:col-span-5 relative aspect-[4/3] rounded-none overflow-hidden bg-zinc-100 border border-zinc-200/80 shadow-xs order-2 lg:order-1">
@@ -242,8 +242,8 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
 
       {/* ── 6. RELATED DIVISIONS QUICK SWITCHER ── */}
       {data.relatedDivisions && data.relatedDivisions.length > 0 && (
-        <section className="px-6 sm:px-10 lg:px-16 py-16  border-zinc-200/80 bg-zinc-50/50">
-          <div className="max-w-[1440px] mx-auto w-full">
+        <section className="section-space px-6 sm:px-10 lg:px-16  border-zinc-200/80 bg-zinc-50/50">
+          <div className="max-w-[1312px] mx-auto w-full">
             <div className="flex items-center justify-between pb-6  border-zinc-200/80 mb-8">
 
               <Link
@@ -280,13 +280,13 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
       <CertificationsSection />
 
       {/* ── 7. CLEAN EDITORIAL PROPOSAL & INQUIRY FOOTER ── */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-white">
-        <div className="max-w-[1440px] mx-auto w-full">
+      <section className="section-space px-6 sm:px-10 lg:px-16 bg-white">
+        <div className="max-w-[1312px] mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12  border-zinc-200/80">
             <div className="space-y-4 max-w-2xl">
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950 leading-tight">
-                Engage our technical engineering team in Riyadh.
+                Engage our technical engineering team in Al Khobar.
               </h2>
               <p className="text-sm sm:text-base text-zinc-600 font-normal leading-relaxed">
                 Submit architectural plans, tender packages, or schedule a technical
@@ -317,7 +317,7 @@ export function ServiceDetailView({ data }: ServiceDetailViewProps) {
           <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-500">
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-brand" />
-              <span>Riyadh, Kingdom of Saudi Arabia</span>
+              <span>Al Khobar, Kingdom of Saudi Arabia</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5 text-brand" />

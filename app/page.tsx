@@ -12,6 +12,19 @@ export default function Home() {
       {/* 1. Autoplaying Hero */}
       <VideoScrollHero />
 
+      <section id="vision2030" aria-labelledby="vision2030-heading" className="section-space scroll-mt-24 bg-brand-soft px-6 sm:px-10 lg:px-16">
+        <div className="mx-auto grid max-w-[1312px] gap-6 md:grid-cols-2 md:items-center md:gap-12">
+          <h1 id="vision2030-heading" className="text-3xl font-medium tracking-tight text-brand sm:text-4xl">
+            Building towards Saudi Vision 2030
+          </h1>
+          <p className="max-w-xl text-base leading-7 text-slate-700">
+            From Al Khobar, Alfa Gulf aims to support Saudi Arabia&apos;s future
+            through sustainable construction, reliable technology infrastructure,
+            and the supply of materials that help businesses and communities grow.
+          </p>
+        </div>
+      </section>
+
       {/* 2. Core Categories: Construction, IT & Technology, Trading */}
       <CategoriesSection />
 

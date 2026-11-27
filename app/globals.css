@@ -46,3 +46,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Shared spacing for content sections; media and pinned scenes keep their own sizing. */
+:root {
+  --section-space: 2.5rem;
+  --content-gap: 1.5rem;
+  --page-gutter: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --section-space: 3rem;
+    --content-gap: 2rem;
+    --page-gutter: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section-space: 4rem;
+    --content-gap: 2.5rem;
+    --page-gutter: 4rem;
+  }
+}
+
+@utility section-space {
+  padding-block: var(--section-space);
+}
+
+@utility content-gap-top {
+  margin-top: var(--content-gap);
+}
+
+@utility site-container {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}

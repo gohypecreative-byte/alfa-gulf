@@ -10,7 +10,7 @@ export function BlogArticles() {
   const [category, setCategory] = useState("All articles")
   const posts = category === "All articles" ? BLOG_POSTS : BLOG_POSTS.filter(post => post.category === category)
   return (
-    <section className="mx-auto max-w-[1440px] px-6 py-14 sm:px-10 lg:px-16 lg:py-20" aria-labelledby="articles-heading">
+    <section className="site-container section-space" aria-labelledby="articles-heading">
       <div className="mb-9 flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
         <h2 id="articles-heading" className="text-2xl font-medium tracking-tight sm:text-3xl">Explore the journal</h2>
         <div className="flex flex-wrap gap-2" role="group" aria-label="Filter articles by topic">
